@@ -15,5 +15,5 @@
   * [Integrating with the VM Provision State Machine](integrating_with_the_vm_provision_state_machine/chapter.md.wip)
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md.wip)
 * [Generic Objects](generic_objects/chapter.md.wip)
-* [Expression Methods](expression_methods/chapter.md.wip)
+* [Expression Methods](expression_methods/chapter.md)
 * [Embedded Methods](embedded_methods/chapter.md.wip)

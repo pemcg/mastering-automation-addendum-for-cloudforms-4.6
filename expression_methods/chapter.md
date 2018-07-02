@@ -17,9 +17,9 @@ Virtualization provider. This can be achieved as follows.
 
 An expression method is created in the same way as other automate
 methods. CloudForms 4.6 (ManageIQ *Gaprindashvili*) has added two more
-method types, one of which is *expression* (see [figure\_title](#i1)).
+method types, one of which is *expression*, as follows:
 
-![Method Types](./images/ss2.png)
+![Method Types :300px](./images/ss2.png)
 
 ​  
 
@@ -28,7 +28,7 @@ where the expression can be defined. For this example the **Expression
 Object** should be **Vm**, and the expression **Field → VM and Instance
 : Type → =** should be selected, to match with the string
 "ManageIQ::Providers::Redhat::InfraManager::Vm" (see
-[figure\_title](#i2))
+[Defining The Expression Method](#i2))
 
 ![Defining The Expression Method](./images/ss1.png)
 
@@ -38,9 +38,9 @@ Object** should be **Vm**, and the expression **Field → VM and Instance
 
 An expression method is still run from the context of an instance, so as
 when using a Ruby automate method, an instance should be created to run
-the expression method (see [figure\_title](#i3)).
+the expression method, as follows:
 
-![The Expression Method with Associated Instance](./images/ss3.png)
+![The Expression Method with Associated Instance](./images/ss3.png =250x)
 
 ​  
 
