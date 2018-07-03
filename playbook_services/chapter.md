@@ -1,4 +1,4 @@
-# Embedded Ansible Services
+# Ansible Playbook Services
 
 New service catalog item type, *Ansible Playbook*
 
@@ -26,32 +26,8 @@ manageiq-specific variables are made available to the playbook to use.
 }
 ```
 
-## Inventory
 
-The inventory group ‘all’ is created on-the-fly when the playbook is
-launched:
 
-``` yaml
-...
-"groups": {
-    "all": [
-        "192.168.2.182"
-     ],
-     "ungrouped": [
-         "192.168.2.182"
-     ]
-}
-…
-"inventory_hostname": "192.168.2.182",
-```
-
-So in playbook use:
-
-    hosts: all
-
-## Service Retirement
-
-retirement of service objects: VMs and generic objects
 
 ## Calling an Ansible Playbook Service Programmatically
 

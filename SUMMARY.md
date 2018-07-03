@@ -1,15 +1,15 @@
 # Summary
 
-* [Introduction](introduction.md.wip)
+* [Preface](preface.md)
 * [Updates](updates.md.wip)
   * [New Service Dialog Editor](new_service_dialog_editor/chapter.md.wip)
   * [Custom Button Functionality](custom_buttons/chapter.md.wip)
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md.wip)
   * [Miscellaneous](miscellaneous/chapter.md.wip)
 * [Embedded Ansible](embedded_ansible.md.wip)
-  * [Overview](embedded_ansible_overview/chapter.md.wip)
+  * [Overview](embedded_ansible_overview/chapter.md)
   * [Ansible Playbook Services](playbook_services/chapter.md.wip)
-  * [Playbook Service Provision & Retirement State Machines](playbook_service_provision_retirement_state_machines/chapter.md.wip)
+  * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
   * [Calling a Playbook Service from a Button](calling_a_playbook_service_from_a_button/chapter.md.wip)
   * [Ansible Playbook Methods](playbook_methods/chapter.md.wip)
   * [Integrating with the VM Provision State Machine](integrating_with_the_vm_provision_state_machine/chapter.md.wip)
