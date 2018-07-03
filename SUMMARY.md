@@ -10,7 +10,7 @@
   * [Overview](embedded_ansible_overview/chapter.md)
   * [Ansible Playbook Services](playbook_services/chapter.md.wip)
   * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
-  * [Calling a Playbook Service from a Button](calling_a_playbook_service_from_a_button/chapter.md.wip)
+  * [Calling a Playbook Service from a Button](calling_a_playbook_service_from_a_button/chapter.md)
   * [Ansible Playbook Methods](playbook_methods/chapter.md.wip)
   * [Integrating with the VM Provision State Machine](integrating_with_the_vm_provision_state_machine/chapter.md.wip)
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md.wip)
