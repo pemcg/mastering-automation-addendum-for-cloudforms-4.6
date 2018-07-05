@@ -221,3 +221,8 @@ $evm.root['hosts'] = vmdb_object   (type: String)
 
 The service options hash shows that without the dialog\_hosts value, the package installation was attempted on localhost, which was the default when the service catalog item was created:
 
+```
+$evm.root['service'].options[:config_info] = {:provision=>{:repository_id=>"4", :playbook_id=>"182", :credential_id=>"11", :hosts=>"localhost", :verbosity=>"0", :log_output=>"on_error", :extra_vars=>{:package=>{:default=>"from_service"}}, :execution_ttl=>"", :become_enabled=>true, :new_dialog_name=>"Install a Package", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/provision", :dialog_id=>31}, :retirement=>{:remove_resources=>"yes_without_playbook", :verbosity=>"0", :log_output=>"on_error", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"}}   (type: Hash)
+$evm.root['service'].options[:dialog] = {"dialog_param_package"=>"nfs-utils"}   (type: Hash)
+$evm.root['service'].options[:provision_job_options] = {"hosts"=>"localhost", "extra_vars"=>{"package"=>"nfs-utils"}}   (type: ActiveSupport::HashWithIndifferentAccess)
+```

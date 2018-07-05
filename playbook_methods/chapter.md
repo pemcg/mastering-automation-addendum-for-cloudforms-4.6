@@ -1,23 +1,19 @@
-# Embedded Ansible Automation Methods
+# Ansible Playbook Methods
 
-CloudForms 4.6 / ManageIQ *Gaprindashvili* has introduced the capability
-to run Ansible playbooks as automation methods. It is now possible to
-mix Ruby and/or Ansible methods in a single state machine or instance.
+CloudForms 4.6 / ManageIQ *Gaprindashvili* has introduced the capability to run Ansible playbooks as automation methods. It is now possible to mix Ruby and/or Ansible methods in a single state machine or instance.
+
+## Creating a Playbook Method
+
 
 ## Variables Available to the Ansible Playbook
 
-When an Ansible playbook is run as an automate method, a number of
-manageiq-specific variables are made available to the playbook to use.
-These are similar to the variables available to a playbook service, but
-with the addition of the *automate\_workspace* variable that allows the
-playbook to interact with the $evm workspace managing the automation
-workflow.
+When an Ansible playbook is run as an automate method, a number of manageiq-specific variables are made available to the playbook to use. These are similar to the variables available to a playbook service, but with the addition of the **automate\_workspace** variable that allows the playbook to interact with the `$evm` workspace managing the automation workflow.
 
 ``` yaml
 "manageiq": {
     "X_MIQ_Group": "EvmGroup-super_administrator",
     "api_token": "4b90eb34f6374f5d61c16c969b53f018",
-    "api_url": "https://192.168.2.242",
+    "api_url": "https://10.2.3.4",
     "automate_workspace": "automate_workspaces/cf7df7bd-b871-46e3-a634-a3c30d644e5c",
     "group": "groups/2",
     "user": "users/1"
@@ -25,9 +21,11 @@ workflow.
 "manageiq_connection": {
     "X_MIQ_Group": "EvmGroup-super_administrator",
     "token": "4b90eb34f6374f5d61c16c969b53f018",
-    "url": "https://192.168.2.242"
+    "url": "https://10.2.3.4"
 }
 ```
+
+
 
 ## Workspace
 
@@ -38,23 +36,23 @@ playbook:
 "json": {
     "actions": [
         {
-            "href": "https://192.168.2.242/api/automate_workspaces/7bd6c913-7366-...",
+            "href": "https://10.2.3.4/api/automate_workspaces/7bd6c913-7366-...",
             "method": "post",
             "name": "edit"
         },
         {
-            "href": "https://192.168.2.242/api/automate_workspaces/7bd6c913-7366-...",
+            "href": "https://10.2.3.4/api/automate_workspaces/7bd6c913-7366-...",
             "method": "post",
             "name": "encrypt"
         },
         {
-            "href": "https://192.168.2.242/api/automate_workspaces/7bd6c913-7366-...",
+            "href": "https://10.2.3.4/api/automate_workspaces/7bd6c913-7366-...",
             "method": "post",
             "name": "decrypt"
         }
     ],
     "guid": "7bd6c913-7366-4d10-acf4-61af57465c75",
-    "href": "https://192.168.2.242/api/automate_workspaces/7bd6c913-7366-...",
+    "href": "https://10.2.3.4/api/automate_workspaces/7bd6c913-7366-...",
     "id": "63",
     "input": {
         "current": {

@@ -1,4 +1,4 @@
-# Ansible Service Provision and Retirement
+# Ansible Service Provisioning and Retirement
 
 New service catalog item type, *Ansible Playbook*
 
