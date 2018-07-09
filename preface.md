@@ -3,7 +3,9 @@
 This book is an addendum to the *Mastering Automation in CloudForms 4.2
 and ManageIQ Euwe* book, covering the new automate features and
 functionality available with CloudForms 4.5 & 4.6 (ManageIQ *Fine* &
-*Gaprindashvili*)
+*Gaprindashvili*).
+
+The book is a work-in-progress. The author welcomes any feedback, suggestions for content, notifications of errors, omissions or inaccuracies to pemcg@redhat.com.
 
 # Acknowledgements
 
@@ -23,7 +25,7 @@ The following typographical conventions are used in this book:
   - **Bold**  
     Indicates WebUI components, event names, Schema field names
 
-  - Constant width  
+  - `Constant width`  
     Used for program listings, as well as within paragraphs to refer to
     program elements such as variable or function names, databases, data
     types, environment variables, statements, and keywords.

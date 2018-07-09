@@ -1,4 +1,4 @@
-# Ansible Service Provisioning and Retirement
+# Ansible Service Provisioning and Retirement State Machines
 
 New service catalog item type, *Ansible Playbook*
 
@@ -9,11 +9,7 @@ New service catalog item type, *Ansible Playbook*
 
 retirement of service objects: VMs and generic objects
 
-## Calling an Ansible Playbook Service Programmatically
 
-    create_service_provision_request
-
-    order_ansible_playbook
 
 ## Debugging
 

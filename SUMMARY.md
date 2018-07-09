@@ -10,7 +10,7 @@
   * [Overview](embedded_ansible_overview/chapter.md)
   * [Ansible Playbook Services](playbook_services/chapter.md)
   * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
-  * [Running an Ansible Playbook Service Non-Interactively](running_a_playbook_service_non-interactively/chapter.md.wip)
+  * [Running an Ansible Playbook Service Non-Interactively](running_a_playbook_service_non-interactively/chapter.md)
   * [Running a Playbook Service from a Button](running_a_playbook_service_from_a_button/chapter.md)
   * [Modules](modules/chapter.md.wip)
   * [Ansible Playbook Methods](playbook_methods/chapter.md.wip)

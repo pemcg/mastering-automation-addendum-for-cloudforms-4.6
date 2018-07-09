@@ -29,8 +29,7 @@ When an Ansible playbook is run as an automate method, a number of manageiq-spec
 
 ## Workspace
 
-This is the json contents of the automate workspace as retrieved in the
-playbook:
+This is the json contents of the automate workspace as retrieved in the playbook:
 
 ``` yaml
 "json": {
