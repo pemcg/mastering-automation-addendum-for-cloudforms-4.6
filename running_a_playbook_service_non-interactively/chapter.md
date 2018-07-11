@@ -112,7 +112,7 @@ _order\_ansible\_playbook_ uses `$evm.root` keys to determine the playbook servi
 
 These `$evm.root` keys can be defined as Attribute/Value pairs when an instance is launched (see [Calling Order\_Ansible\_Playbook](#i3)).
 
-![Calling Order\_Ansible\_Playbook](images/ss2.png)
+![Calling Order\_Ansible\_Playbook|690x100](images/ss2.png)
     
 ## Summary
 

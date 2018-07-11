@@ -4,6 +4,21 @@ CloudForms 4.6 / ManageIQ *Gaprindashvili* has introduced the capability to run 
 
 ## Creating a Playbook Method
 
+A playbook method is created in the same way as other automate
+methods. CloudForms 4.6 (ManageIQ *Gaprindashvili*) has added two more
+method types, one of which is *playbook* (see
+[Adding a New Playbook Method](#i1))
+
+![Adding a New Playbook Method|690x100](images/adding_a_new_automate_method.png)
+
+Some text
+
+![Automate Method Name](images/automate_method_name.png)
+
+Some text
+
+![Automate Method Details](images/automate_method_details_1.png)
+
 
 ## Variables Available to the Ansible Playbook
 
