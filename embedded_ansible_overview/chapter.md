@@ -6,15 +6,15 @@ CloudForms 4.5 (ManageIQ *Fine*) introduced an automation capability that uses a
 > 
 > The embedded Ansible capability is also known by its Red Hat marketing name of *Ansible Automation Inside*
 
-CloudForms 4.6 (ManageIQ *Gaprindashvili*) has extended the capabilities
-of embedded Ansible to allow us to run Ansible playbooks as automation
-methods.
+CloudForms 4.6 (ManageIQ *Gaprindashvili*) has extended the capabilities of embedded Ansible to allow us to run Ansible playbooks as automation methods.
 
 ## Enabling the Embedded Ansible Server Role
 
 Before we can use the functionality of embedded Ansible, we must ensure that the server role is enabled on at least one CFME appliance in our region (see [Enabling the Embedded Ansible Server Role](#i1))
 
-![Enabling the Embedded Ansible Server Role](images/ss1.png)
+[//]: # (![Enabling the Embedded Ansible Server Role](images/ss1.png))
+
+_** screenshot here 'The Embedded Ansible Server Role' **_
 
 Although the server role can be set on more than one CFME or ManageIQ appliance, the embedded Ansible engine will only be active on at most one appliance in the region.
 
@@ -33,7 +33,9 @@ Playbooks can only be imported into embedded Ansible from such an SCM tool. Ther
 
 A new repository is added from the **Automation -> Ansible -> Repositories -> Configuration** button. The only SCM type currently supported is _GIT_ (see [Adding an Embedded Ansible SCM Repository](#i1)).
 
-![Adding an Embedded Ansible SCM Repository](images/oss2.png)
+[//]: # (![Adding an Embedded Ansible SCM Repository](images/oss2.png))
+
+_** screenshot here 'Adding an Embedded Ansible SCM Repository' **_
 
 #### SCM Update Options
 
@@ -53,7 +55,10 @@ Credentials are used to access managed entities that require authentication, suc
 
 A new credential is added from the **Automation -> Ansible -> Credentials -> Configuration** button.
 
-![Adding an Embedded Ansible Machine Credential](images/oss4.png)
+[//]: # (![Adding an Embedded Ansible Machine Credential](images/oss4.png))
+
+_** screenshot here 'Adding an Embedded Ansible SCM Repository' **_
+
 
 The following credential types are supported:
 

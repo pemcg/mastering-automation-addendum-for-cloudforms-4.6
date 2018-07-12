@@ -7,7 +7,7 @@
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md.wip)
   * [Miscellaneous](miscellaneous/chapter.md.wip)
 * [Embedded Ansible](embedded_ansible.md.wip)
-  * [Overview](embedded_ansible_overview/chapter.md)
+  * [Introduction](embedded_ansible_overview/chapter.md)
   * [Ansible Playbook Services](playbook_services/chapter.md)
   * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
   * [Running an Ansible Playbook Service Non-Interactively](running_a_playbook_service_non-interactively/chapter.md)
