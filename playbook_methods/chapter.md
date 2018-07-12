@@ -11,13 +11,13 @@ method types, one of which is *playbook* (see
 
 [//]: # (![Adding a New Playbook Method](images/adding_a_new_automate_method.png))
 
-_-- screenshot here 'Method Types' --_
+_-- screenshot here 'Adding a New Playbook Method' --_
 
 
 
 [//]: # (![Automate Method Name](images/automate_method_name.png))
 
-_-- screenshot here 'Adding the Method Name' --_
+_-- screenshot here 'Completing the Method Name' --_
 
 
 
@@ -25,6 +25,12 @@ _-- screenshot here 'Adding the Method Name' --_
 
 _-- screenshot here 'Completing the Method Details' --_
 
+
+## Host Values
+
+The 
+
+_-- screenshot here 'Substitution variable as a host value' --_
 
 ## Variables Available to the Ansible Playbook
 
@@ -50,7 +56,7 @@ When an Ansible playbook is run as an automate method, a number of manageiq-spec
 
 ## Workspace
 
-This is the json contents of the automate workspace as retrieved in the playbook:
+This is the json contents of the automate workspace as retrieved in the playbook is as follows:
 
 ``` yaml
 "json": {
@@ -125,13 +131,11 @@ This is the json contents of the automate workspace as retrieved in the playbook
 
 ## Argument Passing and Returning
 
-As with a Ruby method, static or dynamic values can be passed as
-arguments into a playbook method, and the playbook can return values
-back to $evm to be used in subsequent stages of a workflow.
+As with a Ruby method, static or dynamic values can be passed as arguments into a playbook method, and the playbook can return values back to `$evm` to be used in subsequent stages of a workflow.
 
 ### Arguments
 
-Values can also be retrieved from state\_vars
+Values can also be retrieved from state\_vars. This
 
 ``` Ruby
 $evm.set_state_var(:date_stamp, "#{Time.now}")
@@ -173,12 +177,10 @@ $evm.set_state_var(:date_stamp, "#{Time.now}")
 
 ### Returning Values
 
-A playbook can write values directly to $evm.root or $evm.object, or if
-running from a state in a state machine it can create or update state
-variables.
+A playbook can write values directly to `$evm.root` or `$evm.object`, or if running from a state in a state machine it can create or update state variables.
 
 ## State Machine Retries
 
 ## Logging the Output of an Ansible Method to automation.log
 
-example of saving a variable to $evm
+example of saving a variable to `$evm`

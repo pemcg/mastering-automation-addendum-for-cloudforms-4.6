@@ -12,7 +12,7 @@
   * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
   * [Running an Ansible Playbook Service Non-Interactively](running_a_playbook_service_non-interactively/chapter.md)
   * [Running a Playbook Service from a Button](running_a_playbook_service_from_a_button/chapter.md)
-  * [ManageIQ Ansible Modules](modules/chapter.md.wip)
+  * [ManageIQ Ansible Modules](modules/chapter.md)
   * [Ansible Playbook Methods](playbook_methods/chapter.md.wip)
   * [Calling a Playbook Method from the VM Provision State Machine](integrating_with_the_vm_provision_state_machine/chapter.md)
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md.wip)
