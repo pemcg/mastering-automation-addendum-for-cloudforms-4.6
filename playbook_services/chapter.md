@@ -17,11 +17,15 @@ In this chapter we'll create a simple playbook service that runs the following p
 
 A new service catalog item type, **Ansible Playbook** is used to create a playbook service:
 
-![Selcting the Ansible Playbook Catalog Item Type](images/oss1.png)
+[//]: # (![Selecting the Ansible Playbook Catalog Item Type](images/oss1.png))
+
+_-- screenshot here 'Selecting the Ansible Playbook Catalog Item Type' --_
 
 Once 'Ansible Playbook' is selected, the main service creation dialog is displayed:
 
-![Service Creation Dialog](images/oss2.png)
+[//]: # (![Service Creation Dialog](images/oss2.png))
+
+_-- screenshot here 'Service Creation Dialog' --_
 
 ## Provisioning Tab Options
 
@@ -71,23 +75,41 @@ The package may not have been installed by the provisioning playbook if it alrea
   - name: Remove package
     yum: name={{ package }} state=absent
 ```
+## Service Dialogs for Playbook Services
+
+The elements in the service dialogs used for embedded Ansible playbook services must be named in a particular way for their values to be passed through to the running playbook.
+
+Each service's dialog should prompt for the machine credential to be used when running the playbook, and the list of hosts on which to run the playbook. These elements must be named **credential** and **hosts** respectively. Any additional playbook variables to be passed in to the playbook should have their element named prefixed by **param_--.
+
+The element names are setup correctly when we select **Create New** as the dialog radio button in the **Adding a new Service Catalog Item** page. Any **Variables and Default Values** that we add will automatically be added to the service dialog, with the variable name prefixed correctly. For example an added variable name of "package" would result in an element being added to the resultant service dialog with the element name of **param_package**.
+
+
+
 ## Ordering the Service
 
 When we order the service we are presented with the service dialog that was created automatically. It gives us a choice of overriding the machine credential and host that were selected when the catalog item was created. If we leave these as default the playbook will run on _localhost_
 
-![Service Dialog 1](images/oss3.png)
+[//]: # (![Service Dialog 1](images/oss3.png))
+
+_-- screenshot here 'Service Dialog, No Credential, localhost' --_
 
 The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run.
 
-![Resulting Service from First Test](images/oss5.png)
+[//]: # (![Resulting Service from First Test](images/oss5.png))
+
+_-- screenshot here 'Resulting Service 'Provisioning' Tab' --_
 
 We can order the service again, but this time override the service dialog defaults to run the playbook on another host, using SSH Key credentials suitable for that host. The service dialog is as follows:
 
-![Service Dialog](images/oss4.png)
+[//]: # (![Service Dialog](images/oss4.png))
+
+_-- screenshot here 'Service Dialog, SSH Key Credential, Hosts IP address' --_
 
 This time we can see from the resultant service **Provisioning** tab that the playbook has been run on the remote host:
 
-![Service Dialog](images/oss6.png)
+[//]: # (![Service Dialog](images/oss6.png))
+
+_-- screenshot here 'Resulting Service 'Provisioning' Tab' --_
 
 ## Variables Available to the Ansible Playbook
 

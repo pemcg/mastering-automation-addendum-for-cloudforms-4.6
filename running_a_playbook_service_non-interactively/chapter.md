@@ -8,11 +8,15 @@ An embedded Ansible playbook service can be run as a control action. In this exa
 
 The action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. A new **Action Type** of **Run Ansible Playbook** is available, which when selected allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list. (see [Adding the Control Action](#i1)).
 
-![Adding the Control Action](images/ss1.png)
+[//]: # (![Adding the Control Action](images/ss1.png))
+
+_-- screenshot here 'Adding the Control Action' --_
 
 The newly created action can be linked to a control policy, triggered by a **VM Power Off** event, and a condition that the VM is tagged as a Web Service VM (see [Creating the Control Policy](#i2)).
 
-![Creating the Control Policy](images/ss3.png)
+[//]: # (![Creating the Control Policy](images/ss3.png))
+
+_-- screenshot here 'The Control Policy' --_
 
 > **Note**
 > 
@@ -112,7 +116,9 @@ _order\_ansible\_playbook_ uses `$evm.root` keys to determine the playbook servi
 
 These `$evm.root` keys can be defined as Attribute/Value pairs when an instance is launched (see [Calling Order\_Ansible\_Playbook](#i3)).
 
-![Calling Order\_Ansible\_Playbook](images/ss2.png)
+[//]: # (![Calling Order\_Ansible\_Playbook](images/ss2.png))
+
+_-- screenshot here 'Calling Order\_Ansible\_Playbook including Attribute/Value pair Arguments' --_
     
 ## Summary
 

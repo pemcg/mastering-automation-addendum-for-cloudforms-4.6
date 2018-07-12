@@ -8,15 +8,21 @@ In this example an Ansible playbook method is used at the AcquireIPAddress state
  
 A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_
 
-![acquire_ip_address Instance and Method](images/oss1.png)
+[//]: # (![acquire\_ip\_address Instance and Method](images/oss1.png))
+
+_-- screenshot here 'acquire_ip_address Instance and Method' --_
 
 The input parameters for the playbook method are dynamic. Two parameters miq\_provision\_request\_id (the request ID) and miq\_provision\_id (the task ID), are defined as follows:
 
 ![Input Parameters](images/oss2.png)
 
+_-- screenshot here 'Input Parameters' --_ ^^
+
 The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine:
 
-![Input Parameters](images/oss3.png)
+[//]: # (![Instance Added to the VM Provision State Machine](images/oss3.png))
+
+_-- screenshot here 'Instance Added to the VM Provision State Machine' --_
 
 ## Inserting the IP Details into the VM Provision Workflow
  
@@ -70,10 +76,9 @@ The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncro
   hosts: all
   gather_facts: no
   vars:
-  - ip_addr: 192.168.1.66
+  - ip_addr: 192.168.2.66
   - netmask: 24
-  - gateway: 192.168.1.254
-  - auto_commit: true
+  - gateway: 192.168.2.254
   - manageiq_validate_certs: false
       
   roles:
@@ -82,15 +87,10 @@ The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncro
   tasks:
   - debug: var=miq_provision_id
   - debug: var=miq_provision_request_id
-  
-  - name: Get the task vmdb object
-    manageiq_vmdb:
-      href: "provision_requests/{{ miq_provision_request_id }}/request_tasks/{{ miq_provision_id }}"
-    register: task_object
     
   - name: Update Task with new IP and Hostname Information
     manageiq_vmdb:
-      vmdb: "{{ task_object }}"
+      href: "provision_requests/{{ miq_provision_request_id }}/request_tasks/{{ miq_provision_id }}"
       action: edit
       data:
         options:
@@ -98,6 +98,7 @@ The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncro
           ip_addr: "{{ ip_addr }}"
           subnet_mask: "{{ netmask }}"
           gateway: "{{ gateway }}"
+  
 ```
  
 In these example playbooks the netmask variable is defined in CIDR format rather than as octets, to be compatible with nmcli.

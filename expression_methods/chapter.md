@@ -21,7 +21,7 @@ method types, one of which is *expression* (see
 [Method Types](#i1))
 
 [//]: # (![Method Types](./images/ss2.png))
-_** screenshot here 'Method Types' **_
+_-- screenshot here 'Method Types' --_
 ​  
 
 Selecting *expression* as the method type opens the expression dialog,
@@ -32,7 +32,7 @@ Object** should be **Vm**, and the expression **Field → VM and Instance
 [Defining The Expression Method](#i2))
 
 [//]: # (![Defining The Expression Method](./images/ss1.png))
-_** screenshot here 'Defining The Expression Method' **_
+_-- screenshot here 'Defining The Expression Method' --_
 ​  
 
 ## Create an Instance
@@ -43,7 +43,7 @@ the expression method (see
 [The Expression Method with Associated Instance](#i3))
 
 [//]: # (![The Expression Method with Associated Instance](./images/ss3.png))
-_** screenshot here 'The Expression Method with Associated Instance' **_
+_-- screenshot here 'The Expression Method with Associated Instance' --_
 ​  
 
 ## Testing from Simulation
@@ -57,7 +57,7 @@ The method’s output can be examined by running the instance from
 **Automate → Simulation** (see [Results of the Expression Method In Simulation](#i4)).
 
 [//]: # (![Results of the Expression Method In Simulation](./images/ss4.png))
-_** screenshot here 'Results of the Expression Method In Simulation' **_
+_-- screenshot here 'Results of the Expression Method In Simulation' --_
 ​  
 
 ## Populating a Dynamic Drop-Down Element
@@ -69,7 +69,7 @@ populate a service dialog drop-down list element (see
 Definition](#i5)).
 
 [//]: # (![Setting the Dynamic Method Entry Point in the Element Definition](./images/ss9.png))
-_** screenshot here 'Setting the Dynamic Method Entry Point in the Element Definition' **_
+_-- screenshot here 'Setting the Dynamic Method Entry Point in the Element Definition' --_
 ​  
 
 If the dialog is run from a button or service, the dynamic element is
@@ -77,7 +77,7 @@ populated with the list of VMs on the RHV provider (see
 [The Running Service Dialog](#i6)).
 
 [//]: # (![The Running Service Dialog](./images/ss7.png))
-_** screenshot here 'The Running Service Dialog' **_
+_-- screenshot here 'The Running Service Dialog' --_
 ​  
 
 ## Input Arguments
@@ -96,7 +96,7 @@ a provider is selected (see [Setting the Provider Element to Refresh the VM
 Element](#i7))
 
 [//]: # (![Setting the Provider Element to Refresh the VM Element](./images/ss10.png))
-_** screenshot here 'Setting the Provider Element to Refresh the VM Element' **_
+_-- screenshot here 'Setting the Provider Element to Refresh the VM Element' --_
 ​  
 
 The *expression\_vms* method can then be edited to add an **AND** field
@@ -104,7 +104,7 @@ of **Field → VM and Instance : Ems → =**, but with the check box **User
 will input the value** ticked (see [Adding a Second Filter to the Expression](#i8)).
 
 [//]: # (![Adding a Second Filter to the Expression](./images/ss5.png))
-_** screenshot here 'Adding a Second Filter to the Expression' **_
+_-- screenshot here 'Adding a Second Filter to the Expression' --_
 ​  
 
 The `<user input>` will be supplied from the results of the new **Provider** element.
@@ -116,7 +116,7 @@ method. This should be of type **String**, and with the value
 element (see [Adding the Input Parameter](#i9))
 
 [//]: # (![Adding the Input Parameter](./images/ss6.png))
-_** screenshot here 'Adding the Input Parameter' **_
+_-- screenshot here 'Adding the Input Parameter' --_
 ​  
 
 Now when the modified dialog is run from a button or service, the
@@ -125,7 +125,7 @@ Now when the modified dialog is run from a button or service, the
 provider (see [All VMs listed on the Selected Provider](#i10)).
 
 [//]: # (![All VMs listed on the Selected Provider](./images/ss8.png))
-_** screenshot here 'All VMs listed on the Selected Provider' **_
+_-- screenshot here 'All VMs listed on the Selected Provider' --_
 ​  
 
 Several other input arguments can be used. For example if {guid ⇒ name}
@@ -134,22 +134,22 @@ alternative key field can be specified using the *key* argument (see
 [Setting an Alternative Key](#i11) and [Simulation Results](#i12)).
 
 [//]: # (![Setting an Alternative Key](./images/ss12.png))
-_** screenshot here 'Setting an Alternative 'guid' Key' **_
+_-- screenshot here 'Setting an Alternative 'guid' Key' --_
 ​  
 
 [//]: # (![Simulation Results](./images/ss11.png))
-_** screenshot here 'Simulation Results using 'guid' Key' **_
+_-- screenshot here 'Simulation Results using 'guid' Key' --_
 ​  
 
 If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see
 [Setting an Alternative Result Type](#i13) and [Simulation Results](#i14)).
 
 [//]: # (![Setting an Alternative Result Type](./images/ss13.png))
-_** screenshot here 'Setting an Alternative Result Type of 'array' and attributes 'id,name'' **_
+_-- screenshot here 'Setting an Alternative Result Type of 'array' and attributes 'id,name'' --_
 ​  
 
 [//]: # (![Simulation Results](./images/ss14.png))
-_** screenshot here 'Simulation Results using Alternative Result Type of 'array' and attributes 'id,name'' **_
+_-- screenshot here 'Simulation Results using Alternative Result Type of 'array' and attributes 'id,name'' --_
 ​  
 
 ### Summary of arguments

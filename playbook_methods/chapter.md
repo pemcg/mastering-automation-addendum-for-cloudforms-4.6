@@ -11,19 +11,19 @@ method types, one of which is *playbook* (see
 
 [//]: # (![Adding a New Playbook Method](images/adding_a_new_automate_method.png))
 
-_** screenshot here 'Method Types' **_
+_-- screenshot here 'Method Types' --_
 
 
 
 [//]: # (![Automate Method Name](images/automate_method_name.png))
 
-_** screenshot here 'Adding the Method Name' **_
+_-- screenshot here 'Adding the Method Name' --_
 
 
 
 [//]: # (![Automate Method Details](images/automate_method_details_1.png))
 
-_** screenshot here 'Completing the Method Details' **_
+_-- screenshot here 'Completing the Method Details' --_
 
 
 ## Variables Available to the Ansible Playbook

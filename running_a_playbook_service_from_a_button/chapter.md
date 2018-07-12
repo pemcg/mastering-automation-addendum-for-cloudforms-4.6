@@ -1,11 +1,8 @@
 # Running an Embedded Ansible Playbook Service on a VM from a Button
 
-In this example we’ll create a button on a VM that can be used to
-install an RPM package on the VM, via an Ansible playbook.
+In this example we’ll create a button on a VM that can be used to install an RPM package on the VM, via an Ansible playbook.
 
-Second example: custom attribute to the VM object
-
-CloudForms 4.6 adds a new feature called Button Type to custom buttons. One of the available button types is Ansible Playbook, which allows an existing Ansible playbook service to be run on the object (VM, Host etc) displaying the button in the WebUI. This button type still calls the /System/Request/Order_Ansible_Playbook instance to launch the playbook service, but it simplifies the process of creating the parameters that the order_ansible_playbook method uses.
+CloudForms 4.6 adds a new feature called **Button Type** to custom buttons. One of the available button types is **Ansible Playbook**, which allows an existing Ansible playbook service to be run on the object (VM, Host etc) displaying the button in the WebUI. This button type still calls the _/System/Request/Order\_Ansible\_Playbook_ instance to launch the playbook service, but it simplifies the process of creating the parameters that the _order\_ansible\_playbook_ method uses.
 
 For this example a simple playbook is run that installs a package using the yum module onto the VM displaying the custom button.
 
@@ -35,7 +32,9 @@ To assist in troubleshooting, a call to object\_walker has been made from the _/
 
 The Ansible playbook service was first created, as follows:
 
-![Adding the New Service Catalog Item](images/oss2.png)
+[//]: # (![Adding the New Service Catalog Item](images/oss2.png))
+
+_-- screenshot here 'Adding the New Service Catalog Item' --_
 
 ### Values Selected
 
@@ -57,7 +56,9 @@ Clicking **Save** creates both the new service and service dialog.
 
 If the newly created service dialog is edited, it can be seen that the package element has been given the correct name "param\_package" (as required by the _order\_ansible\_playbook_ method), and the default value of "from\_service". For this example we'll change the default value for the dialog element to "from\_dialog", as follows:
 
-![Editing the Service Dialog](images/oss3.png)
+[//]: # (![Editing the Service Dialog](images/oss3.png))
+
+_-- screenshot here 'Editing the Service Dialog' --_
 
 Once the dialog has been created, the only use for the package variable and value in the service definition is to provide a fallback in case the package is not specified in the dialog. It can otherwise be deleted.
 
@@ -65,8 +66,9 @@ Once the dialog has been created, the only use for the package variable and valu
 
 The button was created as follows:
 
-![Adding the New Button](images/oss1.png)
+[//]: # (![Adding the New Button](images/oss1.png))
 
+_-- screenshot here 'Adding the New Button' --_
 
 ### Values Selected
 
@@ -89,7 +91,9 @@ The button can be tested with several permutations of dialog values so that the 
 
 Leave the **Machine Credential** and **Hosts** elements at their defaults. Specify "screen" as the package:
 
-![Button Dialog](images/oss6.png)
+[//]: # (![Button Dialog](images/oss6.png))
+
+_-- screenshot here 'Default values for Credential and Hosts, 'screen' for package' --_
 
 The package installs successfully, the Ansible output shows:
 
@@ -169,7 +173,9 @@ fatal: [192.168.1.66]: UNREACHABLE! => {"changed": false, "msg": "Failed to conn
 
 Make the **Machine Credential** and **Hosts** elements non-visible in the dialog to force the default values to be submitted. Specify "bind-utils" as the package:
 
-![Button Dialog](images/oss4.png)
+[//]: # (![Button Dialog](images/oss4.png))
+
+_-- screenshot here 'Credential and Hosts no longer visible, 'bind-utils' for package' --_
 
 The package installation was successful:
 
@@ -203,7 +209,9 @@ $evm.root['service'].options[:provision_job_options] = {"hosts"=>"192.168.1.66",
 
 Delete the **Options** box containing the **Machine Credential** and **Hosts** elements in the dialog. Specify "nfs-utils" as the package:
 
-![Button Dialog](images/oss5.png)
+[//]: # (![Button Dialog](images/oss5.png))
+
+_-- screenshot here 'Options' box removed, 'nfs-utils' for package' --_
 
 The package installation failed:
 

@@ -14,7 +14,7 @@ Before we can use the functionality of embedded Ansible, we must ensure that the
 
 [//]: # (![Enabling the Embedded Ansible Server Role](images/ss1.png))
 
-_** screenshot here 'The Embedded Ansible Server Role' **_
+_-- screenshot here 'The Embedded Ansible Server Role' --_
 
 Although the server role can be set on more than one CFME or ManageIQ appliance, the embedded Ansible engine will only be active on at most one appliance in the region.
 
@@ -35,7 +35,7 @@ A new repository is added from the **Automation -> Ansible -> Repositories -> Co
 
 [//]: # (![Adding an Embedded Ansible SCM Repository](images/oss2.png))
 
-_** screenshot here 'Adding an Embedded Ansible SCM Repository' **_
+_-- screenshot here 'Adding an Embedded Ansible SCM Repository' --_
 
 #### SCM Update Options
 
@@ -57,7 +57,7 @@ A new credential is added from the **Automation -> Ansible -> Credentials -> Con
 
 [//]: # (![Adding an Embedded Ansible Machine Credential](images/oss4.png))
 
-_** screenshot here 'Adding an Embedded Ansible SCM Repository' **_
+_-- screenshot here 'Adding an Embedded Ansible SCM Repository' --_
 
 
 The following credential types are supported:
