@@ -1,8 +1,12 @@
 # Ansible Playbook Services
 
-CloudForms 4.5 / ManageIQ *Fine* introduced the capability to run Ansible playbooks as services. Playbook services can be ordered interactively through the service catalog, from Automate, or can be used as control actions or alerts.
+CloudForms 4.5 / ManageIQ *Fine* introduced the capability to run Ansible playbooks as services. Playbook services can be ordered interactively through the service catalog, from Automate, or can be used as control actions.
 
-In this chapter we'll create a simple playbook service that runs the following playbook to list the variables and facts available to an embedded Ansible playbook as it runs:
+## Creating a Playbook Service
+
+Playbook services are created in the same way as other service catalog items, via the **Catalog Items** accordion in the **Services -> Catalogs** section of the WebUI.
+
+We'll create a simple playbook service that runs the following playbook to list the variables and facts available to an embedded Ansible playbook as it runs:
 
 ``` yaml
 ---
@@ -12,8 +16,6 @@ In this chapter we'll create a simple playbook service that runs the following p
   roles:
      - ansible-role-listvars
 ```
-
-## Creating a Playbook Service
 
 A new service catalog item type, **Ansible Playbook** is used to create a playbook service:
 
@@ -79,7 +81,7 @@ The package may not have been installed by the provisioning playbook if it alrea
 
 The elements in the service dialogs used for embedded Ansible playbook services must be named in a particular way for their values to be passed through to the running playbook.
 
-Each service's dialog should prompt for the machine credential to be used when running the playbook, and the list of hosts on which to run the playbook. These elements must be named **credential** and **hosts** respectively. Any additional playbook variables to be passed in to the playbook should have their element named prefixed by **param_--.
+Each service's dialog should prompt for the machine credential to be used when running the playbook, and the list of hosts on which to run the playbook. These elements must be named **credential** and **hosts** respectively. Any additional playbook variables to be passed in to the playbook should have their element named prefixed by **param_**.
 
 The element names are setup correctly when we select **Create New** as the dialog radio button in the **Adding a new Service Catalog Item** page. Any **Variables and Default Values** that we add will automatically be added to the service dialog, with the variable name prefixed correctly. For example an added variable name of "package" would result in an element being added to the resultant service dialog with the element name of **param_package**.
 

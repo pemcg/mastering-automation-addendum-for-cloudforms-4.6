@@ -12,9 +12,7 @@ CloudForms 4.6 (ManageIQ *Gaprindashvili*) has extended the capabilities of embe
 
 Before we can use the functionality of embedded Ansible, we must ensure that the server role is enabled on at least one CFME appliance in our region (see [Enabling the Embedded Ansible Server Role](#i1))
 
-[//]: # (![Enabling the Embedded Ansible Server Role](images/ss1.png))
-
-_-- screenshot here 'The Embedded Ansible Server Role' --_
+![Enabling the Embedded Ansible Server Role](images/screenshot1.png)
 
 Although the server role can be set on more than one CFME or ManageIQ appliance, the embedded Ansible engine will only be active on at most one appliance in the region.
 

@@ -50,11 +50,11 @@ The **retire\_advanced\_resource\_none** state machine retires the service and r
 
 #### retire\_advanced\_resource\_pre
 
-The **retire\_advanced\_resource\_pre** state machine retires the service and all of the VMs under this top level service, and then finally runs the service retirement playbook.
+The **retire\_advanced\_resource\_pre** state machine retires the service and any VMs under this top level service, and then finally runs the service retirement playbook.
 
 #### retire\_advanced\_resource\_post
 
-The **retire\_advanced\_resource\_post** state machine retires the service, runs the service retirement playbook, and then finally attempts to retire all of the VMs under this top level service.
+The **retire\_advanced\_resource\_post** state machine retires the service, runs the service retirement playbook, and then finally attempts to retire any VMs under this top level service.
 
 
 > **Note**
