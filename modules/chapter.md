@@ -1,6 +1,6 @@
 ## ManageIQ Ansible Modules
 
-There are several ManageIQ-related modules and roles that can be used with Ansible 2.4.4.0 that is supplied with CloudForms 4.6.2. 
+There are several ManageIQ-related modules and roles that can be used with Ansible 2.4 that is supplied with CloudForms 4.6. 
 
 ### Ansible 2.4 Compatible Modules
 

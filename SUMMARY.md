@@ -9,7 +9,7 @@
 * [Embedded Ansible](embedded_ansible.md.wip)
   * [Introduction](embedded_ansible_overview/chapter.md)
   * [Ansible Playbook Services](playbook_services/chapter.md)
-  * [Playbook Service Provision & Retirement](playbook_service_provision_retirement/chapter.md.wip)
+  * [Playbook Service Provision & Retirement State Machines](playbook_service_provision_retirement_state_machines/chapter.md)
   * [Running an Ansible Playbook Service Non-Interactively](running_a_playbook_service_non-interactively/chapter.md)
   * [Running a Playbook Service from a Button](running_a_playbook_service_from_a_button/chapter.md)
   * [ManageIQ Ansible Modules](modules/chapter.md)

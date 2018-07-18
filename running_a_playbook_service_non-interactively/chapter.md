@@ -107,10 +107,16 @@ _order\_ansible\_playbook_ uses `$evm.root` keys to determine the playbook servi
 
 * **service\_template\_name** (required) - should contain the text string name of the service catalog item to request
 * **hosts** (optional) - if used will override the **Hosts** value defined when the service was created. This is a text string, and can take several forms:
-  * _"vmdb\_object"_ - in which case the object represented by the `$evm.root['vmdb_object_type']` value will be used. For example if `$evm.root['vmdb_object_type']` = _"vm"_ then the IP address of the `$evm.root['vm']` object will be used as the playbook's **hosts** value. If `$evm.root['vmdb_object_type']` = _"host"_ then the IP address of the `$evm.root['host']` object will be used. 
-  * _"localhost"_ - in which case the playbook will be run on localhost.
-  * _"hostname"_ (e.g. "infra1.cloud.uk.bit63.com") - the fully qualified domain name of the managed node on which to run the playbook
-  * _"ip,ip"_ (e.g. "10.2.4.5,10.2.4.6") - one or more managed node IP addresses on which to run the playbook
+  * _"vmdb\_object"_ - in which case the object represented by the `$evm.root['vmdb_object_type']` value will be used. For example if `$evm.root['vmdb_object_type']` = _"vm"_ then the first IP address of the `$evm.root['vm']` object will be used as the playbook's **hosts** value. If `$evm.root['vmdb_object_type']` = _"host"_ then the first IP address of the `$evm.root['host']` object will be used. 
+
+> **Warning**
+> 
+> If the _vmdb\_object_ has multiple IP addresses (including IPv6 or cloud public & private addresses), the first IP address listed may not necessarily be the correct address for remote Ansible connectivity.
+ 
+
+* _"localhost"_ - in which case the playbook will be run on localhost.
+* _"hostname"_ (e.g. "infra1.cloud.uk.bit63.com") - the fully qualified domain name of the managed node on which to run the playbook
+* _"ip,ip"_ (e.g. "10.2.4.5,10.2.4.6") - one or more managed node IP addresses on which to run the playbook
 * **dialog\_hosts** (optional) - an alternative way of specifying the target managed node for the playbook service. Useful when _Order\_Ansible\_Playbook_ has been called from a button with a dialog containing a _hosts_ element.
 * **dialog\_credential** (optional) - a credential object ID to use when making the connection to the managed node
 
