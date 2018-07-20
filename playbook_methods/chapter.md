@@ -14,7 +14,7 @@ Once the method **Type** of **playbook** has been selected the method definition
 
 For a playbook method a value for **Max TTL (mins)** should always be entered. In CFME 5.9.3 the default is 0 minutes.
 
-If the **Max TTL (mins)** value is too low the `ManageIQ::Providers::EmbeddedAnsible::AutomationManager::PlaybookRunner` process will terminate the playbook job with an error such as:
+If the **Max TTL (mins)** value is too low the _ManageIQ::Providers::EmbeddedAnsible::AutomationManager::PlaybookRunner_ class will terminate the playbook job with an error such as:
 
 ```
 Automation Error: job timed out after 96.890827024 seconds of inactivity. Inactivity threshold [60 seconds]
