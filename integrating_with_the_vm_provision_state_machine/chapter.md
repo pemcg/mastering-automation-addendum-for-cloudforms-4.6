@@ -76,9 +76,9 @@ The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncro
   hosts: all
   gather_facts: no
   vars:
-  - ip_addr: 192.168.2.66
+  - ip_addr: 192.168.1.66
   - netmask: 24
-  - gateway: 192.168.2.254
+  - gateway: 192.168.1.254
   - manageiq_validate_certs: false
       
   roles:

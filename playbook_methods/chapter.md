@@ -21,11 +21,13 @@ Automation Error: job timed out after 96.890827024 seconds of inactivity. Inacti
 ```
 > **Note**
 > 
-> If **Update on Launch** was checked in the repository definition, the time taken to refresh the repository is included in the Max TTL duration.
+> If **Update on Launch** is checked in the repository definition, the time taken to refresh the repository is included in the Max TTL duration.
 
-## Host Values
+## Hosts
 
-The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created. Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name, for example `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision.
+The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created.
+
+Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name, for example `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision.
 
 ![Substitution variable as a host value](images/screenshot2.png)
 
@@ -187,7 +189,7 @@ end
 
 #### State Variables
 
-Attribute values in `$evm.root` or `$evm.object` in a state machine are not saved if any state triggers a retry. State variables can however be used to store values between state machine retries, and these can be written and read from both Ansible playbook and Ruby methods.
+Attribute values in `$evm.root` or `$evm.object` in a state machine are not saved if any state triggers a retry. In this scenario state variables should be used to store values between state machine retries, and these can be written and read from both Ansible playbook and Ruby methods.
 
 This can be illustrated with the following two state machine methods. The first (Ruby) method writes a simple state variable containing the current time, as follows:
 
@@ -221,7 +223,7 @@ The second (Ansible playbook) method retrieves the saved state variable using th
   - debug: var=saved_date_stamp
 ```
 
-In this example the playbook method simply prints the output using a `debug` task. The debug output line is as follows:
+In this example the playbook method simply prints the output using a `debug` task. The debug output line showing a typical retrieved state variable is as follows:
 
 ```
 TASK [debug] *******************************************************************
@@ -239,3 +241,10 @@ ok: [localhost] => {
 If an Ansible playbook method is used in a state machine, the state running the playbook will be put into an automatic retry condition, without the `on_exit` method being run.
 
 A playbook can also trigger its own state retry.
+
+## Summary
+
+
+## References
+
+

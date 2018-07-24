@@ -168,5 +168,12 @@ These enable us to connect back to the RESTful API from the playbook without har
 > **Note**
 > 
 > In a multi-appliance CloudForms or ManageIQ region the **Configuration -> Advanced** `session_store` setting should be set to "sql" when using the `manageiq.api_token` variable (see [Ansible Automation Inside playbooks are not able to use the manageiq.api\_token extra\_var for authentication with the CloudForms API in a multi appliance region](https://access.redhat.com/solutions/3317761))
+ 
+## Summary
+
+
+## References
+
+
 
 

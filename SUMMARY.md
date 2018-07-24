@@ -17,6 +17,9 @@
   * [Calling a Playbook Method from the VM Provision State Machine](integrating_with_the_vm_provision_state_machine/chapter.md)
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md.wip)
   * [Troubleshooting](troubleshooting/chapter.md.wip)
-* [Generic Objects](generic_objects/chapter.md.wip)
+* [Generic Objects](generic_objects.md.wip)
+  * [Introduction](generic_objects/chapter.md.wip)
+  * [Example](generic_object_example/chapter.md.wip)
+  * 
 * [Expression Methods](expression_methods/chapter.md)
 * [Embedded Methods](embedded_methods/chapter.md.wip)
