@@ -14,6 +14,10 @@ A Generic Object definition consists of a number of attributes, associations and
 
 ![Adding a new Generic Object Class](images/screenshot1.png)
 
+### Name / Description
+
+The generic object class name and description can be any free-form text, however if the generic object is to have methods, the class name should be compatible with the automate datastore class naming conventions (i.e. no spaces).
+
 ### Attributes
 
 One or more attributes for the Generic Object class can be added. Atrributes can be of the following types:
@@ -25,72 +29,76 @@ One or more attributes for the Generic Object class can be added. Atrributes can
 * String
 * Time
 
-
 ### Associations
 
 One or more associations to other object types (including other generic objects) can be added if required.
 
 ### Methods
 
-One or more methods can be defined if required. There must also be a matching entry in the automation datastore under: _/GenericObject_ for the associated methods.
+One or more methods can be specified in the class definition if required. The methods themselves are defined in the Automate Datastore in a generic object-specific class under _/GenericObject/ClassName_. The methods and their associated instances must be named as they appear in the generic object class definition (see ...)
 
-[//]: # (![Generic Object Methods in the Automation Datastore](images/oss2.png))
+![Generic Object Methods in the Automation Datastore](images/screenshot2.png)
 
-_-- screenshot here 'Generic Object Methods in the Automation Datastore' --_
+Method names should not clash with existing Rails Active Record method names, for example a method called `validate` already exists, and so `go_validate` is used in this example.
 
-## Creating Dynamic Resource Definitions from the API
+> **Note**
+> 
+> The _Example_ class from the _ManageIQ_ domain can be copied and used as a template for the generic object class. This is a simple state machine with 4 states:
+> 
+> * pre
+> * execute
+> * check_execute
+> * post
+
+## Creating Generic Object Definitions from the API
+
+In addition to creating a generic object class definition using the WebUI, a class definition can be created by POSTing to the RESTful API, as follows:
 
 ``` yaml
 ---
-- hosts: localhost
-
- tasks:
- - name: Create Dynamic Resource Object definition
-   uri:
-     url: "https://localhost/api/generic_object_definitions"
-     method: POST
-     user: admin
-     password: "{{ password }}"
-     validate_certs: no
-     headers:
-       Content-Type:  application/json
-     body_format: json
-     body:
-       action: create
-       name: "{{ name }}"
-       properties:
-         attributes:
-           engine: string
-           type: string
-           size: integer
-           region: string
-           username: string
-         associations:
-           service: Service
-           provider: ManageIQ::Providers::CloudManager
+  tasks:
+  - name: Create Generic Object Definition
+    uri:
+      url: "https://localhost/api/generic_object_definitions"
+      method: POST
+      user: admin
+      password: "{{ password }}"
+      validate_certs: no
+      headers:
+        Content-Type:  application/json
+      body_format: json
+      body:
+        action: create
+        name: MyGOClass
+        properties:
+          attributes:
+            attribute_1: integer
+            attribute_2: string
+            attribute_3: boolean
+          associations:
+            service: vms
+            provider: Vm
 ```
 
 ## Creating a Generic Object from the Definition
 
-Once the Generic Object class has been defined, new instances can created from the definition.
+Once the Generic Object class has been defined, new instances can created from the definition. The following examples illustrate how to do this from Ruby and Ansible:
 
 From Ruby:
 
 ``` ruby
-go_class = $evm.vmdb(:generic_object_definition).find_by_name("My GO Class")
-new_go = go_class.create_object(:name => "Test GO",
-                             :attribute_1 => 1,
-                             :attribute_2 => "test",
-                             :attribute_3 => true)
+go_class = $evm.vmdb(:generic_object_definition).find_by_name("MyGOClass")
+new_go = go_class.create_object(:name => "Test and GO",
+                                :attribute_1 => 1,
+                                :attribute_2 => "test",
+                                :attribute_3 => true)
 vm = $evm.vmdb(:vm).find_by_name('pemcg-test')
 new_go.vms = [vm]
 new_go.save!
 
 ```
 
-
 From Ansible:
-
 
 ``` yaml
   vars:
@@ -137,29 +145,74 @@ From Ansible:
       new_go_href: "{{ new_go.json.results[0].href }}"
 ```
 
-## Displaying Generic Objects
+##Creating Generic Objects from Services
 
-Although generic objects are useful to work with from automate "behind the scenes", they can only be viewed 
+Although generic objects are useful to work with from automate "behind the scenes", they are most versatile when used in conjunction with services. A generic object supports the `add_to_service` and `remove_from_service` methods, and so a Ruby method such as the following can be called from a service provision state machine to create a generic object using values from a service dialog:
 
-     |    |    $evm.root['new_go'].add_to_service
-     |    |    $evm.root['new_go'].remove_from_service
+``` ruby
+dialog_options = $evm.root['service_template_provision_task'].dialog_options
+new_go_name = dialog_options['dialog_go_name']
+go_class = $evm.vmdb(:generic_object_definition).find_by_name("MyGOClass")
+new_go = go_class.create_object(:name => new_go_name,
+                                :attribute_1 => dialog_options['dialog_attribute_1'],
+                                :attribute_2 => dialog_options['dialog_attribute_2'],
+                                :attribute_3 => true)
+vm = $evm.vmdb(:vm, dialog_options['dialog_association_vm'])
+new_go.vms = [vm]
+new_go.save!
+new_go.add_to_service($evm.root['service'])
+```
 
+The newly provisioned service
+
+![Adding a new Generic Object Class](images/screenshot3.png)
 
 ## Custom Buttons on Generic Objects
 
 Custom buttons can be assigned to generic objects.
 
-## Returning Data from Generic Object Methods
+## Generic Object Methods
 
-something like this: x=my_dro.get_me_my_value
+Methods are generally run from custom buttons associated with the generic object, or from another automate method. 
 
-Greg McCullough @gmcculloug Jun 19 18:24
-@CCoupel store the value you want to return in the root object as method_result
-https://github.com/ManageIQ/manageiq/blob/master/app/models/generic_object.rb#L201
+``` ruby
+go = $evm.vmdb(:GenericObject).where(:name => "Test and GO").first
+go.go_validate
+```
+
+They can also be triggered from the RESTful API, for example by POSTing a json body specifying an `action` to the RESTful URI of the generic object:
+
+``` json
+{
+  "action": "go_validate"
+}
+```
+
+> **Note**
+> 
+> POSTing an action to a generic object can run either the generic object's named method, or a button with that name on the generic object. If both a button and method exist with the same name, the button's method will be run.
+
+### Returning Values from Generic Object Methods
+
+Data can be returned from a generic object method to a calling method via `$evm.root['method_result']` in the called method. For example if the generic object has a method called `get_attr1` as follows: 
+
+``` ruby
+this_go = $evm.root['generic_object']
+attr_1 = this_go.attributes['properties']['attribute_1']
+$evm.root['method_result'] = attr_1
+```
+
+This could be called from another Ruby automate method as follows to retrieve the `attribute_1` value from the generic object instance:
+
+``` ruby
+attr1 = go.get_attr1
+```
+
+
 
 ## Deleting Generic Objects
 
-There is currently no way of deleting an instance of a generic object class via the WebUI. This must be done from automate using the `remove_from_vmdb` method on the generic object itself, or from the API by POSTing the following body to the RESTful URI of the generic object:
+There is currently no way of deleting an instance of a generic object class via the WebUI. This can be done from automate using the `remove_from_vmdb` method on the generic object itself, or from the API by POSTing the following body to the RESTful URI of the generic object:
 
 ``` json
 {

@@ -9,9 +9,7 @@ The book is a work-in-progress. The author welcomes any feedback, suggestions fo
 
 # Acknowledgements
 
-Several people have contributed code samples and ideas to this addendum,
-including Christian Jung, Jeff Warnica, Ian Tewksbury, Brant Evans and
-Jason Ritenour from Red Hat.
+Several people have contributed code samples and ideas to this addendum, including Christian Jung, Franck Grosjean, Jeff Warnica, Ian Tewksbury, Brant Evans and Jason Ritenour from Red Hat.
 
 # Conventions Used in This Addendum
 
