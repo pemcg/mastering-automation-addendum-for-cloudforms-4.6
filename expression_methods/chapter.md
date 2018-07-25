@@ -50,24 +50,20 @@ The `<user input>` will be supplied from the results of a new **Provider (EMS)**
 
 An input parameter called *arg1* must now be created for the expression method. This should be of type **String**, and with the value `${/#dialog_ems}`. This is the substitution string that represents the `$evm.root['dialog_ems']` value returned from the **Provider (EMS)** dialog element (see [Adding the Input Parameter](#i6)).
 
- **
-
 ![Adding the Input Parameter](images/screenshot6.png)
 
- **
-​  
-We can edit the service dialog to insert a new drop-down list element with **Label** of *Provider (EMS)* and a **Name** of *ems* (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down we can trigger the earlier **VM** element running the *expression\_rhv\_vms* method to run when a provider is selected. Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
+We can edit the service dialog to insert a new drop-down list element with **Label** of _Provider (EMS)_ and a **Name** of _ems_ (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down we can trigger the earlier **VM** element running the _expression\_rhv\_vms_ method to run when a provider is selected. Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
 
 ![All VMs listed on the Selected Provider](images/screenshot7.png)  
 
-Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the *key* argument (see [Setting an Alternative Key](#i8) and [Simulation Results](#i9)).
+Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see [Setting an Alternative Key](#i8) and [Simulation Results](#i9)).
 
 ![Setting an Alternative Key](images/screenshot8.png)
-​  
+​
 When run from **Automate -> Simulation** the `values` hash now has the following keys:
 
 ![Simulation Results for an Alternative Key](images/screenshot9.png)
-​  
+​
 If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see [Setting an Alternative Result Type](#i10) and [Simulation Results](#i11)).
 
 ![Setting an Alternative Result Type](images/screenshot10.png)
