@@ -6,7 +6,7 @@ An example of the use of an expression method might be to populate a dialog drop
 
 ## Create the Method
 
-An expression method is created in the same way as other automate methods. One of the new method types in CloudForms 4.6 (ManageIQ *Gaprindashvili*) is *expression* (see [Method Types](#i1))
+An expression method is created in the same way as other automate methods. One of the new method types in CloudForms 4.6 (ManageIQ *Gaprindashvili*) is *expression* (see [Method Types](#i1)).
 
 ![Method Types](images/screenshot1.png)
  
@@ -16,7 +16,7 @@ Selecting *expression* as the method type opens the expression dialog, where the
 * **Field → VM and Instance: Type → =** "ManageIQ::Providers::Redhat::InfraManager::Vm" **AND**
 * **Field → VM and Instance: Power State → =** "on"
 
-(see [Defining The Expression Method](#i2))
+(see [Defining The Expression Method](#i2)).
 
 ![Defining The Expression Method](images/screenshot2.png) 
 
@@ -48,9 +48,13 @@ Our expression method can be edited to add a further **AND** field of **Field �
 
 The `<user input>` will be supplied from the results of a new **Provider (EMS)** element in the service dialog.
 
-An input parameter called *arg1* must now be created for the expression method. This should be of type **String**, and with the value `${/#dialog_ems}`. This is the substitution string that represents the `$evm.root['dialog_ems']` value returned from the **Provider (EMS)** dialog element (see [Adding the Input Parameter](#i6))
+An input parameter called *arg1* must now be created for the expression method. This should be of type **String**, and with the value `${/#dialog_ems}`. This is the substitution string that represents the `$evm.root['dialog_ems']` value returned from the **Provider (EMS)** dialog element (see [Adding the Input Parameter](#i6)).
+
+ **
 
 ![Adding the Input Parameter](images/screenshot6.png)
+
+ **
 ​  
 We can edit the service dialog to insert a new drop-down list element with **Label** of *Provider (EMS)* and a **Name** of *ems* (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down we can trigger the earlier **VM** element running the *expression\_rhv\_vms* method to run when a provider is selected. Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
 
