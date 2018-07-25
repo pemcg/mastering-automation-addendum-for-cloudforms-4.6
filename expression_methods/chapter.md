@@ -44,7 +44,7 @@ Expression methods can take a number of input arguments that can increase their 
 
 Our expression method can be edited to add a further **AND** field of **Field → VM and Instance : Ems → =**, but with the check box **User will input the value** ticked (see [Adding a User Input to the Expression](#i5)).
 
-![Adding a User Input Filter to the Expression](images/screenshot4.png)
+![Adding a User Input Filter to the Expression](images/screenshot5.png)
 
 The `<user input>` will be supplied from the results of a new **Provider (EMS)** element in the service dialog.
 
