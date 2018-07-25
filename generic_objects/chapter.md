@@ -227,11 +227,11 @@ From Ansible:
 
 The newly provisioned service will be seen to have an instance of a generic object when viewed in the WebUI (see ...)
 
-![Adding a new Generic Object Class](images/screenshot3.png)
+![Generic Object Instances in Services WebUI Page](images/screenshot3.png)
 
 The link is clickable, and if clicked will navigate to a page displaying an overview of all generic objects associated with the service.
 
-![Adding a new Generic Object Class](images/screenshot4.png)
+![Generic Object Details from Services WebUI Page](images/screenshot4.png)
 
 Further details about each generic object are available by clicking on the individual object's link.
 
@@ -239,13 +239,9 @@ Further details about each generic object are available by clicking on the indiv
 > 
 > When navigating to the details of a generic object from the **Services** page in the WebUI, the **Service** page RBAC will not show any associations of that generic object. Associations are only visible when viewing the generic object details from **Automation -> Automate -> Generic Objects**
 
-## Custom Buttons on Generic Objects
-
-Custom buttons can be assigned to generic objects.
-
 ## Generic Object Methods
 
-Methods are generally run from custom buttons associated with the generic object, or from another automate method. 
+Generic object methods can be run from another automate method, as follows: 
 
 ``` ruby
 go = $evm.vmdb(:GenericObject).where(:name => "Test and GO").first
@@ -266,7 +262,7 @@ They can also be triggered from the RESTful API, for example by POSTing a json b
 
 ### Returning Values from Generic Object Methods
 
-Values can be returned from a generic object method to a calling method via `$evm.root['method_result']` in the called method. For example the generic object might a method called `get_attr1` as follows: 
+Values can be returned from a generic object method to a calling method via `$evm.root['method_result']` in the called method. For example we could define a method called `get_attr1` for a generic object as follows: 
 
 ``` ruby
 this_go = $evm.root['generic_object']
@@ -274,13 +270,25 @@ attr_1 = this_go.attributes['properties']['attribute_1']
 $evm.root['method_result'] = attr_1
 ```
 
-This could be called from another Ruby automate method as follows to retrieve the `attribute_1` value from the generic object instance:
+This could be called from another Ruby automate method to retrieve the `attribute_1` value from the generic object instance, like so:
 
 ``` ruby
 attr1 = go.get_attr1
 ```
 
+## Custom Buttons on Generic Objects
 
+Generic object methods can also be run from custom buttons applied to the **Generic Object** object type. When creating a button the **Advanced** tab object details should specify **GenericObject** in the **System/Process** drop-down, and an Attribute of **method_name** should be defined with the Value being the name of the generic object's method to run (see ...)
+
+![Custom Button on a Generic Object](images/screenshot6.png)
+
+The custom button group and button is then visible from the generic object details page (see ...)
+
+![Custom Button on a Generic Object](images/screenshot5.png)
+
+> **Note**
+> 
+> Custom buttons on generic objects are currently only visible when the generic object details are displayed from the **Services** page in the WebUI (see: https://bugzilla.redhat.com/show_bug.cgi?id=1518187 for further details).
 
 ## Deleting Generic Objects
 
@@ -346,8 +354,14 @@ Fortunately a simple retirement Ansible playbook such as the following will dele
 
 ## Summary
 
+This chapter has introduced _Generic Objects_ (also known as _Dynamic Resource Objects_). It has illustrated how they can be defined and created, both from Ruby automate and Ansible playbook, and how methods can be created and run.
+
+The next chapter shows a 'real-world' example of their use in modelling a software-defined firewall group.
 
 ## References
 
+[ManageIQ API Guide - Generic Object Management](http://manageiq.org/docs/reference/latest/api/reference/generic_objects)
+
+[Dynamic Resource Objects](http://manageiq.org/docs/reference/latest/doc-Provisioning_Virtual_Machines_and_Hosts/miq/index#dynamic-resource-objects)
 
 
