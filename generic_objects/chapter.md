@@ -10,7 +10,7 @@ Generic Objects are a very useful new feature of CloudForms 4.6 (ManageIQ *Gapri
 
 A Generic Object comprises a class definition and one or more instances of that class. The class definition is created from the **Generic Object Classes** accordion of the **Automation -> Automate -> Generic Objects** page in the WebUI. Clicking on the **Configuration** button reveals the option **Add a new Generic Object Class**. 
 
-A Generic Object definition consists of a number of attributes, associations and methods.
+A Generic Object definition consists of a number of attributes, associations and methods (see [Adding a new Generic Object Class](#i1)).
 
 ![Adding a new Generic Object Class](images/screenshot1.png)
 
@@ -49,6 +49,11 @@ Method names should not clash with existing Rails Active Record method names, fo
 > * execute
 > * check_execute
 > * post
+> 
+
+The completed _go\_validate_ instance is shown in [Completed _go\_validate_ Instance](#i2).
+
+![Completed go_validate Instance](images/screenshot7.png)
 
 ## Creating Generic Object Definitions from the API
 
@@ -225,11 +230,11 @@ From Ansible:
             href: "{{ new_go.json.results[0].href }}"
 ```
 
-The newly provisioned service will be seen to have an instance of a generic object when viewed in the WebUI (see ...)
+The newly provisioned service will be seen to have an instance of a generic object when viewed in the WebUI (see [Generic Object Instances in Services WebUI Page](#i3)).
 
 ![Generic Object Instances in Services WebUI Page](images/screenshot3.png)
 
-The link is clickable, and if clicked will navigate to a page displaying an overview of all generic objects associated with the service.
+The link is clickable, and if clicked will navigate to a page displaying an overview of all generic objects associated with the service (see [Generic Object Details from Services WebUI Page](#i4)).
 
 ![Generic Object Details from Services WebUI Page](images/screenshot4.png)
 
@@ -278,11 +283,11 @@ attr1 = go.get_attr1
 
 ## Custom Buttons on Generic Objects
 
-Generic object methods can also be run from custom buttons applied to the **Generic Object** object type. When creating a button the **Advanced** tab object details should specify **GenericObject** in the **System/Process** drop-down, and an Attribute of **method_name** should be defined with the Value being the name of the generic object's method to run (see ...)
+Generic object methods can also be run from custom buttons applied to the **Generic Object** object type. When creating a button the **Advanced** tab object details should specify **GenericObject** in the **System/Process** drop-down, and an Attribute of **method_name** should be defined with the Value being the name of the generic object's method to run (see [Custom Button Definition](#i5)).
 
-![Custom Button on a Generic Object](images/screenshot6.png)
+![Custom Button Definition](images/screenshot6.png)
 
-The custom button group and button is then visible from the generic object details page (see ...)
+The custom button group and button is then visible from the generic object details page (see [Custom Button on a Generic Object](#i6)).
 
 ![Custom Button on a Generic Object](images/screenshot5.png)
 
