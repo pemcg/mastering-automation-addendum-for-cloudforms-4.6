@@ -18,7 +18,7 @@
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md.wip)
   * [Troubleshooting](troubleshooting/chapter.md.wip)
 * [Generic Objects](generic_objects.md.wip)
-  * [Introduction](generic_objects/chapter.md.wip)
+  * [Introduction](generic_objects/chapter.md)
   * [Example](generic_object_example/chapter.md.wip)
   * [Managing Associations Between Generic Objects](maintaining_associations/chapter.md.wip)
 * [Expression Methods](expression_methods/chapter.md)

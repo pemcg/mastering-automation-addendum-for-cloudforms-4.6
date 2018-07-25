@@ -147,7 +147,10 @@ From Ansible:
 
 ##Creating Generic Objects from Services
 
-Although generic objects are useful to work with from automate "behind the scenes", they are most versatile when used in conjunction with services. A generic object supports the `add_to_service` and `remove_from_service` methods, and so a Ruby method such as the following can be called from a service provision state machine to create a generic object using values from a service dialog:
+Although generic objects are useful to work with from automate "behind the scenes", they are most versatile when used in conjunction with services. A Ruby method or Ansible playbook can be called from a service provision state machine to create a generic object using values from a service dialog. The following examples illustrate how this can be done.
+
+From Ruby:
+
 
 ``` ruby
 dialog_options = $evm.root['service_template_provision_task'].dialog_options
@@ -163,9 +166,78 @@ new_go.save!
 new_go.add_to_service($evm.root['service'])
 ```
 
-The newly provisioned service
+From Ansible:
+
+``` yaml
+---
+- name: Create Generic Object from Service
+  hosts: all
+
+  vars:
+  - manageiq_validate_certs: False
+  - go_class_name: "{{ 'MyGOClass'|urlencode }}"
+    
+  tasks:
+  - name: Find the generic object class definition
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_object_definitions?expand=resources&filter[]=name='{{ go_class_name }}'"
+      method: GET
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+    register: go_definition
+  
+  - name: Create generic object
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_objects"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: create
+        name: "{{ go_name }}"
+        generic_object_definition:
+          href: "{{ go_definition.json.resources[0].href }}"
+        property_attributes:
+          attribute_1: "{{ attribute_1 }}"
+          attribute_2: "{{ attribute_2 }}"
+          attribute_3: "false"
+        associations:
+          vms:
+          - href: "{{ manageiq.api_url }}/api/{{ association_vm }}"
+    register: new_go
+    
+  - name: Add generic object to service
+    uri:
+      url: "{{ manageiq.api_url }}/api/{{ manageiq.service }}"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: add_resource
+        resource:
+          resource:
+            href: "{{ new_go.json.results[0].href }}"
+```
+
+The newly provisioned service will be seen to have an instance of a generic object when viewed in the WebUI (see ...)
 
 ![Adding a new Generic Object Class](images/screenshot3.png)
+
+The link is clickable, and if clicked will navigate to a page displaying an overview of all generic objects associated with the service.
+
+![Adding a new Generic Object Class](images/screenshot4.png)
+
+Further details about each generic object are available by clicking on the individual object's link.
+
+> **Note**
+> 
+> When navigating to the details of a generic object from the **Services** page in the WebUI, the **Service** page RBAC will not show any associations of that generic object. Associations are only visible when viewing the generic object details from **Automation -> Automate -> Generic Objects**
 
 ## Custom Buttons on Generic Objects
 
@@ -194,7 +266,7 @@ They can also be triggered from the RESTful API, for example by POSTing a json b
 
 ### Returning Values from Generic Object Methods
 
-Data can be returned from a generic object method to a calling method via `$evm.root['method_result']` in the called method. For example if the generic object has a method called `get_attr1` as follows: 
+Values can be returned from a generic object method to a calling method via `$evm.root['method_result']` in the called method. For example the generic object might a method called `get_attr1` as follows: 
 
 ``` ruby
 this_go = $evm.root['generic_object']
