@@ -354,7 +354,7 @@ Fortunately a simple retirement Ansible playbook such as the following will dele
 
 ## Summary
 
-This chapter has introduced _Generic Objects_ (also known as _Dynamic Resource Objects_). It has illustrated how they can be defined and created, both from Ruby automate and Ansible playbook, and how methods can be created and run.
+This chapter has introduced _Generic Objects_ (also known as _Dynamic Resource Objects_). It has illustrated how they can be defined and created, both from Ruby automate and Ansible playbook, and how their methods can be created and run.
 
 The next chapter shows a 'real-world' example of their use in modelling a software-defined firewall group.
 
