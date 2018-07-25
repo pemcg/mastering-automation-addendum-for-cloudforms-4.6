@@ -62,7 +62,7 @@ Several other input arguments can be used. For example if {guid ⇒ name} hash p
 ​  
 When run from **Automate -> Simulation** the `values` hash now has the following keys:
 
-![Simulation Results 2](images/screenshot9.png)
+![Simulation Results for an Alternative Key](images/screenshot9.png)
 ​  
 If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see [Setting an Alternative Result Type](#i10) and [Simulation Results](#i11)).
 
@@ -70,7 +70,7 @@ If an array rather than hash should be returned by the expression method, this c
 
 ​ When run from **Automate -> Simulation** it can be seen that `values` is now an array of [id,name] pairs, as follows: 
 
-![Simulation Results 3](images/screenshot11.png)
+![Simulation Results from an Alternative Result Type](images/screenshot11.png)
 
 ### Summary of arguments
 
