@@ -159,12 +159,11 @@ From Ruby:
 
 ``` ruby
 dialog_options = $evm.root['service_template_provision_task'].dialog_options
-new_go_name = dialog_options['dialog_go_name']
 go_class = $evm.vmdb(:generic_object_definition).find_by_name("MyGOClass")
-new_go = go_class.create_object(:name => new_go_name,
-                                :attribute_1 => dialog_options['dialog_attribute_1'],
-                                :attribute_2 => dialog_options['dialog_attribute_2'],
-                                :attribute_3 => true)
+new_go = go_class.create_object(:name => dialog_options['dialog_go_name'],
+                         :attribute_1 => dialog_options['dialog_attribute_1'],
+                         :attribute_2 => dialog_options['dialog_attribute_2'],
+                         :attribute_3 => true)
 vm = $evm.vmdb(:vm, dialog_options['dialog_association_vm'])
 new_go.vms = [vm]
 new_go.save!
@@ -293,7 +292,9 @@ The custom button group and button is then visible from the generic object detai
 
 > **Note**
 > 
-> Custom buttons on generic objects are currently only visible when the generic object details are displayed from the **Services** page in the WebUI (see: https://bugzilla.redhat.com/show_bug.cgi?id=1518187 for further details).
+> Custom buttons on generic objects are currently only visible when the generic object details are displayed from the **Services** page in the WebUI, and not when viewing the generic object from the **Automation -> Automate -> Generic Objects** menu (see: [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1518187) for further details).
+> 
+> Custom buttons on generic objects cannot currently display service dialogs when invoked (see [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1595213) for further details).
 
 ## Deleting Generic Objects
 

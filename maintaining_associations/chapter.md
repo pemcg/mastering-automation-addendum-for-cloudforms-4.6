@@ -1,4 +1,4 @@
-# Maintaining Associations Between Generic Object Classes
+# Maintaining Associations Between Generic Object Classes from Ansible
 
 One of the things that makes CloudForms generic objects very versatile is the ability to add associations to other object classes (including other generic objects) in the generic object definition. These associations can be one-to-one (has\_one in Rails-speak) or one-to-many (has\_many in Rails-speak).
  
