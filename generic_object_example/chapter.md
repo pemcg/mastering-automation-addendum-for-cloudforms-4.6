@@ -190,7 +190,7 @@ unless $evm.root['service'].blank?
 end
 ```
 
-If the Address Group, Network Group and Port Group objects are provisioned from a service, their related Firewall Group should already exist. The Firewall Group with which to associate with the new generic object is selected from a dynamic drop-down in the service dialog (see [Service Dialog - Ordering a Network Group](#i6)).
+If the Address Group, Network Group and Port Group objects are provisioned from a service, their related Firewall Group should already exist. The Firewall Group with which to associate the new generic object is selected from a dynamic drop-down in the service dialog (see [Service Dialog - Ordering a Network Group](#i6)).
 
 ![Service Dialog - Ordering a Network Group](images/screenshot5.png)
 
@@ -244,6 +244,6 @@ Clicking on the named link for a port group navigates to the details of the port
 
 ## Summary
 
-This chapter has illustrated how generic objects can be used to model external entities using CloudForms VMDB objects.
+This chapter has illustrated how generic objects can be used to model external entities using CloudForms VMDB objects, including modelling the relationships between entities as associations between objects.
 
 
