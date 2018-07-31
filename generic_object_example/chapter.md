@@ -244,6 +244,6 @@ Clicking on the named link for a port group navigates to the details of the port
 
 ## Summary
 
-This chapter has illustrated how generic objects can be used to model external entities using CloudForms VMDB objects, including modelling the relationships between entities as associations between objects.
+This chapter has illustrated how generic objects can be used to model external entities using CloudForms VMDB objects, including modelling the relationships between entities as associations between objects. The scripts are available [here](https://github.com/pemcg/mastering-automation-addendum-for-cloudforms-4.6/tree/master/generic_object_example/scripts)
 
 

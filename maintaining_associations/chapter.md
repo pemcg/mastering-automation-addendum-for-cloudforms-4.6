@@ -11,7 +11,7 @@ The previous example used generic object classes to represent firewall groups an
 * A firewall\_group has\_many port\_groups, network\_groups and address\_groups
 * A port\_group, network\_groups and address\_groups each has\_one firewall\_group
 
-Implementing generic object associations from Ruby is simple. The has\_one association is a simple assignment, as follows:
+Implementing generic object associations from Ruby is straightforward. The has\_one association is a simple assignment, as follows:
 
 ``` ruby
 new_go.firewall_group = [firewall_group]
@@ -146,7 +146,7 @@ The generic object classes now appear linked together as expected in the WebUI.
 
 ## Summary
 
-This chapter has shown how generic objects can be created and linked together in associations, from an Ansible playbook. The full scripts are available [here](
+This chapter has shown how generic objects can be created and linked together in associations, from an Ansible playbook. The full scripts are available [here](https://github.com/pemcg/mastering-automation-addendum-for-cloudforms-4.6/tree/master/generic_object_example/scripts)
 
 ## References
 
