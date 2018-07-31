@@ -308,7 +308,7 @@ There is currently no way of deleting an instance of a generic object class via 
 
 Generic Objects aren't automatically deleted when a service containing them is retired, even if the **Remove Resources** option set to 'Yes' in the service's **Retirement** tab. In the context of service retirement, only a VM is considered a resource (VMs have their own retirement state machine/workflow).
  
-Fortunately a simple retirement Ansible playbook such as the following will delete all Generic Objects associated with the service.
+Fortunately a simple retirement Ansible playbook such as the following will delete all generic objects associated with the service.
 
 ``` yaml
 ---

@@ -1,107 +1,153 @@
-# Maintaining Associations Between Generic Object Classes from Ansible
+# Maintaining Associations Between Generic Objects from Ansible
 
-One of the things that makes CloudForms generic objects very versatile is the ability to add associations to other object classes (including other generic objects) in the generic object definition. These associations can be one-to-one (has\_one in Rails-speak) or one-to-many (has\_many in Rails-speak).
+One of the things that makes CloudForms generic objects very versatile is the ability to add associations to other object classes (including other generic objects) in the generic object definition. These associations can be be implemented as one-to-one (_has\_one_ in Rails-speak) or one-to-many (_has\_many_ in Rails-speak).
+
+> **Note**
+> 
+> Associations between generic objects are always _has\_many_, even though we may wish to logically implement them as _has\_one_
  
-The previous example uses generic object classes to represent firewall rules. The customer's firewall software uses the concept of a firewall group that contains one or more firewall actions, where each action equates to a firewall rule. The generic object definitions therefore included the following associations:
+The previous example used generic object classes to represent firewall groups and their components. The firewall software uses the concept of a firewall group that contains one or more port groups, network groups and address groups, and so the generic object definitions included the following associations:
  
-* A firewall\_group _has\_many_ firewall\_actions 
-* A firewall\_action _has\_one_ firewall\_group
+* A firewall\_group has\_many port\_groups, network\_groups and address\_groups
+* A port\_group, network\_groups and address\_groups each has\_one firewall\_group
+
+Implementing generic object associations from Ruby is simple. The has\_one association is a simple assignment, as follows:
+
+``` ruby
+new_go.firewall_group = [firewall_group]
+```
+
+Implementing the has\_many association from Ruby is a matter of adding the new association to an existing association list, as follows:
+
+``` ruby
+firewall_group.network_groups += [new_go]
+```
+## Associations from Ansible
  
-Implementing the has\_one rule from the action back to the group when creating the generic object from the API was fairly straightforward. The service catalog item to create a new firewall action has a dialog that prompts for the firewall group name to associate the action with.
- 
-The playbook first looks up the generic object of the correct group:
+Generic object associations can also be created from Ansible. The following playbook snippets show an alternative way of linking a newly created _NetworkGroup_ object to its parent _FirewallGroup_ object.
+
+Implementing a has\_one rule from an Ansible playbook is fairly straightforward. The playbook first creates the new network group generic object, with a single association back to the firewall group:
 
 ``` yaml
-- name: Lookup the "Firewall Group" generic object supplied in the dialog
-  uri:
-    url: "{{ manageiq.api_url }}/api/generic_objects?expand=resources&filter[]=name='{{ firewall_group_name|urlencode }}'"
-    method: GET
-    validate_certs: no
-    headers:
-      X-Auth-Token: "{{ manageiq.api_token }}"
-    body_format: json
-  register: group_go
+  - name: "Create {{ go_name }} generic object"
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_objects"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: create
+        name: "{{ go_name }}"
+        generic_object_definition:
+          href: "{{ go_definition_href }}"
+        property_attributes:
+          network: "{{ network }}"
+          description: "{{ description }}"
+          requester: "{{ requester.json.name }}"
+        associations:
+          firewall_group:
+          - href: "{{ fwgroup_go_href }}"
+    register: new_go
   
-- set_fact:
-    group_go_href: "{{ group_go.json.resources[0].href }}"
+  - set_fact:
+      new_go_href: "{{ new_go.json.results[0].href }}"
 ```
 
-It then creates the new firewall action generic object, with a single association back to the firewall group:
+Adding the new network group to the list of has_many associations for the firewall group is less straightforward though. Just POSTing the new association will overwrite any existing associations. The existing associations must first be read, the new association appended to the list, and then the updated list POSTed back.
 
 ``` yaml
-- name: Create "Firewall Action" generic object
-  uri:
-    url: "{{ manageiq.api_url }}/api/generic_objects"
-    method: POST
-    validate_certs: no
-    headers:
-      X-Auth-Token: "{{ manageiq.api_token }}"
-    body_format: json
-    body:
-      action: create
-      name: "{{ ipaddress }}"
-      generic_object_definition:
-        href: "{{ action_go_definition_href }}"
-      property_attributes:
-        requester_department: "{{ group_description }}"
-        requester: "{{ requester_name }}"
-        ...
-      associations:
-        firewall_group:
-        - href: "{{ group_go_href }}"
-  register: action_go
-
-- set_fact:
-    action_go_href: "{{ action_go.json.results[0].href }}"
+  - name: Get the existing network_groups associations of the Firewall Group
+    uri:
+      url: "{{ fwgroup_go_href }}?associations=network_groups"
+      method: GET
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+    register: associations
 ```
 
-Adding the new firewall action to the list of has_many associations for the firewall group was less straightforward though. Just POSTing the new association will overwrite any existing associations. The existing associations must first be read, the new association appended to the list, and then the updated list POSTed back.
+A typical json extract of the _network\_groups_ association list from the registered `associations` variable might be as follows:
+
+```
+"associations": {
+    ...
+    "json": {
+    ...
+        "network_groups": [
+        {
+            "created_at": "2018-07-30T17:00:02Z",
+            "generic_object_definition_id": "4",
+            "href": "https://10.2.3.4/api/generic_objects/50",
+            "id": "50",
+            "name": "dmz-nets",
+            "updated_at": "2018-07-30T17:00:02Z"
+        },
+        {
+            "created_at": "2018-07-27T13:08:55Z",
+            "generic_object_definition_id": "4",
+            "href": "https://10.2.3.4/api/generic_objects/47",
+            "id": "47",
+            "name": "good-nets",
+            "updated_at": "2018-07-27T13:08:56Z"
+        },
+        {
+            "created_at": "2018-07-30T16:33:30Z",
+            "generic_object_definition_id": "4",
+            "href": "https://10.2.3.4/api/generic_objects/49",
+            "id": "49",
+            "name": "bad-nets",
+            "updated_at": "2018-07-30T16:33:30Z"
+        }
+        ],
+        ...
+```
+
+We need to extract the existing association hrefs into their own list...
 
 ``` yaml
 vars:
 - association_hrefs: []
 ...
-
-- name: Get the existing firewall_actions associations of the Firewall Group
-  uri:
-    url: "{{ group_go_href }}?associations=firewall_actions"
-    method: GET
-    validate_certs: no
-    headers:
-      X-Auth-Token: "{{ manageiq.api_token }}"
-    body_format: json
-  register: associations
-  
-# Extract the exiting association hrefs into their own list
-- set_fact:
-    association_hrefs: "{{ association_hrefs + [ { 'href': item.href } ] }}"
-  with_items: "{{ associations.json.firewall_actions }}"
+  - set_fact:
+      association_hrefs: "{{ association_hrefs + [ { 'href': item } ] }}"
+    with_items: "{{ associations|json_query('json.network_groups[*].href') }}"
 ```
 
 Add the new association href to the list:
 
 ``` yaml
-- set_fact:
-    association_hrefs: "{{ association_hrefs + [ { 'href': action_go_href } ] }}"
+  - set_fact:
+      association_hrefs: "{{ association_hrefs + [ { 'href': new_go_href } ] }}"
 ```
 
 Now POST the updated list back to the generic object:
 
 ``` yaml
-- name: Create the corresponding association in the Firewall Group back to the new action
-  uri:
-    url: "{{ group_go_href }}"
-    method: POST
-    validate_certs: no
-    headers:
-      X-Auth-Token: "{{ manageiq.api_token }}"
-    body_format: json
-    body:
-      action: edit
-      associations:
-        firewall_actions:
-          "{{ association_hrefs }}"
-  register: output 
+  - name: Create the corresponding association in the Firewall Group back to the new action
+    uri:
+      url: "{{ fwgroup_go_href }}"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: edit
+        associations:
+          network_groups:
+            "{{ association_hrefs }}"
+    register: output 
 ```
 
-The generic object classes were then linked together as expected in the WebUI (the calls to the firewall software to create the actual actions/rules are not shown in this example - the generic objects just represent the firewall rules in the  CloudForms WebUI).
+The generic object classes now appear linked together as expected in the WebUI.
+
+## Summary
+
+This chapter has shown how generic objects can be created and linked together in associations, from an Ansible playbook. The full scripts are available [here](
+
+## References
+
+[Ansible Filters](https://docs.ansible.com/ansible/2.3/playbooks_filters.html)

@@ -1,0 +1,92 @@
+---
+- name: Create Network Group
+  hosts: localhost
+  
+  vars:
+  - go_class: "{{ 'NetworkGroup'|urlencode }}"
+  - association_hrefs: []
+  # Input vars from dialog: firewall_group, go_name, description, network
+  
+  tasks:
+  - set_fact:
+      fwgroup_go_href: "{{ manageiq.api_url }}/api/generic_objects/{{ firewall_group }}"
+      
+  - name: "Find the {{ go_class }} generic object class definition"
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_object_definitions?expand=resources&filter[]=name='{{ go_class }}'"
+      method: GET
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+    register: go_definition
+    
+  - set_fact:
+      go_definition_href: "{{ go_definition.json.resources[0].href }}"
+      
+  - name: Get the requester's name
+    uri:
+      url: "{{ manageiq.api_url }}/api/{{ manageiq.user }}"
+      method: GET
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+    register: requester
+          
+  - name: "Create {{ go_name }} generic object"
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_objects"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: create
+        name: "{{ go_name }}"
+        generic_object_definition:
+          href: "{{ go_definition_href }}"
+        property_attributes:
+          network: "{{ network }}"
+          description: "{{ description }}"
+          requester: "{{ requester.json.name }}"
+        associations:
+          firewall_group:
+          - href: "{{ fwgroup_go_href }}"
+    register: new_go
+  
+  - set_fact:
+      new_go_href: "{{ new_go.json.results[0].href }}"
+    
+  - name: Get the existing network_groups associations of the Firewall Group
+    uri:
+      url: "{{ fwgroup_go_href }}?associations=network_groups"
+      method: GET
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+    register: associations
+    
+  - set_fact:
+      association_hrefs: "{{ association_hrefs + [ { 'href': item } ] }}"
+    with_items: "{{ associations|json_query('json.network_groups[*].href') }}"
+    
+  - set_fact:
+      association_hrefs: "{{ association_hrefs + [ { 'href': new_go_href } ] }}"
+      
+  - name: Create the corresponding association in the Firewall Group back to the new action
+    uri:
+      url: "{{ fwgroup_go_href }}"
+      method: POST
+      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: edit
+        associations:
+          network_groups:
+            "{{ association_hrefs }}"
+    register: output 
