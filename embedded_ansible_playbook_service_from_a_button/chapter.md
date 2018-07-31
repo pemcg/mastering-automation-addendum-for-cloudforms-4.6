@@ -234,3 +234,12 @@ $evm.root['service'].options[:config_info] = {:provision=>{:repository_id=>"4", 
 $evm.root['service'].options[:dialog] = {"dialog_param_package"=>"nfs-utils"}   (type: Hash)
 $evm.root['service'].options[:provision_job_options] = {"hosts"=>"localhost", "extra_vars"=>{"package"=>"nfs-utils"}}   (type: ActiveSupport::HashWithIndifferentAccess)
 ```
+
+## Summary
+
+This chapter has shown how a custom button can be added to a VM to run an Ansible playbook on that VM. Several tests were run to investigate the effect of selecting or changing the default service dialog elements.
+
+
+## References
+
+[Order Ansible Playbook from a Custom Button using a Method](https://github.com/ManageIQ/manageiq-content/pull/113)
