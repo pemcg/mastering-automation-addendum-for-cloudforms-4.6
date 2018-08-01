@@ -83,15 +83,25 @@ The element names are setup correctly when we select **Create New** as the dialo
 
 ## Ordering the Service
 
-When we order the service we are presented with the service dialog that was created automatically. It gives us a choice of overriding the machine credential and host that were selected when the catalog item was created. If we leave these as default the playbook will run on _localhost_.
+When we order the service we are presented with the service dialog that was created automatically. It gives us a choice of overriding the machine credential and host that were selected when the catalog item was created, or ordering with the default values.
+
+### Test 1
+
+Order the service and leave the service dialog values at their defaults. The playbook will run on _localhost_.
 
 The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run (see [Resulting Service from First Test](#i3))
 
 ![Resulting Service from First Test](images/oss5.png)
 
-We can order the service again, but this time override the service dialog defaults to run the playbook on another host, using SSH Key credentials suitable for that host. This time we can see from the resultant service **Provisioning** tab that the playbook has been run on the remote host (see [Resulting Service from Second Test](#i3))
+It can be seen that the service did run on _localhost_.
+
+### Test 2
+
+We can order the service again, but this time override the service dialog defaults to run the playbook on another host (10.2.3.136), using SSH Key credentials suitable for that host (see [Resulting Service from Second Test](#i3)).
 
 ![Resulting Service from Second Test](images/oss6.png)
+
+This time we can see from the resultant service **Provisioning** tab that the playbook has been run on the remote host.
 
 ## Variables Available to the Ansible Playbook
 
@@ -151,9 +161,9 @@ These enable us to connect back to the RESTful API from the playbook without har
  
 ## Summary
 
+This chapter has illustrated how an embedded Ansible service can be created and run. The simple default service dialog allows the playbook to be run on the CFME appliance itself (_localhost_) using default credentials, or on another managed node, specifiying valid credentials for that node.
 
-## References
-
+The next chapter will examine the Ansible playbook service provisioning and retirement state machines.
 
 
 

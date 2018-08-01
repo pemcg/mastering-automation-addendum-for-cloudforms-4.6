@@ -157,3 +157,5 @@ This chapter has presented an overview of the new embedded Ansible functionality
 ## References
 
 [Ansible playbook best practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)
+
+[Differences between ManageIQ's integration with Ansible Tower and embedded Ansible](http://talk.manageiq.org/t/differences-between-manageiqs-integration-with-ansible-tower-and-embedded-ansible/2917)
