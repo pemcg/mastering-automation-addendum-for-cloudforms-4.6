@@ -8,8 +8,8 @@ One of the things that makes CloudForms generic objects very versatile is the ab
  
 The previous example used generic object classes to represent firewall groups and their components. The firewall software uses the concept of a firewall group that contains one or more port groups, network groups and address groups, and so the generic object definitions included the following associations:
  
-* A firewall\_group has\_many port\_groups, network\_groups and address\_groups
-* A port\_group, network\_groups and address\_groups each has\_one firewall\_group
+* A firewall\_group **has\_many** port\_groups, network\_groups and address\_groups
+* A port\_group, network\_groups and address\_groups each **has\_one** firewall\_group
 
 Implementing generic object associations from Ruby is straightforward. The has\_one association is a simple assignment, as follows:
 

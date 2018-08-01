@@ -31,6 +31,12 @@ There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfiguredSys
 
 Associations: `computer_system`, `configuration_location`, `configuration_profile`, `customization_script_medium`, `customization_script_ptable`, `manager` and `operating_system_flavor`
 
+### MachineCredential
+
+There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_MachineCredential` object per defined machine credential.
+
+Associations: none
+
 ### InventoryRootGroup
 
 There is one `ManageIQ_Providers_AutomationManager_InventoryRootGroup` object for each dynamic inventory created.

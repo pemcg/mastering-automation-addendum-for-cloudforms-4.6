@@ -29,11 +29,9 @@ Playbooks can only be imported into embedded Ansible from such an SCM tool. Ther
 
 ### Defining a Repository
 
-A new repository is added from the **Automation -> Ansible -> Repositories -> Configuration** button. The only SCM type currently supported is _GIT_ (see [Adding an Embedded Ansible SCM Repository](#i1)).
+A new repository is added from the **Automation -> Ansible -> Repositories -> Configuration** button. The only SCM type currently supported is _GIT_ (see [Adding an Embedded Ansible SCM Repository](#i2)).
 
-[//]: # (![Adding an Embedded Ansible SCM Repository](images/oss2.png))
-
-_-- screenshot here 'Adding an Embedded Ansible SCM Repository' --_
+![Adding an Embedded Ansible SCM Repository](images/screenshot2.png)
 
 #### SCM Update Options
 
@@ -51,12 +49,9 @@ Repositories are synchronised as project folders under the _/var/lib/awx/project
 
 Credentials are used to access managed entities that require authentication, such as nodes, networking devices, or cloud or infrastructure providers.
 
-A new credential is added from the **Automation -> Ansible -> Credentials -> Configuration** button.
+A new credential is added from the **Automation -> Ansible -> Credentials -> Configuration** button (see [Adding an Embedded Ansible Machine Credential](#i3)).
 
-[//]: # (![Adding an Embedded Ansible Machine Credential](images/oss4.png))
-
-_-- screenshot here 'Adding an Embedded Ansible SCM Repository' --_
-
+![Adding an Embedded Ansible Machine Credential](images/screenshot3.png)
 
 The following credential types are supported:
 

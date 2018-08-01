@@ -28,6 +28,18 @@ Each time an embedded Ansible playbook runs up to three _.out_ files are created
 
 ### Log output to evm.log
 
+### Max_ttl too short
+
+
+### Appliance not responding
+
+```
+TASK [syncrou.manageiq-automate : Initialize the Workspace] ********************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: AttributeError: 'NoneType' object has no attribute 'read'
+fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "module_stderr": "Traceback (most recent call last):\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 510, in <module>\n    main()\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 502, in main\n    result = getattr(workspace, key)(value)\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 408, in initialize_workspace\n    workspace = self.get()\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 92, in get\n    return json.loads(result.read())\nAttributeError: 'NoneType' object has no attribute 'read'\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 0}
+```
+
+
 ## Events
 
 The following events are emitted from the embedded Ansible engine:
@@ -67,4 +79,6 @@ Although most settings would not need changing in normal operation, the `job_dat
 > **Note**
 > 
 > For embedded Ansible services the playbook output is shown in the **Provisioning** or **Retirement** tab of the service in the **Services -> My Services** page in the WebUI. This output is read directly from the corresponding job's _.out_ file, and so once the _*.out_ files are purged, the output is longer visible from the service details in the WebUI.
+
+## Summary
 
