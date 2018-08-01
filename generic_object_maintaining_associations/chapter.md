@@ -148,6 +148,6 @@ The generic object classes now appear linked together as expected in the WebUI.
 
 This chapter has shown how generic objects can be created and linked together in associations, from an Ansible playbook. The full scripts are available [here](https://github.com/pemcg/mastering-automation-addendum-for-cloudforms-4.6/tree/master/generic_object_example/scripts)
 
-## References
+## Further Reading
 
 [Ansible Filters](https://docs.ansible.com/ansible/2.3/playbooks_filters.html)

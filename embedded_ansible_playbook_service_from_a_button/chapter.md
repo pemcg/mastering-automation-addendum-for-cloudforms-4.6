@@ -240,6 +240,6 @@ $evm.root['service'].options[:provision_job_options] = {"hosts"=>"localhost", "e
 This chapter has shown how a custom button can be added to a VM to run an Ansible playbook on that VM. Several tests were run to investigate the effect of selecting or changing the default service dialog elements.
 
 
-## References
+## Further Reading
 
 [Order Ansible Playbook from a Custom Button using a Method](https://github.com/ManageIQ/manageiq-content/pull/113)

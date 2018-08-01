@@ -364,7 +364,7 @@ This chapter has introduced _Generic Objects_ (also known as _Dynamic Resource O
 
 The next chapter shows a 'real-world' example of their use in modelling a software-defined firewall group.
 
-## References
+## Further Reading
 
 [ManageIQ API Guide - Generic Object Management](http://manageiq.org/docs/reference/latest/api/reference/generic_objects)
 

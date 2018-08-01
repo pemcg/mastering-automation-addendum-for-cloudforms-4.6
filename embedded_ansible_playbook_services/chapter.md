@@ -33,7 +33,7 @@ The selectable options on the **Provisioning** tab are as follows:
 * **Machine Credential** - the credential to use to run the playbook. For playbooks run on _localhost_ the **CFME Default Credential** can be used. This value can be overriden from a service dialog when the service is ordered.
 * **Vault Credential** - the credential to unlock a vault file, if used.
 * **Cloud Type/Cloud Credential** - the cloud type and credential to use if the playbook is to connect to a cloud provider.
-* **Hosts** - the host(s) on which the playbook should be run (comma-separated list). This value can be overriden from a service dialog when the service is ordered.
+* **Hosts** - the host(s) on which the playbook should be run, either _localhost_ or a single or comma-separated list of IP addresses or resolvable host names. This value can be overriden from a service dialog when the service is ordered.
 * **Max TTL (mins)** - the maximum time that the playbook should be allowed to run (default: 10 minutes) 
 * **Logging Output** - whether to log playbook output to evm.log (On Error / Always / Never)
 * **Escalate Privilege** - option to run the playbook using the privilege escalation mode and credentials defined in the selected **Machine Credential**.
