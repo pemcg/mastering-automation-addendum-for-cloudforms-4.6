@@ -150,6 +150,10 @@ changed: [localhost]
 ...
 ```
 
+## Summary
+
+This chapter has presented an overview of the new embedded Ansible functionality. It has also described how to add SCM repositories so that Ansible playbooks can be imported into CloudForms / ManageIQ, and machine credentials to allow playbooks to run on a managed node. These are the prerequisite steps to being able to run Ansible playbooks as services or automation methods.
+
 ## References
 
 [Ansible playbook best practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)
