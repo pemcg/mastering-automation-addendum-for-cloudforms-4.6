@@ -2,11 +2,9 @@
 
 An Ansible playbook service has a new type of Active Record object (_ServiceAnsiblePlaybook_) and a corresponding auto-generated service model object (_MiqAeServiceServiceAnsiblePlaybook_). A new simplified service lifecycle state machine class had been developed to handle Ansible playbook services using the features and methods of the ServiceAnsiblePlaybook object. 
 
-The new state machine instances still reference many of the original service lifecycle instance and methods under _/Service/Provisioning_ and _/Service/Retirement_ in the automate datastore, but several new methods are included to handle the ServiceAnsiblePlaybook object-specific processing.
+The new state machine instances still reference many of the original service lifecycle instance and methods under _/Service/Provisioning_ and _/Service/Retirement_ in the automate datastore, but several new methods are included to handle the ServiceAnsiblePlaybook object-specific processing (see [New GenericLifecycle Class](#i1))
 
-[//]: # (![Adding a New Playbook Method](images/adding_a_new_automate_method.png))
-
-_-- screenshot here 'Service/Generic/StateMachines/GenericLifecycle Class' --_
+![New GenericLifecycle Class](images/screenshot1.png)
 
 ## Service Provisioning State Machine
 
@@ -22,11 +20,9 @@ There are several service retirement state machines split into two categories: _
 
 ### Basic Resource
 
-The _basic resource_ retirement state machines are used if the service catalog item definition doesn't specify a retirement playbook to run. The selection of state machine is automatic and depends on the configured value for the **Remove Resources?** dropdown (see ...)
+The _basic resource_ retirement state machines are used if the service catalog item definition doesn't specify a retirement playbook to run. The selection of state machine is automatic and depends on the configured value for the **Remove Resources?** dropdown in the **Retirement** tab of the service definition (see [Remove Resources? Dropdown](#i2))
 
-[//]: # (![Remove Resources? Dropdown](images/adding_a_new_automate_method.png))
-
-_-- screenshot here 'Remove Resources? Dropdown' --_
+![Remove Resources? Dropdown](images/screenshot2.png)
 
 The state machines are as follows:
 
@@ -40,7 +36,7 @@ The **retire\_basic\_resource** state machine retires the service, but also atte
 
 ### Advanced Resource
 
-The _advanced resource_ retirement state machines are used if the service catalog item definition specifies a retirement playbook to be run. The selection of state machine is automatic, once again depending on the configured value for the **Remove Resources?** dropdown
+The _advanced resource_ retirement state machines are used if the service catalog item definition specifies a retirement playbook to be run. The selection of state machine is automatic, once again depending on the configured value for the **Remove Resources?** dropdown.
 
 The state machines are as follows:
 
@@ -60,3 +56,7 @@ The **retire\_advanced\_resource\_post** state machine retires the service, runs
 > **Note**
 > 
 > Any dynamic playbook variables or hosts used for the service provision - for example passed from a service dialog - are not available when the retirement playbooks are run. The static values configured in the **Retirement** tab of the service definition are used to run the retirement playbook.
+
+## Summary
+
+This chapter has described the new state machines that handle the provisioning and retirement of embedded Ansible playbook services. They can be cloned to a user-defined domain and edited to extend functionality, if required.

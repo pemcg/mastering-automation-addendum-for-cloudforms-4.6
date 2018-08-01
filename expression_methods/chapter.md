@@ -97,7 +97,7 @@ When run from **Automate -> Simulation** it can be seen that `values` is now an 
 This chapter has introduced _expression methods_, which retrieve VMDB values from expression-based queries without the overhead of launching a dRuby method. As a result they run much faster than a 'traditional' Ruby method that would otherwise be used to populate a dynamic drop-down service dialog element. They can therefore be used to reduce the overall loading time of a complex service dialog.
 
 
-## References
+## Further Reading
 
 [Stackissue Discussion of Expression Methods](http://stackissue.com/ManageIQ/manageiq/wip-automate-expression-methods-6655.html)
 
