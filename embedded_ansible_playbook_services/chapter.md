@@ -6,7 +6,7 @@ CloudForms 4.5 / ManageIQ *Fine* introduced the capability to run Ansible playbo
 
 Playbook services are created in the same way as other service catalog items, via the **Catalog Items** accordion in the **Services -> Catalogs** section of the WebUI.
 
-We'll create a simple playbook service that runs the following playbook to list the variables and facts available to an embedded Ansible playbook as it runs:
+We'll create a new playbook service that runs the following simple playbook to list the variables and facts available to an embedded Ansible playbook as it runs:
 
 ``` yaml
 ---
@@ -17,23 +17,19 @@ We'll create a simple playbook service that runs the following playbook to list 
      - ansible-role-listvars
 ```
 
-A new service catalog item type, **Ansible Playbook** is used to create a playbook service:
+A new service catalog item type, **Ansible Playbook** is used to create a playbook service (see [Selecting the Ansible Playbook Catalog Item Type](#i1))
 
-[//]: # (![Selecting the Ansible Playbook Catalog Item Type](images/oss1.png))
+![Selecting the Ansible Playbook Catalog Item Type](images/screenshot1.png)
 
-_-- screenshot here 'Selecting the Ansible Playbook Catalog Item Type' --_
+Once 'Ansible Playbook' is selected, the main service creation dialog is displayed (see [Service Creation Dialog](#i2))
 
-Once 'Ansible Playbook' is selected, the main service creation dialog is displayed:
-
-[//]: # (![Service Creation Dialog](images/oss2.png))
-
-_-- screenshot here 'Service Creation Dialog' --_
+![Service Creation Dialog](images/screenshot2.png)
 
 ## Provisioning Tab Options
 
 The selectable options on the **Provisioning** tab are as follows:
 
-* **Repository/Playbook** - the repository to select from, and the playbook to run when the service it ordered.
+* **Repository/Playbook** - the repository to select from, and the playbook to run when the service is ordered.
 * **Machine Credential** - the credential to use to run the playbook. For playbooks run on _localhost_ the **CFME Default Credential** can be used. This value can be overriden from a service dialog when the service is ordered.
 * **Vault Credential** - the credential to unlock a vault file, if used.
 * **Cloud Type/Cloud Credential** - the cloud type and credential to use if the playbook is to connect to a cloud provider.
@@ -85,33 +81,17 @@ Each service's dialog should prompt for the machine credential to be used when r
 
 The element names are setup correctly when we select **Create New** as the dialog radio button in the **Adding a new Service Catalog Item** page. Any **Variables and Default Values** that we add will automatically be added to the service dialog, with the variable name prefixed correctly. For example an added variable name of "package" would result in an element being added to the resultant service dialog with the element name of **param_package**.
 
-
-
 ## Ordering the Service
 
-When we order the service we are presented with the service dialog that was created automatically. It gives us a choice of overriding the machine credential and host that were selected when the catalog item was created. If we leave these as default the playbook will run on _localhost_
+When we order the service we are presented with the service dialog that was created automatically. It gives us a choice of overriding the machine credential and host that were selected when the catalog item was created. If we leave these as default the playbook will run on _localhost_.
 
-[//]: # (![Service Dialog 1](images/oss3.png))
+The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run (see [Resulting Service from First Test](#i3))
 
-_-- screenshot here 'Service Dialog, No Credential, localhost' --_
+![Resulting Service from First Test](images/oss5.png)
 
-The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run.
+We can order the service again, but this time override the service dialog defaults to run the playbook on another host, using SSH Key credentials suitable for that host. This time we can see from the resultant service **Provisioning** tab that the playbook has been run on the remote host (see [Resulting Service from Second Test](#i3))
 
-[//]: # (![Resulting Service from First Test](images/oss5.png))
-
-_-- screenshot here 'Resulting Service 'Provisioning' Tab' --_
-
-We can order the service again, but this time override the service dialog defaults to run the playbook on another host, using SSH Key credentials suitable for that host. The service dialog is as follows:
-
-[//]: # (![Service Dialog](images/oss4.png))
-
-_-- screenshot here 'Service Dialog, SSH Key Credential, Hosts IP address' --_
-
-This time we can see from the resultant service **Provisioning** tab that the playbook has been run on the remote host:
-
-[//]: # (![Service Dialog](images/oss6.png))
-
-_-- screenshot here 'Resulting Service 'Provisioning' Tab' --_
+![Resulting Service from Second Test](images/oss6.png)
 
 ## Variables Available to the Ansible Playbook
 
