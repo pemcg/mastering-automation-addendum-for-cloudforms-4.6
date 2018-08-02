@@ -30,15 +30,13 @@ To assist in troubleshooting, a call to object\_walker has been made from the _/
 
 ## Creating the Service
 
-The Ansible playbook service was first created, as follows:
+The Ansible playbook service called **Install a Package** was first created (see [Adding the New Service Catalog Item](#i1)).
 
-[//]: # (![Adding the New Service Catalog Item](images/oss2.png))
-
-_-- screenshot here 'Adding the New Service Catalog Item' --_
+![Adding the New Service Catalog Item](images/screenshot1.png)
 
 ### Values Selected
 
-The following parameter values were selected:
+The following parameter values were selected on the **Provisioning** tab:
 
 * **Machine Credential** -  The ansible-remote user machine credential defined earlier (this can be overridden when the playbook is run)
 * **Hosts** - Localhost (this will be overridden when the playbook is run)
@@ -54,21 +52,17 @@ Clicking **Save** creates both the new service and service dialog.
 
 ### Editing the Service Dialog
 
-If the newly created service dialog is edited, it can be seen that the package element has been given the correct name "param\_package" (as required by the _order\_ansible\_playbook_ method), and the default value of "from\_service". For this example we'll change the default value for the dialog element to "from\_dialog", as follows:
+If the newly created service dialog is edited, it can be seen that the package element has been given the correct name "param\_package" (as required by the _order\_ansible\_playbook_ method), and the default value of "from\_service". For this example we'll change the default value for the **Package** dialog element to "from\_dialog" to identify if the dialog's default value was used in operation (see [Editing the Service Dialog](#i2)).
 
-[//]: # (![Editing the Service Dialog](images/oss3.png))
-
-_-- screenshot here 'Editing the Service Dialog' --_
+![Editing the Service Dialog](images/screenshot2.png)
 
 Once the dialog has been created, the only use for the package variable and value in the service definition is to provide a fallback in case the package is not specified in the dialog. It can otherwise be deleted.
 
 ### Creating the Button
 
-The button was created as follows:
+The button was created as shown in [Adding the New Button](#i3)
 
-[//]: # (![Adding the New Button](images/oss1.png))
-
-_-- screenshot here 'Adding the New Button' --_
+![Adding the New Button](images/screenshot3.png)
 
 ### Values Selected
 
@@ -89,11 +83,9 @@ The button can be tested with several permutations of dialog values so that the 
 
 ### Test 1
 
-Leave the **Machine Credential** and **Hosts** elements at their defaults. Specify "screen" as the package:
+Leave the **Machine Credential** and **Hosts** elements at their defaults. Specify "screen" as the package (see [Default Dialog](#i4)).
 
-[//]: # (![Button Dialog](images/oss6.png))
-
-_-- screenshot here 'Default values for Credential and Hosts, 'screen' for package' --_
+![Default Dialog](images/screenshot4.png)
 
 The package installs successfully, the Ansible output shows:
 
@@ -123,7 +115,7 @@ $evm.root['service'].options[:dialog] = {"dialog_credential"=>nil, "dialog_hosts
 $evm.root['service'].options[:provision_job_options] = {"hosts"=>"192.168.1.66", "extra_vars"=>{"package"=>"screen"}, "inventory"=>38}   (type: ActiveSupport::HashWithIndifferentAccess)
 ```
 ‍
-It can be seen that order\_ansible\_playbook has used the IP address of the 'current' VM in the call to `$evm.execute('create_service_template_request',...)`. This is the default action if $evm.root['hosts'] has been defined as "vmdb_object".
+It can be seen that _order\_ansible\_playbook_ has used the IP address of the _current_ VM in the call to `$evm.execute('create_service_template_request',...)`, even though the `$evm.root['dialog_hosts']` value was set to "localhost". This is the default action if `$evm.root['hosts']` has been defined as "vmdb_object".
 
 ### Test 2
 
@@ -139,7 +131,7 @@ PLAY RECAP *********************************************************************
 192.168.1.66               : ok=6    changed=0    unreachable=0    failed=0...
 ```
 
-The selected credential object ID is included as one of the $evm.root inputs for order\_ansible\_playbook:
+The selected credential object ID is now included as one of the `$evm.root` inputs for _order\_ansible\_playbook_:
 
 ```
 $evm.root['dialog_credential'] = 11   (type: String)
@@ -171,11 +163,9 @@ fatal: [192.168.1.66]: UNREACHABLE! => {"changed": false, "msg": "Failed to conn
 
 ### Test 4
 
-Make the **Machine Credential** and **Hosts** elements non-visible in the dialog to force the default values to be submitted. Specify "bind-utils" as the package:
+Make the **Machine Credential** and **Hosts** elements non-visible in the dialog to force the default values to be submitted. Specify "bind-utils" as the package (see [Dialog With Options Box Elements Hidden](#i5)).
 
-[//]: # (![Button Dialog](images/oss4.png))
-
-_-- screenshot here 'Credential and Hosts no longer visible, 'bind-utils' for package' --_
+![Dialog With Options Box Elements Hidden](images/screenshot5.png)
 
 The package installation was successful:
 
@@ -187,7 +177,7 @@ PLAY RECAP *********************************************************************
 192.168.1.66               : ok=6    changed=1    unreachable=0    failed=0‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍
 ```
 
-The `$evm.root` inputs for order\_ansible\_playbook are just as when the elements were visible. 
+The `$evm.root` inputs for _order\_ansible\_playbook_ are just as when the elements were visible. 
 
 The default values are submitted:
 
@@ -207,11 +197,9 @@ $evm.root['service'].options[:provision_job_options] = {"hosts"=>"192.168.1.66",
 
 ### Test 5
 
-Delete the **Options** box containing the **Machine Credential** and **Hosts** elements in the dialog. Specify "nfs-utils" as the package:
+Delete the **Options** box containing the **Machine Credential** and **Hosts** elements in the dialog. Specify "nfs-utils" as the package (see [Dialog With Options Box Removed](#i6)).
 
-[//]: # (![Button Dialog](images/oss5.png))
-
-_-- screenshot here 'Options' box removed, 'nfs-utils' for package' --_
+![Dialog With Options Box Removed](images/screenshot6.png)
 
 The package installation failed:
 
@@ -220,14 +208,14 @@ TASK [Gathering Facts] *********************************************************
 fatal: [localhost]: FAILED! => {"changed": false, "failed": true,...
 ```
 
-The `$evm.root` inputs for order\_ansible\_playbook are as follows:
+The `$evm.root` inputs for _order\_ansible\_playbook_ are as follows:
 
 ```
 $evm.root['dialog_param_package'] = nfs-utils   (type: String)
 $evm.root['hosts'] = vmdb_object   (type: String)
 ```
 
-The service options hash shows that without the dialog\_hosts value, the package installation was attempted on localhost, which was the default when the service catalog item was created:
+The service options hash shows that without a **dialog\_hosts** value, the package installation was attempted on _localhost_. This is the default if no **dialog\_hosts** value is supplied to an Ansible service. 
 
 ```
 $evm.root['service'].options[:config_info] = {:provision=>{:repository_id=>"4", :playbook_id=>"182", :credential_id=>"11", :hosts=>"localhost", :verbosity=>"0", :log_output=>"on_error", :extra_vars=>{:package=>{:default=>"from_service"}}, :execution_ttl=>"", :become_enabled=>true, :new_dialog_name=>"Install a Package", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/provision", :dialog_id=>31}, :retirement=>{:remove_resources=>"yes_without_playbook", :verbosity=>"0", :log_output=>"on_error", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"}}   (type: Hash)

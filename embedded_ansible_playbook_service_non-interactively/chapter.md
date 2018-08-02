@@ -6,7 +6,7 @@ Although the traditional way of ordering a service is interactively via **Servic
 
 An embedded Ansible playbook service can be run as a control action. In this example we'll define a control action that requests a playbook service to remove a web service VM from a load balancer pool. The playbook will run on localhost (the CFME appliance).
 
-The action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. A new **Action Type** of **Run Ansible Playbook** is available, which when selected allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list. (see [Adding the Control Action](#i1)).
+The action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. A new **Action Type** of **Run Ansible Playbook** is available, which when selected allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list (see [Adding the Control Action](#i1)).
 
 ![Adding the Control Action](images/screenshot1.png)
 
@@ -108,6 +108,10 @@ _order\_ansible\_playbook_ uses `$evm.root` keys to determine the playbook servi
   * _"hostname"_ (e.g. "infra1.cloud.uk.bit63.com") - the DNS-resolvable name of the managed node on which to run the playbook
   * _"ip[,ip]"_ (e.g. "192.168.1.45" or "10.2.4.5,10.2.4.6") - one or more managed node IPv4 addresses on which to run the playbook
 * **dialog\_hosts** (optional) - an alternative way of specifying the target managed node for the playbook service. Useful when _Order\_Ansible\_Playbook_ has been called from a button with a dialog containing a _hosts_ element.
+
+> **Note**
+> Although **dialog\_hosts** is an optional input to _order\_ansible\_playbook_, if no **dialog\_hosts** is passed through to the service at all (for example if it is also missing from the service's default service dialog), then _localhost_ will be used as the target host for the service, overriding the **hosts** value passed to _order\_ansible\_playbook_.
+
 * **dialog\_credential** (optional) - a credential object ID to use when making the connection to the managed node
 
 These `$evm.root` keys can be defined as Attribute/Value pairs when an instance is launched (see [Calling Order\_Ansible\_Playbook](#i3)).

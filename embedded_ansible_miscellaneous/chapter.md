@@ -30,6 +30,20 @@ Each time an embedded Ansible playbook runs up to three _.out_ files are created
 
 ### Max_ttl too short
 
+https://access.redhat.com/articles/3055471
+
+https://mojo.redhat.com/docs/DOC-1153940
+
+
+### Virtual Environment
+
+```
+source /var/lib/awx/venv/ansible/bin/activate
+umask 0022
+pip install --upgrade pywinrm
+deactivate
+```
+
 
 ### Appliance not responding
 
