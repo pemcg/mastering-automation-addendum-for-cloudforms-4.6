@@ -115,7 +115,7 @@ $evm.root['service'].options[:dialog] = {"dialog_credential"=>nil, "dialog_hosts
 $evm.root['service'].options[:provision_job_options] = {"hosts"=>"192.168.1.66", "extra_vars"=>{"package"=>"screen"}, "inventory"=>38}   (type: ActiveSupport::HashWithIndifferentAccess)
 ```
 ‍
-It can be seen that _order\_ansible\_playbook_ has used the IP address of the _current_ VM in the call to `$evm.execute('create_service_template_request',...)`, even though the `$evm.root['dialog_hosts']` value was set to "localhost". This is the default action if `$evm.root['hosts']` has been defined as "vmdb_object" (which the "Ansible Playbook" button type sets for us automatically).
+It can be seen that _order\_ansible\_playbook_ has used the IP address of the _current_ VM in the call to `$evm.execute('create_service_template_request',...)`, even though the `$evm.root['dialog_hosts']` value was set to "localhost". This is the default action if `$evm.root['hosts']` has been defined as "vmdb_object" (which the "Ansible Playbook" button type sets for us automatically if **Inventory** is set to "Target Machine").
 
 ### Test 2
 
