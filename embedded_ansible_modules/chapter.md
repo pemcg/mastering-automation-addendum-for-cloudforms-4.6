@@ -39,3 +39,7 @@ The [manageiq\_alerts](http://docs.ansible.com/ansible/latest/modules/manageiq_a
 The [manageiq\_policies](http://docs.ansible.com/ansible/latest/modules/manageiq_policies_module.html) module supports adding and deleting policy_profiles in CloudForms/ManageIQ
 
 The [manageiq\_tags](http://docs.ansible.com/ansible/latest/modules/manageiq_tags_module.html) module supports adding, updating and deleting tags in CloudForms/ManageIQ
+
+## Further Reading
+
+[Examples of Using the manageiq-vmdb and manage-automate Roles](https://github.com/billfitzgerald0120/ansible_playbooks)

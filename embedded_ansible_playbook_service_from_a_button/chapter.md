@@ -230,4 +230,6 @@ This chapter has shown how a custom button can be added to a VM to run an Ansibl
 
 ## Further Reading
 
-[Order Ansible Playbook from a Custom Button using a Method](https://github.com/ManageIQ/manageiq-content/pull/113)
+[Add Ansible Playbook custom button](https://github.com/ManageIQ/manageiq-ui-classic/pull/1972)
+
+[Add Ansible Playbook custom button type](https://github.com/ManageIQ/manageiq/pull/15874)

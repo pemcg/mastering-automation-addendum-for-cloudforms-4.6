@@ -4,9 +4,9 @@ CloudForms 4.6 / ManageIQ *Gaprindashvili* has introduced the capability to run 
 
 ## Creating a Playbook Method
 
-A playbook method is created in the same way as other automate methods. CloudForms 4.6 (ManageIQ *Gaprindashvili*) has added two more method types, one of which is *playbook* (see [Adding a New Playbook Method](#i1))
+A playbook method is created in the same way as other automate methods. CloudForms 4.6 (ManageIQ _Gaprindashvili_) has added two more method types, one of which is _playbook_ (see [Adding a New Playbook Method](#i1))
 
-![Adding a New Playbook Method](images/screenshot1b.png)
+![Adding a New Playbook Method](images/screenshot1.png)
 
 Once the method **Type** of **playbook** has been selected the method definition page appears, which contains the same input options as the **Provisioning** tab when creating a playbook service (see ...)
 
@@ -148,11 +148,11 @@ As with 'traditional' Ruby-based automation, values can be saved to and retored 
 
 #### Instance Attributes
 
-For a simple instance schema containing one or more Ansible playbook methods interspersed with one or more Ruby methods, values can be passed as `$evm.root` or `$evm.object` attributes. This can be illustrated with a simple playbook that stores the `tower_job_id` value in the workspace using the `manageiq-automate` role, as follows:
+For a simple instance schema containing one or more Ansible playbook methods interspersed with one or more Ruby methods, values can be passed as `$evm.root` or `$evm.object` attributes. This can be illustrated with a simple playbook that uses the `manageiq-automate` role to read a dialog value from `$evm.root`, and store the `tower_job_id` value back into the workspace, as follows:
 
 ``` yaml
 ---
-- name: Save tower job id back to $evm.root
+- name: Access some $evm.root variables
   hosts: all
   connection: local
 
@@ -163,6 +163,14 @@ For a simple instance schema containing one or more Ansible playbook methods int
   - syncrou.manageiq-automate
 
   tasks:
+  - name: "Get $evm.root['dialog_vm_name']"
+    manageiq_automate:
+      workspace: "{{ workspace }}"
+      get_attribute:
+        object: "root"
+        attribute: "dialog_vm_name"
+    register: vm_name 
+  
   - name: "Save the job ID back into $evm.root"
     manageiq_automate:
       workspace: "{{ workspace }}"
@@ -185,7 +193,6 @@ else
   $evm.log(:info, "Output from previous Ansible playbook: \n#{job.stdout}")
 end
 ```
-
 
 #### State Variables
 
@@ -240,11 +247,20 @@ ok: [localhost] => {
 
 If an Ansible playbook method is used in a state machine, the state running the playbook will be put into an automatic retry condition, without the `on_exit` method being run.
 
-A playbook can also trigger its own state retry.
+A playbook can also trigger its own state retry, as follows:
+
+``` yaml
+  - name: Set Retry
+    manageiq_automate:
+      workspace: "{{ workspace }}"
+      set_retry:
+        interval: "{{ interval }}"
+```
 
 ## Summary
 
+This chapter has introduced Ansible playbook methods, which are a powerful new feature of CloudForms 4.6 (ManageIQ _Gaprindashvili_). They can be used anywhere that a 'traditional' Ruby automate method can be used, but require no Ruby knowledge to implement.
 
-## References
+The next chapter will show how Ansible playbook methods can be use in parallel with Ruby methods in a VM Provisioning state machine. 
 
 
