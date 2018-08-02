@@ -261,6 +261,6 @@ A playbook can also trigger its own state retry, as follows:
 
 This chapter has introduced Ansible playbook methods, which are a powerful new feature of CloudForms 4.6 (ManageIQ _Gaprindashvili_). They can be used anywhere that a 'traditional' Ruby automate method can be used, but require no Ruby knowledge to implement.
 
-The next chapter will show how Ansible playbook methods can be use in parallel with Ruby methods in a VM Provisioning state machine. 
+The next chapter will show how Ansible playbook methods can be used together with Ruby methods in a VM Provisioning state machine. 
 
 
