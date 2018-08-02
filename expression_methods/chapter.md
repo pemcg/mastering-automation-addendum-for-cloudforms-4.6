@@ -74,23 +74,23 @@ When run from **Automate -> Simulation** it can be seen that `values` is now an 
 
 ### Summary of arguments
 
-  - **arg1**, **arg2**, **argn** The first, second, n’th arguments in the expression
+  - **arg1**, **arg2**, **argn** - the first, second, n’th arguments in the expression
 
-  - **attributes** A comma delimited list of attributes to select from the resultant objects. If **result\_type** is the default (hash) then only one attribute from the attributes list is returned. If **result\_type** is 'array' then all are returned
+  - **attributes** - a comma delimited list of attributes to select from the resultant objects. The **Data Type** should be "array". If **result\_type** is the default (hash) then only one attribute from the attributes list is returned. If **result\_type** is 'array' then all are returned.
 
-  - **distinct** A comma delimited list of attributes which are distinct in the resultant objects (i.e. duplicates removed)
+  - **distinct** - a comma delimited list of attributes which are distinct in the resultant objects (i.e. duplicates removed). The **Data Type** should be "array".
 
-  - **key** The input parameter to specify what to use for the key (default: 'id')
+  - **key** - the attribute to use for the key (default: 'id').
 
-  - **result\_obj** The object where the result data should be stored (default: current object)
+  - **result\_obj**  - the object where the result data should be stored (default: current object).
 
-  - **result\_attr** The name of the attribute which stores the result (default: 'values')
+  - **result\_attr**  - the name of the attribute which stores the result (default: 'values').
 
-  - **result\_type** The result type hash or array (default: hash)
+  - **result\_type** - the result type hash or array (default: hash).
 
-  - **on\_empty** The method behaviour when the search returns an empty list (options: warn | error | abort). The method ends with `$evm.root['ae_result']` set to this value.
+  - **on\_empty** - the method behaviour when the search returns an empty list (options: warn | error | abort). The method ends with `$evm.root['ae_result']` set to this value.
 
-  - **default** The default value in case the result is empty and **on\_empty** is set as **warn**.
+  - **default** - the default value in case the result is empty and **on\_empty** is set as **warn**.
 
 ## Summary
 
