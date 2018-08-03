@@ -245,7 +245,7 @@ ok: [localhost] => {
 
 ## State Machine Retries
 
-If an Ansible playbook method is used in a state machine, the state running the playbook will be put into an automatic retry condition, without the `on_exit` method being run.
+Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is immediately put into a retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
 
 A playbook can also trigger its own state retry, as follows:
 

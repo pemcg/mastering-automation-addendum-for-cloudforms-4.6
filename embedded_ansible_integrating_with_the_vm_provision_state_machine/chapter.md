@@ -8,21 +8,15 @@ In this example an Ansible playbook method is used at the AcquireIPAddress state
  
 A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_
 
-[//]: # (![acquire\_ip\_address Instance and Method](images/oss1.png))
+![acquire\_ip\_address Instance and Method](images/screenshot1.png)
 
-_-- screenshot here 'acquire_ip_address Instance and Method' --_
+The input parameters for the playbook method are dynamic. Two parameters `miq_provision_request_id` (the request ID) and `miq_provision_id` (the task ID), are defined as follows:
 
-The input parameters for the playbook method are dynamic. Two parameters miq\_provision\_request\_id (the request ID) and miq\_provision\_id (the task ID), are defined as follows:
-
-![Input Parameters](images/oss2.png)
-
-_-- screenshot here 'Input Parameters' --_ ^^
+![Input Parameters](images/screenshot2.png)
 
 The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine:
 
-[//]: # (![Instance Added to the VM Provision State Machine](images/oss3.png))
-
-_-- screenshot here 'Instance Added to the VM Provision State Machine' --_
+![Instance Added to the VM Provision State Machine](images/screenshot3.png)
 
 ## Inserting the IP Details into the VM Provision Workflow
  

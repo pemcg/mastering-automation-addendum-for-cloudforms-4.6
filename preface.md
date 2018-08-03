@@ -6,7 +6,7 @@ The book is a work-in-progress. The author welcomes any feedback, suggestions fo
 
 # Acknowledgements
 
-Several people have contributed code samples, explanations and ideas to this addendum, including Christian Jung, Franck Grosjean, Jeff Warnica, Ian Tewksbury, Brant Evans, Greg McCullough and Jason Ritenour.
+Much of the content for this book has been taken and edited from various sources both inside and outside of Red Hat. Many people have contributed to the original articles and code samples, and have offered explanations and ideas to this addendum. The author would like to thank Christian Jung, Franck Grosjean, Jeff Warnica, Ian Tewksbury, Brant Evans, Samson Wick, Greg McCullough, Bill Fitzgerald and Jason Ritenour for their original work.
 
 # Conventions Used in This Addendum
 
