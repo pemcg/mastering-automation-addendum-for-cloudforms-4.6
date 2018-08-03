@@ -1,4 +1,4 @@
-# Non-Interactively Running a Playbook Service 
+# Running a Playbook Service Non-Interactively 
 
 Although the traditional way of ordering a service is interactively via **Services -> Catalogs** in the WebUI, there are also two ways that embedded Ansible services can be launched with no user interaction. When run in this way the default values from the service's dialog are used.
     
