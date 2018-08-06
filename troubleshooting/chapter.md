@@ -1,4 +1,4 @@
-## Troubleshooting
+# Troubleshooting
 
 ```
 TASK [syncrou.manageiq-automate : Initialize the Workspace] ********************

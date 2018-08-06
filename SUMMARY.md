@@ -6,7 +6,7 @@
   * [Custom Button Functionality](custom_buttons/chapter.md.wip)
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md.wip)
   * [Notifications](notifications/chapter.md.wip)
-  * [Miscellaneous Updates](miscellaneous_updates/chapter.md.wip)
+  * [Miscellaneous Updates](miscellaneous_updates/chapter.md)
 * [Embedded Ansible](embedded_ansible.md.wip)
   * [Introduction to Embedded Ansible](embedded_ansible_introduction/chapter.md)
   * [Ansible Playbook Services](embedded_ansible_playbook_services/chapter.md)
