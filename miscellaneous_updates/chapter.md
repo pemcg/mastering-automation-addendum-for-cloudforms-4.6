@@ -102,7 +102,7 @@ $evm.root['ae_retry_server_affinity'] = true
 
 The VM naming functionality during provisioning provides the ability to request that a VM name be created with a zero-padded numeric sequence appended, to guarantee VM name uniqueness. For example setting a request options hash key `:vm_name` of "my\_vm\_$n{3}" prior to the naming process will create a VM named **my_vm\_003** if **my_vm\_001** and **my_vm\_002** have already been provisioned. A challenge has been that the VM naming method is run from request context, and so this flexibility for naming has been unavailable for VMs provisioned from services, where all of the Automate state machines run in task context.
 
-A new enhancement in CloudForms 4.6 (ManageIQ *Gaprindashvili*) has provided an `update_vm_name` method that can be called from task context, for example during the VM Provision state machine as follows:
+A new enhancement in CloudForms 4.6 (ManageIQ *Gaprindashvili*) has provided an `update_vm_name` method that can be called from the `miq_provision` object in task context, for example during the VM Provision state machine as follows:
 
 ``` ruby
 prov = $evm.root['miq_provision']
@@ -124,12 +124,17 @@ $evm.root['miq_group'].href_slug = groups/1000000000002
 
 ### Methods with Arguments in Substitution Strings
 
-The automation engine allows substitution strings as instance schema values - for example `${/#miq_provision.placement_auto}` - with the actual value of the variable being substituted at run-time. The substitution syntax does not permit the use of '[' or ']' characters however, and so extracting values from hashes by key reference was difficult.
+The automation engine allows substitution strings as instance schema values - for example `${/#miq_provision.placement_auto}` - with the actual value of the variable being substituted at run-time. The substitution syntax does not permit the use of '[' or ']' characters however, so extracting values from hashes by key reference has traditionally been difficult in a substitution string.
 
 CloudForms 4.5 (ManageIQ *Fine*) introduced the ability to include methods with arguments in a substitution string, for example:
 
 ```
 ${/#miq_request.get_option(:owner_email)}
+```
+
+or
+
+```
 ${/#service_template_provision_task.destination.stack_options.fetch(:parameters)
 ```
 
