@@ -133,7 +133,7 @@ ${/#service_template_provision_task.destination.stack_options.fetch(:parameters)
 
 ## New Class Schema Field Data Types
 
-Several new data types have been introduced for class schemas.
+Several useful new data types have been introduced for class schemas.
 
 ### Null Coalescing
 
@@ -141,13 +141,13 @@ The null coalescing data type allows multiple source options to be evaulated in 
 
 `${/#owner.email} || ${/#miq_request.get_option(:owner_email)} || ${/#config.to_email_address}`
 
-### VMDB Objects
+### VMDB Objects as Data Types
 
-CloudForms 4.5 (ManageIQ *Fine*) introduced the ability to have VMDB objects as attribute types (see [New Attribute Field Types](#i1)).
+CloudForms 4.5 (ManageIQ *Fine*) introduced the ability to have selected VMDB objects as attribute data types (see [New Attribute Field Types](#i1)).
 
 ![New Attribute Field Types](images/screenshot1.png)
 
-When such an attribute type is used the **Value** field should be an object ID (or a substitution string that resolves to a valid object type ID), and at run-time the corresponding object is loaded into the model. Attributes of that object can then be referenced in other schema field names. 
+When such an attribute type is used the **Value** field should be an object ID (or a substitution string that resolves to a valid object type ID), and at run-time the corresponding object is loaded into the model. Attributes of that object can then be referenced in other schema field value substitution strings. 
 
 [New Attributes in Use](#i2) shows a **User** object data type attribute called `owner`, populated from the run-time value of `$evm.root['vm'].evm_owner_id`. This User object's `email` value is then fed into a **Null Coalescing** data type attribute called `to_email_address`.
 
