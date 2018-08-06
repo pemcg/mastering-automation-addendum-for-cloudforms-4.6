@@ -1,4 +1,4 @@
-# Notification Messages
+# Notification Pop-Ups
 
 CloudForms 4.2 introduced the ability for users to see pop-up notifications in the WebUI, and this capability has been expanded considerably with CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*). In this chapter we'll look at how these notication pop-ups can be sent to users from a Ruby Automate method. 
 
