@@ -5,7 +5,7 @@
   * [New Service Dialog Editor](new_service_dialog_editor/chapter.md.wip)
   * [Custom Button Functionality](custom_buttons/chapter.md.wip)
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md.wip)
-  * [Notifications](notifications/chapter.md)
+  * [Notification Pop-Ups](notifications/chapter.md)
   * [Miscellaneous Updates](miscellaneous_updates/chapter.md)
 * [Embedded Ansible](embedded_ansible.md.wip)
   * [Introduction to Embedded Ansible](embedded_ansible_introduction/chapter.md)

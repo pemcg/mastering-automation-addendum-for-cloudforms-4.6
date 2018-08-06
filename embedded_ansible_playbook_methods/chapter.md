@@ -214,7 +214,6 @@ The second (Ansible playbook) method retrieves the saved state variable using th
 
   vars:
   - manageiq_validate_certs: false
-  - auto_commit: true
 
   roles:
   - syncrou.manageiq-automate
