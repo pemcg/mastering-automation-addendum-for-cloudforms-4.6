@@ -28,7 +28,7 @@ As an example, `:audience => 'tenant'` will be sent to all users in the same ten
 
 > **Note**
 > 
-> The argumemnt `:audience => 'group'` is intended specifically for use with the message type arguments `:type => :request_approved` or `:type => :request_denied`. Although `:audience => 'group'` can be used for user-generated messages, if it is used then the `$evm.create_notification` call must also contain a `:subject` argument whose value is a request-like object (it must return a valid user object when queried with `requester`).
+> The audience type argument `:audience => 'group'` is intended specifically for use with the message type arguments `:type => :request_approved` or `:type => :request_denied`. Although `:audience => 'group'` can be used for user-generated messages, if it is used then the `$evm.create_notification` call must also contain a `:subject` argument whose value is a request-like object (it must return a valid user object when queried with `requester`).
 
  
 ### Level
