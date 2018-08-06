@@ -1,6 +1,6 @@
 # Miscellaneous Automation Updates
 
-This chapter describes some of the minor miscellaneous updates and changes to Automate in CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*).
+This chapter describes some of the more minor miscellaneous updates and changes to Automate in CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*).
 
 ## Ruby Automate Enhancements
 
@@ -149,7 +149,7 @@ CloudForms 4.5 (ManageIQ *Fine*) introduced the ability to have VMDB objects as 
 
 When such an attribute type is used the **Value** field should be an object ID (or a substitution string that resolves to a valid object type ID), and at run-time the corresponding object is loaded into the model. Attributes of that object can then be referenced in other schema field names. 
 
-[New Attributes in Use](#i2) shows a **User** object data type attribute called `owner` supplying its run-time `email` attribute to a **Null Coalescing** data type attribute called `to_email_address`.
+[New Attributes in Use](#i2) shows a **User** object data type attribute called `owner`, populated from the run-time value of `$evm.root['vm'].evm_owner_id`. This User object's `email` value is then fed into a **Null Coalescing** data type attribute called `to_email_address`.
 
 ![New Attributes in Use](images/screenshot2.png)
 
