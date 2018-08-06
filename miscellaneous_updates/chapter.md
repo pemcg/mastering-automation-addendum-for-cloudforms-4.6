@@ -66,23 +66,23 @@ $evm.log(:info, "I can see #{$evm.vmdb(:Vm).all.length} VMs")
 Running this method as a non-privileged user `fredf` in a tenant that has WebUI visibility of 3 VMs, gives the following results:
 
 ```
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I am user: fredf
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: false
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I can see 18 VMs
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Enabling RBAC
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: true
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I can see 3 VMs
+... INFO -- : <AEMethod test> I am user: fredf
+... INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: false
+... INFO -- : <AEMethod test> I can see 18 VMs
+... INFO -- : <AEMethod test> Enabling RBAC
+... INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: true
+... INFO -- : <AEMethod test> I can see 3 VMs
 ```
 
 Repeating the method run as the `admin` user gives a different result, as expected:
 
 ```
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I am user: admin
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: false
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I can see 18 VMs
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Enabling RBAC
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: true
-[----] I, [2018-08-...]  INFO -- : <AEMethod test> I can see 18 VMs
+... INFO -- : <AEMethod test> I am user: admin
+... INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: false
+... INFO -- : <AEMethod test> I can see 18 VMs
+... INFO -- : <AEMethod test> Enabling RBAC
+... INFO -- : <AEMethod test> Current value of $evm.rbac_enabled? is: true
+... INFO -- : <AEMethod test> I can see 18 VMs
 ```
 
 
@@ -259,7 +259,7 @@ end
 
 ## Summary
 
-This chapter has introduced some of the more minor new features and changes that have occurred since the [Mastering Automation in CloudForms 4.2 and ManageIQ Euwe](https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-2-and-manage/content/) book was published. The remaining sections and chapters in this addendum will discuss the most significant new features.
+This chapter has introduced some of the more minor new features and changes that have occurred since the _Mastering Automation in CloudForms 4.2 and ManageIQ Euwe_ book was published. The remaining sections and chapters in this addendum will discuss the most significant new features.
 
 ## Further Reading
 

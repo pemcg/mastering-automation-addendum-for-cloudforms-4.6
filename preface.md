@@ -1,6 +1,6 @@
 # Preface
 
-This book is an addendum to the *Mastering Automation in CloudForms 4.2 and ManageIQ Euwe* book, covering the new automate features and functionality available with CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*).
+This book is an addendum to the [Mastering Automation in CloudForms 4.2 and ManageIQ Euwe](https://pemcg.gitbooks.io/mastering-automation-in-cloudforms-4-2-and-manage/content/) book, covering the new automate features and functionality available with CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*).
 
 The book is a work-in-progress. The author welcomes any feedback, suggestions for content, notifications of errors, omissions or inaccuracies to pemcg@redhat.com.
 
