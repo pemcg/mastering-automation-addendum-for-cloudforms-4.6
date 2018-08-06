@@ -1,24 +1,35 @@
-# Sending Notification Messages from Automate
+# Notification Messages
 
-Since CloudForms 4.2 we've had the ability to send notifications to users from an automate method. 
+CloudForms 4.2 introduced the ability for users to see pop-up notifications in the WebUI, and this capability has been expanded considerably with CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*). In this chapter we'll look at how these notication pop-ups can be sent to users from a Ruby Automate method. 
 
+> **Note**
+> 
+> The notifications feature requires the **Websocket** server role to be enabled on all WebUI appliances.
 
+## Sending Notifications from Automate
 
-
-The message are sent using `$evm.create_notification`, and specifying one or more arguments, for example:
+Notification messages can be sent using `$evm.create_notification`, specifying one or more arguments, for example:
  
 ``` ruby
 $evm.create_notification(:audience => 'user', :message => "Here is a message")
 ```
 
-The notifications appear in a little pop-up in the top right-hand corner of the WebUI, for example:
+This will result in a notification pop-up appearing in the top right-hand corner of the WebUI (see [Pop-Up Notification](#i1)).
 
-![New Attributes in Use](images/screenshot1.png)
+![Pop-Up Notification](images/screenshot1.png)
 
+The call to `$evm.create_notification` can take several arguments.
  
 ### Audience
  
-The `:audience` argument determines which users can see the message. It is optional, if no `:audience` is specified then the default is 'user'. The options can be 'tenant', 'group', 'user', 'global' or 'superadmin', and this is relative to the user context that the automation method is running in (i.e `$evm.root['user']`). For example `:audience => 'group'` will be sent to all users in the same group as the user running the current automation method.
+The `:audience` argument determines which users can see the message. It is optional; if no `:audience` is specified then the default is 'user'. The options can be 'tenant', 'group', 'user', 'global' or 'superadmin', and this is relative to the user context that the automation method is running in (i.e `$evm.root['user']`). 
+
+As an example, `:audience => 'tenant'` will be sent to all users in the same tenant as the user running the current automation method.
+
+> **Note**
+> 
+> The argumemnt `:audience => 'group'` is intended specifically for use with the message type arguments `:type => :request_approved` or `:type => :request_denied`. Although `:audience => 'group'` can be used for user-generated messages, if it is used then the `$evm.create_notification` call must also contain a `:subject` argument whose value is a request-like object (it must return a valid user object when queried with `requester`).
+
  
 ### Level
  
@@ -30,7 +41,11 @@ There is an optional `:message` argument that can specify the message to be sent
  
 ### Subject
 
-The `:subject` argument
+The `:subject` argument is required by some message types, and should refer to the object about which the message pertains, for example:
+
+``` ruby
+$evm.create_notification(:type => :automate_vm_provisioned, :subject => $evm.root['vm'])
+```
 
 ### Type
  
@@ -99,13 +114,16 @@ vmdb_production=# select name,level,audience,message from notification_types;
 (54 rows)
 ```
 
-Some examples of the use of the `:type` argument are as follows:
+The `:type` argument can be used as follows:
 
 ``` ruby
-$evm.create_notification(:type => :automate_vm_provisioned, :subject => $evm.root['vm'])
 $evm.create_notification(:type => :automate_tenant_success, :message => 'test')
 ```
 ## The Bang Form
 
-There is a bang form of the method - `$evm.create_notification!` - that raises an error if it can't display the notification (the normal `$evm.create_notification` form just returns nil if it can't display)
+There is a bang form of the method - `$evm.create_notification!` - that raises an error if it fails to display the notification (the normal `$evm.create_notification` form just returns `nil` on failure).
+
+## Summary
+
+This chapter has introduced the notifications feature of CloudForms and ManageIQ, and how it can be used from Automate. Notification pop-ups are very useful, and can be used to notify users at various stages of a workflow, particularly of abnormal conditions such as workflow errors. 
 
