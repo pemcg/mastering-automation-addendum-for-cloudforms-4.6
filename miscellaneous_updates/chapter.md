@@ -41,7 +41,9 @@ service_now_task_service(service, server, username, password, *params)
 
 Ruby Automate methods run in a fully privileged mode by default, and are not subject to the in-built CloudForms or ManageIQ role-based access control. In most cases this is desirable, as automate workflows often need privileged access to objects such as a VMware vCenter external management system, and this is why the **Automation -> Automate** section of the WebUI is restricted to admin-level user roles.
 
-In some cases however admins are required to write Ruby methods that less privileged users will run (for example a dynamic service dialog method), and in this situation it can be advantageous to conditionally enable RBAC so that VMDB searches are always performed in the correct user context. CloudForms 4.5 (ManageIQ *Fine*) introduced three new `$evm` methods to facilitate this:
+In some cases however admins are required to write Ruby methods that less privileged users will run to display visible objects, for example when populating a dynamic service dialog element. In this situation it can be advantageous to conditionally enable RBAC so that VMDB searches are always performed in the correct user context. 
+
+CloudForms 4.5 (ManageIQ *Fine*) introduced three new `$evm` methods to facilitate this:
 
 
 ``` ruby
