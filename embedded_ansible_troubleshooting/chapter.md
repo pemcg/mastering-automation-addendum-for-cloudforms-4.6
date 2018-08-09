@@ -73,9 +73,20 @@ irb(main):003:0> MiqDatabase.first.ansible_admin_authentication.password
 
 Ansible Inside license is also randomly generated during this initial configuration.
 
+### Virtual Environment
+
+AWX maintains all playbooks and python libraries in a virtual environment under _/var/lib/awx/venv_. To install or update anything in the virtual environment the `activate/deactivate` commands should be used, as follows:
+
+```
+source /var/lib/awx/venv/ansible/bin/activate
+umask 0022
+pip install --upgrade pywinrm
+deactivate
+```
+
 ## Troubleshooting the Embedded Ansible Jobs
 
-### Log Files
+### Job Log Files
 
 Each time an embedded Ansible playbook runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
 
@@ -93,31 +104,35 @@ Each time an embedded Ansible playbook runs, up to three _.out_ files are create
 [root@cloudforms job_status]#
 ```
 
-### Log output to evm.log
+The directory can be monitored for new files using the command `watch "ls -lrt | tail -10"`
 
+### Log Output to _evm.log_
+
+The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see [Adding an OpenStack Cloud Credential](#i1)).
+
+![Adding an OpenStack Cloud Credential](images/screenshot1.png)
 
 ### Logging Verbosity
 
-### Max_ttl too short
+The desired log verbosity can be selected when the playbook service or method is created or edited (see [Setting Logging Verbosity](#i1)).
 
-https://access.redhat.com/articles/3055471
+![Setting Logging Verbosity](images/screenshot2.png)
 
-https://mojo.redhat.com/docs/DOC-1153940
+This log verbosity affects the output to the job _*.out_ file as well as any log output to _evm.log_.
 
+### Max TTL Too Low
 
-### Virtual Environment
-
-/var/lib/awx/venv
+If the **Max TTL (mins)** value for a playbook method is too low the _ManageIQ::Providers::EmbeddedAnsible::AutomationManager::PlaybookRunner_ class will terminate the playbook job with an error such as:
 
 ```
-source /var/lib/awx/venv/ansible/bin/activate
-umask 0022
-pip install --upgrade pywinrm
-deactivate
+Automation Error: job timed out after 96.890827024 seconds of inactivity. Inactivity threshold [60 seconds]
 ```
 
+The  **Max TTL (mins)** value should be increased in the Ansible playbook method definition.
 
-### Appliance not responding
+### Workspace Initialization Errors
+
+The `manageiq-automate` and `manageiq-vmdb` modules can occasionally 
 
 ```
 TASK [syncrou.manageiq-automate : Initialize the Workspace] ********************
@@ -130,3 +145,8 @@ fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "module_stderr
 
 ## Summary
 
+
+
+## Further Reading
+
+[Debugging Ansible Automation Inside CloudForms](https://access.redhat.com/articles/3055471)
