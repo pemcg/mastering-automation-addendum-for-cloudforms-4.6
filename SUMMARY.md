@@ -16,7 +16,7 @@
   * [ManageIQ Ansible Modules](embedded_ansible_modules/chapter.md)
   * [Ansible Playbook Methods](embedded_ansible_playbook_methods/chapter.md)
   * [Calling a Playbook Method from the VM Provision State Machine](embedded_ansible_integrating_with_the_vm_provision_state_machine/chapter.md)
-  * [Using Cloud Credentials](embedded_ansible_cloud_credentials/chapter.md)
+  * [Using Cloud Credentials](embedded_ansible_using_cloud_credentials/chapter.md)
   * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md)
   * [Troubleshooting](embedded_ansible_troubleshooting/chapter.md.wip)
 * [Generic Objects](generic_objects.md.wip)
