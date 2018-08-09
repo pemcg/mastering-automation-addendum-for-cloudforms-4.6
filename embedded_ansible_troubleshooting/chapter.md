@@ -55,7 +55,7 @@ irb(main):003:0>
 /var/log/tower/
 ```
 
-Also there is some logging within evm.log located /var/www/miq/vmdb/log/
+Also there is some logging within _/var/www/miq/vmdb/log/evm.log_
 
 Supervisord configuration for Tower is located in _/etc/supervisord.d/tower.ini_
 
@@ -77,7 +77,7 @@ Ansible Inside license is also randomly generated during this initial configurat
 
 ### Log Files
 
-Each time an embedded Ansible playbook runs up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
+Each time an embedded Ansible playbook runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
 
 ```
 ...
