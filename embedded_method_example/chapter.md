@@ -1,12 +1,10 @@
 # Embedded Method Example
 
-Embedded methods are particularly useful to use if a set of reusable _library_ methods each need several supporting methods to implement their functionality. The supporting methods do not need to be made visible to the caller Automate Method.
+Embedded methods are particularly useful if a set of reusable _library_ methods each need several supporting methods to implement their functionality. The supporting methods do not need to be made visible to the caller Automate method.
 
 The following is an example of such an embedded method definition. It has only two callable public methods, `vnic_profile` and `vnic_profiles`, however these both use the functionality of the _ovirtsdk4_ gem to communicate with a RHV Manager, and therefore require several private methods to setup the connection and manage the ovirtsdk services.
 
 The embedded class is written with an initializer to allow the caller to pass in the object or ID identifying rhe RHV provider to communicate with (there could be multiple RHV providers in a system).
-
-
 
 The embedded method is as follows:
 
@@ -100,7 +98,7 @@ end
 
 ## Invoking the Embedded Methods
 
-The embedded method path is first added to the definition of the Automate Method that is to invoke the library methods (see [Embedded Method](#i1)).
+The embedded method path is first added to the definition of the Automate method that is to invoke the library methods (see [Embedded Method](#i1)).
 
 ![Embedded Method](images/screenshot1.png)
 
@@ -174,4 +172,4 @@ request_id = $evm.execute('create_provision_request', *args)
 
 ## Summary
 
-This chapter has shown how an embedded method can be used to encapsulate private or support code but still expose useful public library methods that can be invoked externally. Prior to the advent of embedded methods the connection and service methods would have needed to be defined in any Automate Method that used the functionality of the _ovirtsdk4_ gem. 
+This chapter has shown how an embedded method can be used to encapsulate private or support code but still expose useful public library methods that can be invoked externally. Prior to the advent of embedded methods the connection and service methods would have needed to be defined in any Automate method that used the functionality of the _ovirtsdk4_ gem. 
