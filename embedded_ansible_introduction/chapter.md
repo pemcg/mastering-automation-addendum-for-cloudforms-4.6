@@ -150,6 +150,45 @@ changed: [localhost]
 ...
 ```
 
+## Embedded Ansible Configuration
+
+Embedded Ansible has a small customisation section in the **Configuration -> Advanced** settings list, as follows:
+
+```
+:embedded_ansible:
+  :job_data_retention_days: 120
+  :docker:
+    :task_image_name: ansible/awx_task
+    :task_image_tag: latest
+    :web_image_name: ansible/awx_web
+    :web_image_tag: latest
+    :rabbitmq_image_name: rabbitmq
+    :rabbitmq_image_tag: 3
+    :memcached_image_name: memcached
+    :memcached_image_tag: alpine
+```
+
+Although most settings would not need changing in normal operation, the `job_data_retention_days` value may need adjusting on a busy CFME or ManageIQ appliance. This determines the retention time in days that the playbook _.out_ files are kept for in _/var/lib/awx/job\_status_ (see Troubleshooting chapter). On a busy system running many verbose playbooks, the number of _.out_ files may consume significant space on the system disk, in which case the `job_data_retention_days` value should be reduced accordingly.
+
+> **Note**
+> 
+> The playbook output for an embedded Ansible service is shown in the service's **Provisioning** or **Retirement** tab in the **Services -> My Services** page in the WebUI. This output is read directly from the corresponding job's _.out_ file, and so once the _*.out_ files are purged, the output is longer visible from the service details in the WebUI.
+> 
+
+## Events
+
+The following events are emitted from the embedded Ansible engine:
+
+```
+System/Event/EmsEvent/EMBEDDEDANSIBLE/job_create
+System/Event/EmsEvent/EMBEDDEDANSIBLE/job_template_associate
+System/Event/EmsEvent/EMBEDDEDANSIBLE/job_template_create
+System/Event/EmsEvent/EMBEDDEDANSIBLE/job_template_delete
+System/Event/EmsEvent/EMBEDDEDANSIBLE/project_update_associate
+```
+
+Although none are handled by default in the event switchboard, an event handler could be created if required to perform actions on receipt of such an event.
+
 ## Summary
 
 This chapter has presented an overview of the new embedded Ansible functionality. It has also described how to add SCM repositories so that Ansible playbooks can be imported into CloudForms / ManageIQ, and machine credentials to allow playbooks to run on a managed node. These are the prerequisite steps to being able to run Ansible playbooks as services or automation methods.
