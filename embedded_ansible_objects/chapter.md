@@ -17,37 +17,57 @@ The current AWX-based implementation uses several service models, including the 
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager` object for each embedded Ansible provider in the region.
 
-Useful Associations: `configured_systems`, `ems_events`, `ems_folders`, `provider` and `tenant` 
+Useful Associations: `configured_systems`, `ems_events`, `ems_folders`, `provider` and `tenant`
 
-### ConfigurationScript
+href_slug: `providers/<id>`
+
+### Configuration Script
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfigurationScript` object for each provision or retirement script defined for an embedded Ansible service.
 
 Useful Associations: `inventory_root_group` and `manager`.
 
-### ConfiguredSystem
+href_slug: none
+
+### Configured System
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfiguredSystem` object for each managed node that a job has run on (the _host_ for the job).
 
 Useful Associations: `manager`
 
-### MachineCredential
+href_slug: none
+
+### Machine Credential
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_MachineCredential` object per defined machine credential.
 
 Associations: none
 
-### InventoryRootGroup
+href_slug: `authentications/<id>`
+
+### Inventory Root Group
 
 There is one `ManageIQ_Providers_AutomationManager_InventoryRootGroup` object for each dynamic inventory created.
 
 Useful Associations: `configuration_scripts`, `hosts`, `manager` and `vms`
 
-### Playbook
+href_slug: none
 
-There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_Playbook` object for each playbook imported from the configured repositories.
+### Playbook (aka Configuration Script Payload)
+
+There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_Playbook` object for each playbook imported from a configured SCM repository.
 
 Useful Associations: `inventory_root_group` and `manager`.
+
+href_slug: `configuration_script_payloads/<id>`
+
+### Configuration Script Source
+
+There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfigurationScriptSource` object for each configured SCM repository.
+
+Useful Associations: `manager`
+
+href_slug: `configuration_script_sources/<id>`
 
 ### Job
 
@@ -55,17 +75,23 @@ There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_Job` object c
 
 Useful Associations: `ext_management_system`, `parameters` and `resources`.
 
+href_slug: `orchestration_stacks/<id>`
+
 ### Job Parameter
 
-There is one `OrchestrationStackParameter` object created for each parameter passed into a job.
+There is one `OrchestrationStackParameter` object created for each parameter passed into a job. Each object has a `value` attribute that contains the parameter's value.
 
 Useful Associations: `stack` (the job)
+
+href_slug: none
 
 ### Job Resource
 
-There is one `OrchestrationStackResource` object for each playbook that a job runs.
+There is one `OrchestrationStackResource` object for each playbook that a job runs. Each object has a `resource_category` attribute of "job_play" and a `resource_status` attribute that indicates the play's status (i.e "successful")
 
 Useful Associations: `stack` (the job)
+
+href_slug: none
 
 ### Service Template Ansible Playbook
 
@@ -77,6 +103,8 @@ This object's options hash contains the default configuration settings for the s
 $evm.root['service_template_ansible_playbook'].options[:config_info] = {:provision=>{:repository_id=>"14", :playbook_id=>"197", :credential_id=>"11", :hosts=>"localhost", :verbosity=>"0", :log_output=>"on_error", :extra_vars=>{:package=>{:default=>"from_service"}}, :execution_ttl=>"", :become_enabled=>true, :dialog_id=>"31", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/provision"}, :retirement=>{:remove_resources=>"yes_without_playbook", :verbosity=>"0", :log_output=>"on_error", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"}}   (type: Hash)
 ```
 Useful Associations: `services` and `tenant`
+
+href_slug: `service_templates/<id>`
 
 
 ### Service Ansible Playbook
@@ -92,6 +120,8 @@ $evm.root['service_ansible_playbook'].options[:provision_job_options] = {"hosts"
 ```
 
 Useful Associations: `root_service`, `service_resources`, `service_template` and `tenant`
+
+href_slug: `services/<id>`
 
 ## Summary
 
