@@ -12,7 +12,7 @@ Once the method **Type** of **playbook** has been selected the method definition
 
 ### Max TTL (mins)
 
-For a playbook method a value for **Max TTL (mins)** should always be entered; a running playbook will be terminated after this time value. In CFME 5.9.3 the default is 0 minutes.
+For a playbook method a value for **Max TTL (mins)** should always be entered; a running playbook will be terminated after this time. In CFME 5.9.3 the default is 0 minutes.
 
 > **Note**
 > 

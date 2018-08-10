@@ -1,13 +1,14 @@
 # Troubleshooting Embedded Ansible
 
-This chapter contains
+This chapter contains some miscellaneous troubleshooting tips for the embedded Ansible Automation engine, and for the running playbooks themselves.
 
 ## Troubleshooting the Embedded Ansible Engine (AWX)
 
+When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible Automation engine - which is based on the AWX project - is running correctly.
 
-### AWX processes 
+### AWX Processes 
 
-The AWX processes are managed by supervisord:
+The AWX processes are managed by supervisord, and can be checked using `supervisorctl` as follows:
 
 ```
 # supervisorctl
@@ -21,18 +22,21 @@ tower-processes:awx-uwsgi               RUNNING   pid 17392, uptime 20 days, 3:1
 supervisor>
 ```
 
+The supervisord configuration is located in _/etc/supervisord.d/tower.ini_.
 
-### AWX services
+### AWX Services
+
+There are three systemd services associated with AWX, as follows:
+
 ```
 systemctl status supervisord
 systemctl status nginx
 systemctl status rabbitmq-server
 ```
 
+### Rails Console Checks
 
-### Rails console checks
-
-The Rails `EmbeddedAnsible.new.running?` method checks that the supervisord, nginx and rabbitmq-server services are running correctly.
+The health of AWX can be checked from the Rails. The `EmbeddedAnsible.new.running?` method checks that the supervisord, nginx and rabbitmq-server services are running correctly.
 
 ```
 irb(main):001:0> EmbeddedAnsible.new.running?
@@ -44,38 +48,31 @@ The Rails `EmbeddedAnsible.new.alive?` method pings the Ansible server using the
 ```
 irb(main):002:0> EmbeddedAnsible.new.alive?
 => true
-irb(main):003:0>
 ```
 
+### AWX Logs
 
-### Ansible Tower logs
+The AWX services write to 2 log files:
 
 ```
 /var/log/supervisor/
 /var/log/tower/
 ```
 
-Also there is some logging within _/var/www/miq/vmdb/log/evm.log_
-
-Supervisord configuration for Tower is located in _/etc/supervisord.d/tower.ini_
-
-AWX installation was executed from _/opt/ansible-installer/_
+There is also some AWX-related logging in _/var/www/miq/vmdb/log/evm.log_.
 
 ### AWX Authentication Settings
 
-The AWX password is randomly generated during role enabling/installation.
-The admin creds are used to access the ansibleapi, use rails console to retrieve the password using:
+The AWX `admin` account password is randomly generated during installation (when the **Embedded Ansible** server role is first enabled), and these credentials are used by CloudForms / ManageIQ to access the internal AWX API. If required for troubleshooting purposes the password string can be retrieved using the Rails console, for example:
 
 ```
 irb(main):003:0> MiqDatabase.first.ansible_admin_authentication.password
 => "TxaUkrPwmLWNMCDyyimVSL8b"
 ```
 
-Ansible Inside license is also randomly generated during this initial configuration.
-
 ### Virtual Environment
 
-AWX maintains all playbooks and python libraries in a virtual environment under _/var/lib/awx/venv_. To install or update anything in the virtual environment the `activate/deactivate` commands should be used, as follows:
+AWX maintains all playbooks and python libraries in a virtual environment under _/var/lib/awx/venv_. To install or update anything in the virtual environment the `activate/deactivate` commands should be used, for example:
 
 ```
 source /var/lib/awx/venv/ansible/bin/activate
@@ -84,11 +81,13 @@ pip install --upgrade pywinrm
 deactivate
 ```
 
-## Troubleshooting the Embedded Ansible Jobs
+## Troubleshooting Embedded Ansible Jobs
+
+Each invocation of an embedded Ansible playbook service or method is implemented by the running of an embedded Ansible job.
 
 ### Job Log Files
 
-Each time an embedded Ansible playbook runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
+Each time an embedded Ansible job runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
 
 ```
 ...
@@ -106,13 +105,13 @@ Each time an embedded Ansible playbook runs, up to three _.out_ files are create
 
 The directory can be monitored for new files using the command `watch "ls -lrt | tail -10"`
 
-### Log Output to _evm.log_
+#### Log Output to _evm.log_
 
 The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see [Adding an OpenStack Cloud Credential](#i1)).
 
 ![Adding an OpenStack Cloud Credential](images/screenshot1.png)
 
-### Logging Verbosity
+#### Logging Verbosity
 
 The desired log verbosity can be selected when the playbook service or method is created or edited (see [Setting Logging Verbosity](#i1)).
 
@@ -128,11 +127,11 @@ If the **Max TTL (mins)** value for a playbook method is too low the _ManageIQ::
 Automation Error: job timed out after 96.890827024 seconds of inactivity. Inactivity threshold [60 seconds]
 ```
 
-The  **Max TTL (mins)** value should be increased in the Ansible playbook method definition.
+The  **Max TTL (mins)** value should set the maximum expected run-time in the Ansible playbook method definition.
 
 ### Workspace Initialization Errors
 
-The `manageiq-automate` and `manageiq-vmdb` modules can occasionally 
+The `manageiq-automate` and `manageiq-vmdb` modules can fail to connect (or authenticate) back to a valid API endpoint if the `manageiq.api_url` playbook variable contains the IP address of a different appliance to the one that launched the playbook. An error similar to the following is seen in the playbook output:
 
 ```
 TASK [syncrou.manageiq-automate : Initialize the Workspace] ********************
@@ -140,12 +139,17 @@ An exception occurred during task execution. To see the full traceback, use -vvv
 fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "module_stderr": "Traceback (most recent call last):\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 510, in <module>\n    main()\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 502, in main\n    result = getattr(workspace, key)(value)\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 408, in initialize_workspace\n    workspace = self.get()\n  File \"/tmp/ansible_xVSkWs/ansible_module_manageiq_automate.py\", line 92, in get\n    return json.loads(result.read())\nAttributeError: 'NoneType' object has no attribute 'read'\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 0}
 ```
 
+In a multi-appliance region the value of `manageiq.api_url` could be randomly set to any appliance with the **Web Services** server role enabled. The value of the `manageiq.api_token` variable is used to authenticate the connection request back to the API, but this could fail unless the **Configuration -> Advanced** `session_store` setting is set to "sql" on _every_ appliance with the **Web Services** role enabled.
 
+> **Note**
+> 
+> The evmserverd service must be restarted after changing the **Configuration -> Advanced** `session_store` setting.
 
+The `manageiq-automate` and `manageiq-vmdb` modules can also fail with the same error if the server at the `manageiq.api_url` is experiencing problems with its `evmserverd` service, or if the server or its service has been stopped less than 10 minutes prior to the connection attempt.
 
 ## Summary
 
-
+This chapter has described some of the troubleshooting steps that can be taken to diagnose problems when running Ansible playbook methods or services.
 
 ## Further Reading
 
