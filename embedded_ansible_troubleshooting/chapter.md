@@ -4,7 +4,11 @@ This chapter contains some miscellaneous troubleshooting tips for the embedded A
 
 ## Troubleshooting the Embedded Ansible Engine (AWX)
 
-When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible Automation engine - which is based on the AWX project - is running correctly.
+When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible Automation engine - which is based on the AWX project - is running correctly. Although the **Embedded Ansible** server role can be started on several appliances in a region, it will only be active on one appliance. 
+
+The troubleshooting steps should be carried out on the appliance with the active **Embedded Ansible** role. The server with the currently active role can be determined from the **Configuration ->** (accordion) **Diagnostics ->** (highlight) **Region -> Servers by Roles** tab (see [Servers by Roles in Region](#i1)).
+
+![Servers by Roles in Region](images/screenshot3.png)
 
 ### AWX Processes 
 
@@ -36,7 +40,7 @@ systemctl status rabbitmq-server
 
 ### Rails Console Checks
 
-The health of AWX can be checked from the Rails. The `EmbeddedAnsible.new.running?` method checks that the supervisord, nginx and rabbitmq-server services are running correctly.
+The health of AWX can be checked from Rails. The `EmbeddedAnsible.new.running?` method checks that the supervisord, nginx and rabbitmq-server services are running correctly.
 
 ```
 irb(main):001:0> EmbeddedAnsible.new.running?
