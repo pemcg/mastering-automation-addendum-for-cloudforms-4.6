@@ -17,19 +17,19 @@ The current AWX-based implementation uses several service models, including the 
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager` object for each embedded Ansible provider in the region.
 
-Associations: `configuration_profiles`, `configured_systems`, `customization_specs`, `ems_clusters`, `ems_events`, `ems_folders`, `hosts`, `iso_datastore`, `miq_templates`, `provider`, `resource_pool`, `storages`, `tenant` and `vms`
+Useful Associations: `configured_systems`, `ems_events`, `ems_folders`, `provider` and `tenant` 
 
 ### ConfigurationScript
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfigurationScript` object for each provision or retirement script defined for an embedded Ansible service.
 
-Associations: `inventory_root_group` and `manager`.
+Useful Associations: `inventory_root_group` and `manager`.
 
 ### ConfiguredSystem
 
-There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfiguredSystem` object for each managed node that a playbook is run on.
+There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_ConfiguredSystem` object for each managed node that a job has run on (the _host_ for the job).
 
-Associations: `computer_system`, `configuration_location`, `configuration_profile`, `customization_script_medium`, `customization_script_ptable`, `manager` and `operating_system_flavor`
+Useful Associations: `manager`
 
 ### MachineCredential
 
@@ -41,31 +41,57 @@ Associations: none
 
 There is one `ManageIQ_Providers_AutomationManager_InventoryRootGroup` object for each dynamic inventory created.
 
-Associations: `configuration_scripts`, `hosts`, `manager` and `vms`
+Useful Associations: `configuration_scripts`, `hosts`, `manager` and `vms`
 
 ### Playbook
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_Playbook` object for each playbook imported from the configured repositories.
 
-Associations: `inventory_root_group` and `manager`.
+Useful Associations: `inventory_root_group` and `manager`.
 
 ### Job
 
 There is one `ManageIQ_Providers_EmbeddedAnsible_AutomationManager_Job` object created for each job that’s run. The object derives from an `OrchestrationStack` object, and has a useful `job.stdout` virtual column that contains the job's text output.
 
-Associations: `ext_management_system`, `outputs`, `parameters` and `resources`.
+Useful Associations: `ext_management_system`, `parameters` and `resources`.
 
 ### Job Parameter
 
 There is one `OrchestrationStackParameter` object created for each parameter passed into a job.
 
-Associations: `stack` (the job)
+Useful Associations: `stack` (the job)
 
 ### Job Resource
 
 There is one `OrchestrationStackResource` object for each playbook that a job runs.
 
-Associations: `stack` (the job)
+Useful Associations: `stack` (the job)
+
+### Service Template Ansible Playbook
+
+There is one `ServiceTemplateAnsiblePlaybook` object for each service catalog item of type 'Ansible Playbook'.
+
+This object's options hash contains the default configuration settings for the service, for example:
+
+```
+$evm.root['service_template_ansible_playbook'].options[:config_info] = {:provision=>{:repository_id=>"14", :playbook_id=>"197", :credential_id=>"11", :hosts=>"localhost", :verbosity=>"0", :log_output=>"on_error", :extra_vars=>{:package=>{:default=>"from_service"}}, :execution_ttl=>"", :become_enabled=>true, :dialog_id=>"31", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/provision"}, :retirement=>{:remove_resources=>"yes_without_playbook", :verbosity=>"0", :log_output=>"on_error", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"}}   (type: Hash)
+```
+Useful Associations: `services` and `tenant`
+
+
+### Service Ansible Playbook
+
+There is one `ServiceAnsiblePlaybook` object for each ordered service of type 'Ansible Playbook'.
+
+This object's options hash contains the default configuration settings for the service, the dialog options that were input when ordered, and the provision job options, for example:
+
+```
+$evm.root['service_ansible_playbook'].options[:config_info] = {:provision=>{:repository_id=>"14", :playbook_id=>"214", :credential_id=>"8", :hosts=>"localhost", :verbosity=>"0", :log_output=>"on_error", :extra_vars=>{}, :execution_ttl=>"", :become_enabled=>false, :dialog_id=>"40", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/provision"}, :retirement=>{:remove_resources=>"yes_without_playbook", :verbosity=>"0", :log_output=>"on_error", :fqname=>"/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"}}   (type: Hash)
+$evm.root['service_ansible_playbook'].options[:dialog] = {"dialog_param_firewall_group"=>"46", "dialog_param_go_name"=>"rhv-net", "dialog_param_description"=>"RHV Network", "dialog_param_network"=>"172.16.1.0/24"}   (type: Hash)
+$evm.root['service_ansible_playbook'].options[:provision_job_options] = {"hosts"=>"localhost", "extra_vars"=>{"firewall_group"=>"46", "go_name"=>"rhv-net", "description"=>"RHV Network", "network"=>"172.16.1.0/24"}}   (type: ActiveSupport::HashWithIndifferentAccess)
+```
+
+Useful Associations: `root_service`, `service_resources`, `service_template` and `tenant`
 
 ## Summary
 
