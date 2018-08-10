@@ -144,7 +144,7 @@ As can be seen, all of the workspace variables that are typically accessed fom a
 The `manageiq-automate` role allows an Ansible playbook to interact with the workspace. The role provides the following modules:
 
 
-*  object\_exist
+*  object\_exists
 *  attribute\_exists
 *  state\_var\_exists
 *  method\_parameter\_exists
