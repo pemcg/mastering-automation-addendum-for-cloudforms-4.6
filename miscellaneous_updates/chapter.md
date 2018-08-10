@@ -29,12 +29,10 @@ $evm.execute('create_service_provision_request', service_template, options)
 
 The following `service_now_*` methods have been removed and are no longer available to run from `$evm.execute`:
 
-```
-service_now_eccq_insert(server, username, password, agent, queue, topic, name, source, *params)
-service_now_task_get_records(server, username, password, *params)
-service_now_task_update(server, username, password, *params)
-service_now_task_service(service, server, username, password, *params)
-```
+* service\_now\_eccq\_insert
+* service\_now\_task\_get\_records
+* service\_now\_task\_update
+* service\_now\_task\_service
 
 
 ### Role-Based Access Control (RBAC)
@@ -45,12 +43,9 @@ In some cases however admins are required to write Ruby methods that less privil
 
 CloudForms 4.5 (ManageIQ *Fine*) introduced three new `$evm` methods to facilitate this:
 
-
-``` ruby
-$evm.rbac_enabled?
-$evm.enable_rbac
-$evm.disable_rbac
-```
+* rbac_enabled?
+* enable_rbac
+* disable_rbac
 
 The use of these methods can be illustrated with the following Ruby snippet:
 
