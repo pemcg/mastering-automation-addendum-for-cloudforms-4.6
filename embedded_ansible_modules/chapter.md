@@ -19,11 +19,11 @@ The following Galaxy roles are compatible with Ansible 2.4 and later:
 
 #### manageiq-vmdb
 
-The [manageiq-vmdb](https://galaxy.ansible.com/syncrou/manageiq-vmdb) role allows for users of CloudForms/ManageIQ to modify and/or change VMDB objects via an Ansible Playbook
+The [manageiq-vmdb](https://galaxy.ansible.com/syncrou/manageiq-vmdb) role allows for users of CloudForms/ManageIQ to modify and/or change VMDB objects via an Ansible Playbook.
 
 #### manageiq-automate
 
-The [manageiq-automate](https://galaxy.ansible.com/syncrou/manageiq-automate) role allows for users of CloudForms/ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook
+The [manageiq-automate](https://galaxy.ansible.com/syncrou/manageiq-automate) role allows for users of CloudForms/ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
 
 These roles are very useful when using Embedded Ansible playbook methods.
 
@@ -32,13 +32,13 @@ These roles are very useful when using Embedded Ansible playbook methods.
 The following modules are supplied with Ansible 2.5, and so will be compatible with the version of Ansible supplied with a future version of CloudForms/ManageIQ:
 
 
-The [manageiq\_alert\_profiles](http://docs.ansible.com/ansible/latest/modules/manageiq_alert_profiles_module.html) module supports adding, updating and deleting alert profiles in CloudForms/ManageIQ
+The [manageiq\_alert\_profiles](http://docs.ansible.com/ansible/latest/modules/manageiq_alert_profiles_module.html) module supports adding, updating and deleting alert profiles in CloudForms/ManageIQ.
 
-The [manageiq\_alerts](http://docs.ansible.com/ansible/latest/modules/manageiq_alerts_module.html) module supports adding, updating and deleting alerts in CloudForms/ManageIQ
+The [manageiq\_alerts](http://docs.ansible.com/ansible/latest/modules/manageiq_alerts_module.html) module supports adding, updating and deleting alerts in CloudForms/ManageIQ.
 
-The [manageiq\_policies](http://docs.ansible.com/ansible/latest/modules/manageiq_policies_module.html) module supports adding and deleting policy_profiles in CloudForms/ManageIQ
+The [manageiq\_policies](http://docs.ansible.com/ansible/latest/modules/manageiq_policies_module.html) module supports adding and deleting policy_profiles in CloudForms/ManageIQ.
 
-The [manageiq\_tags](http://docs.ansible.com/ansible/latest/modules/manageiq_tags_module.html) module supports adding, updating and deleting tags in CloudForms/ManageIQ
+The [manageiq\_tags](http://docs.ansible.com/ansible/latest/modules/manageiq_tags_module.html) module supports adding, updating and deleting tags in CloudForms/ManageIQ.
 
 ## Further Reading
 

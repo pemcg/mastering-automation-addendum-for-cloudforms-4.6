@@ -58,11 +58,13 @@ When an Ansible playbook is run as an automate method, a number of manageiq-spec
 }
 ```
 
-## Workspace
+## Automate Workspace
 
-The ability to be able to interact with the automate workspace - much like a Ruby automate method - increases the versatility of Ansible playbook methods and allows Ruby and Ansible methods to be interspersed in the same state machines or workflows.
+The Automate workspace is a memory region containing all objects associated with an automation workflow. In a Ruby-based workflow the workspace is called `$evm`. As the workflow progresses any objects that are created or accessed are loaded into the workspace, and the workspace is destroyed once the workflow is complete. A workspace is private to an individual workflow; concurrent workflows have no access to each other for security reasons.
 
-A typical json content of the automate workspace as retrieved in the playbook is as follows:
+A workspace can be accessed and edited - with suitable credentials - by an Ansible paybook using the RESTful API. The capability to interact with the Automate workspace, much like a Ruby automate method, increases the versatility of Ansible playbook methods and allows Ruby and Ansible methods to be mixed in the same state machines or workflows.
+
+The typical json content of an automate workspace as retrieved by a playbook is as follows:
 
 ``` yaml
 "json": {
@@ -136,6 +138,31 @@ A typical json content of the automate workspace as retrieved in the playbook is
 ```
 
 As can be seen, all of the workspace variables that are typically accessed fom a Ruby method - for example `$evm.root` attributes such as `ae_state_retries`- are also available from an Ansible playbook method.
+
+### Accessing the Workspace
+
+The `manageiq-automate` role allows an Ansible playbook to interact with the workspace. The role provides the following modules:
+
+
+*  object\_exist
+*  attribute\_exists
+*  state\_var\_exists
+*  method\_parameter\_exists
+*  get\_attribute
+*  get\_decrypted\_attribute
+*  get\_vmdb\_object
+*  get\_object\_names
+*  get\_object\_attribute\_names
+*  get\_state\_var\_names
+*  get\_method\_parameter
+*  get\_decrypted\_method\_parameter
+*  get\_method\_parameters
+*  set\_attribute
+*  set\_encrypted\_attribute
+*  set\_attributes
+*  set\_retry
+*  get\_state\_var
+*  set\_state\_var
 
 ### Passing Values via the Workspace
 
