@@ -111,9 +111,9 @@ The directory can be monitored for new files using the command `watch "ls -lrt |
 
 #### Log Output to _evm.log_
 
-The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see [Adding an OpenStack Cloud Credential](#i1)).
+The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see [Setting Logging Output](#i1)).
 
-![Adding an OpenStack Cloud Credential](images/screenshot1.png)
+![Setting Logging Output](images/screenshot1.png)
 
 #### Logging Verbosity
 
