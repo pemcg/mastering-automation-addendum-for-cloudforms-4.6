@@ -157,4 +157,6 @@ This chapter has described some of the troubleshooting steps that can be taken t
 
 ## Further Reading
 
+[Tower Logfiles](https://docs.ansible.com/ansible-tower/latest/html/administration/logfiles.html)
+
 [Debugging Ansible Automation Inside CloudForms](https://access.redhat.com/articles/3055471)

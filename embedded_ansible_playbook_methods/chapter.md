@@ -12,7 +12,9 @@ Once the method **Type** of **playbook** has been selected the method definition
 
 ### Max TTL (mins)
 
-For a playbook method a value for **Max TTL (mins)** should always be entered; a running playbook will be terminated after this time. In CFME 5.9.3 the default is 0 minutes.
+For a playbook method a value for **Max TTL (mins)** should always be entered; a running playbook will be terminated after this time. In CFME 5.9.3 the default is 0 minutes. 
+
+For playbooks running in a state machine, a retrying state's `ae_retry_interval` is calculated from the **Max TTL** divided by the `ae_state_max_retries` value.
 
 > **Note**
 > 
@@ -28,9 +30,7 @@ Fortunately we can use the automation engine's substitution syntax in the **Host
 
 > **Note**
 > 
-> The automation engine's substitution syntax is `${object#attribute_name}` where `object` can be "/" for the root object, or "" (or ".") for the current object. 
-> 
-> For example a substitution string of `${/#dialog_vm_name}` would take the value of `$evm.root['dialog_vm_name']` at run-time. A substitution string of `${#username}` would take the value of `$evm.object['username']` at run-time.
+> When using the substituted value of the target host's IP address in this way in a VM provisioning workflow, it may be necessary to add a _wait\_for\_ip_ stage in the workflow to give the newly provisioned VM time to boot and get an IP address. The out-of-the-box _/AutomationManagement/AnsibleTower/Operations/StateMachines/Job/wait\_for\_ip_ method can be used for this purpose.
 
 ## Input Parameters
 

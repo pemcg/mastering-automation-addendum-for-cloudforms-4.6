@@ -119,7 +119,15 @@ $evm.root['miq_group'].href_slug = groups/1000000000002
 
 ### Methods with Arguments in Substitution Strings
 
-The automation engine allows substitution strings as instance schema values - for example `${/#miq_provision.placement_auto}` - with the actual value of the variable being substituted at run-time. The substitution syntax does not permit the use of '[' or ']' characters however, so extracting values from hashes by key reference has traditionally been difficult in a substitution string.
+The automation engine allows substitution strings as instance schema values - for example `${/#miq_provision.placement_auto}` - with the actual value of the variable being substituted at run-time. 
+
+> **Note**
+> 
+> The automation engine's substitution syntax is `${object#attribute_name}` where `object` can be "/" for the root object, or "" (or ".") for the current object. 
+> 
+> For example a substitution string of `${/#dialog_vm_name}` would take the value of `$evm.root['dialog_vm_name']` at run-time. A substitution string of `${#username}` would take the value of `$evm.object['username']` at run-time.
+
+The substitution syntax does not permit the use of '[' or ']' characters however, so extracting values from hashes by key reference has traditionally been difficult in a substitution string.
 
 CloudForms 4.5 (ManageIQ *Fine*) introduced the ability to include methods with arguments in a substitution string, for example:
 
@@ -132,6 +140,7 @@ or
 ```
 ${/#service_template_provision_task.destination.stack_options.fetch(:parameters)
 ```
+
 
 ## New Class Schema Field Data Types
 
