@@ -98,7 +98,7 @@ When the dialog is run the user has the option of selecting multiple values from
 
 ### Element Visibility
 
-Elements can be optionally marked as hidden using **Visible** slider from the **Options** tab for a static element, or the **Overridable Options** tab for a dynamic element. Hidden elements are not visible when the dialog is initially loaded, however dynamic element methods can toggle the visibility status for an element to unhide them, perhaps based on the input from a previous element.
+Elements can be optionally marked as hidden using the **Visible** slider from the **Options** tab for a static element, or the **Overridable Options** tab for a dynamic element. Hidden elements are not visible when the dialog is initially loaded, however dynamic element methods can toggle the visibility status for an element to unhide them, perhaps based on the input from a previous element.
 
 The following dynamic method sets an element to be conditionaly visible depending on the input from a previous radio button:
 
@@ -118,3 +118,7 @@ list_values.each do |key, value|
   $evm.object[key] = value
 end
 ```
+
+### Summary
+
+This chapter has discussed the new service dialog functionality with CloudForms 4.6 (ManageIQ *Gaprindashvili*). Dialogs can be created more easily, and to be more dynamic than ever before.
