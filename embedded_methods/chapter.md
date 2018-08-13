@@ -54,8 +54,6 @@ logger.log(:info, "Some text")
 logger.dump_root
 ```
 
-
-
 ### Class Without Initializer
 
 If no unit testing is to be performed on the embedded method then it can be written as a straightforward class method, as follows:
@@ -89,6 +87,40 @@ These embedded methods can be invoked in the following way in a calling method:
 ``` ruby
 Bit63::Automate::Library::Utils::Logger.log(:info, "Some text")
 Bit63::Automate::Library::Utils::Logger.dump_root
+```
+
+### Mixin
+
+The code could be written as a _mixin_ without a class, as follows:
+
+``` ruby
+module Bit63
+  module Automate
+    module Library
+      module Utils
+        
+        def log(level, msg)
+          $evm.log(level, "(location: #{caller_locations(1,1)[0].label}) #{msg}")
+        end
+          
+        def dump_root
+          log("info", "Listing $evm.root Attributes - Begin")
+          $evm.root.attributes.sort.each { |k, v| log("info", "   Attribute - #{k}: #{v}") }
+          log("info", "Listing $evm.root Attributes - End")
+        end
+
+      end
+    end
+  end
+end
+```
+
+The calling method must _include_ the embedded module's module path, which imports the embedded methods into its own namespace. The embedded methods can then be invoked without specifying their module path, for example:
+
+``` ruby
+include Bit63::Automate::Library::Utils
+log(:info, "Some text")
+dump_root
 ```
 
 ### Bare Methods

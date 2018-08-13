@@ -8,7 +8,7 @@ The dialog editor is invoked through the **Automation -> Automate -> Cutomizatio
 
 ## Creating a New Dialog
 
-The empty dialog editor displays the possible selection of element types that can be used as a vertical column along the left-hand side (see [Empty Dialog Editor](#i2)).
+The empty dialog editor displays the list of possible element types as a vertical column along the left-hand side of the editor (see [Empty Dialog Editor](#i2)).
 
 ![Empty Dialog Editor](images/screenshot2.png)
 
@@ -20,7 +20,7 @@ Elements are added to the dialog by dragging from the sidebar and dropping onto 
 
 ![Dragging a Text Box onto the Dialog](images/screenshot3c.png)
 
-Multiple elements can be vertically reorganised within a section by dragging and releasing (elements cannot be dragged between sections).
+Multiple elements can be reorganised within a section by dragging and releasing (elements cannot be dragged between sections).
 
 ### Editing Elements
 
@@ -36,7 +36,7 @@ The **Field Information** tab contains entry fields for general information, and
 
 #### Options Tab
 
-The **Options** tab contains entry fields, sliders and drop-down selections for general element options (see [Options Tab for a Static Element](#i6)).
+The **Options** tab contains entry fields, sliders and drop-down selections that define the element characteristics (see [Options Tab for a Static Element](#i6)).
 
 ![Options Tab for a Static Element](images/screenshot6.png)
 
