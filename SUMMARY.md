@@ -2,7 +2,7 @@
 
 * [Preface](preface.md)
 * [Updates](updates.md.wip)
-  * [New Service Dialog Editor](new_service_dialog_editor/chapter.md.wip)
+  * [New Service Dialog Editor](new_service_dialog_editor/chapter.md)
   * [Custom Button Functionality](custom_buttons/chapter.md.wip)
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md.wip)
   * [Notifications](notifications/chapter.md)
