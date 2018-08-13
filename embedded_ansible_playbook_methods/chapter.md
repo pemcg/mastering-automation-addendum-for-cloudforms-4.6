@@ -14,7 +14,7 @@ Once the method **Type** of **playbook** has been selected the method definition
 
 For a playbook method a value for **Max TTL (mins)** should always be entered; a running playbook will be terminated after this time. In CFME 5.9.3 the default is 0 minutes. 
 
-For playbooks running in a state machine, a retrying state's `ae_retry_interval` is calculated from the **Max TTL** divided by the `ae_state_max_retries` value.
+For playbooks running in a state machine, a retrying state's `ae_retry_interval` is calculated from the **Max TTL** divided by the `ae_state_max_retries` value, as long as neither is zero (the minimum `ae_retry_interval` in this case being 60 seconds).
 
 > **Note**
 > 
