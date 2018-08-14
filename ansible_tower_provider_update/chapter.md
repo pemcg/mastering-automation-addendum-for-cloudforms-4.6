@@ -138,3 +138,7 @@ This chapter has discussed some of the changes to the Ansible Tower provider wit
 ## Further Reading
 
 [Red Hat CloudForms and Ansible Tower In the real world](https://www.redhat.com/it/blog/red-hat-cloudforms-and-ansible-tower-real-world)
+
+[Dynamic Inventories in Ansible](https://www.tigeriq.co/dynamic-inventories-in-ansible/)
+
+[Exposing 'prompt on launch' Inventories from Tower into CloudForms](https://www.tigeriq.co/list-inventories-in-service-dialog-when-they-are-set-to-prompt-on-launch-in-tower/)
