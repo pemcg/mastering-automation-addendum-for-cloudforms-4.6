@@ -114,7 +114,7 @@ The VM's name will be substituted at run-time, however if for any exceptional re
 
 Running a Tower job template on a newly provisoned VM involves the correct and complete synchronisation of two separate inventories: the updated VM list from the provider (such as vCenter) into CloudForms / ManageIQ, and the replication of this using a CloudForms inventory credential to Tower (if **Update on Launch** is set on the inventory).
 
-If for any reason the Tower inventory fails to update, the Tower job will still run to completion with a **Status** of "Successful", but the playbook will fail with "skipping: no hosts matched". In this situation the CloudForms job object will indicate success, and any subsequent Automate workflow stages will proceed, potentially erroneously.
+If for any reason the Tower inventory fails to update, the Tower job will still run to completion with a **Status** of "Successful", but any plays will be skipped with the playbook output message "skipping: no hosts matched". In this situation the CloudForms job object will indicate success, and any subsequent Automate workflow stages will proceed, potentially erroneously.
 
 To mitigate against this risk, any playbook that may be run as part of a post-provision operation can be edited to include the following play as a prefix:
 
