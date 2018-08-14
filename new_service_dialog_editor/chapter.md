@@ -66,7 +66,7 @@ The **Entry Point** field on the **Options** tab presents an Automate Datastore 
 
 ### Optional Help
 
-The **Field Information** tab contains a **Help** box that can be used to populate an informational help box when the dialog is run (see [Setting Help Text](#i11)).
+The **Field Information** tab contains a **Help** box that can be used to populate an informational message when the dialog is run (see [Setting Help Text](#i11)).
 
 ![Setting Help Text](images/screenshot11.png)
 
