@@ -1,6 +1,6 @@
 # Ansible Tower Provider Update
 
-CloudForms 4.2 (ManageIQ *Euwe*) introduced the Ansible Tower provider that allows us to run Tower Job Templates on an external Ansible Tower server. The provider was designated as a **Configuration** provider, along with the Foreman and Satellite provider types.
+CloudForms 4.1 (ManageIQ *Darga*) introduced the Ansible Tower provider that allows us to run Tower Job Templates on an external Ansible Tower server. The provider was designated as a **Configuration** provider, along with the Foreman and Satellite provider types.
 
 Since CloudForms 4.5 (ManageIQ *Fine*) the Ansible Tower provider has been re-designated as an **Automation** provider. The provider explorer and jobs are accessed from **Automation -> Ansible Tower** in the WebUI.
 
@@ -142,3 +142,5 @@ This chapter has discussed some of the changes to the Ansible Tower provider wit
 [Dynamic Inventories in Ansible](https://www.tigeriq.co/dynamic-inventories-in-ansible/)
 
 [Exposing 'prompt on launch' Inventories from Tower into CloudForms](https://www.tigeriq.co/list-inventories-in-service-dialog-when-they-are-set-to-prompt-on-launch-in-tower/)
+
+[Automating Instance Provisioning with CloudForms and Ansible Tower](https://cloudformsblog.redhat.com/tag/tower/)
