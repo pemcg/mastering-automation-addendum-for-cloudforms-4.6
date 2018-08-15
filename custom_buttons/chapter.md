@@ -1,4 +1,4 @@
-# Custom Buttons
+# New Custom Button Functionality
 
 Invoking services and automation workflows from custom buttons has been a very useful feature of CloudForms and ManageIQ for many versions. CloudForms 4.6 (ManageIQ *Gaprindashvili*) has expanded the capabilities of custom buttons in several ways.
 

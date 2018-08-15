@@ -1,3 +1,11 @@
 # Updates
 
-This section decsribes some of the updated functionality to Automate features in CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*)
+This section describes some of the updates to existing Automate features in CloudForms 4.5 & 4.6 (ManageIQ *Fine* & *Gaprindashvili*).
+
+The section contains 5 chapters:
+
+* New Service Dialog Editor
+* New Custom Button Functionality
+* Ansible Tower Provider Updates
+* Notifications
+* Miscellaneous Updates
