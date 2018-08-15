@@ -1,7 +1,7 @@
 # Summary
 
 * [Preface](preface.md)
-* [Updates](updates.md.wip)
+* [Updates](updates.md)
   * [New Service Dialog Editor](new_service_dialog_editor/chapter.md)
   * [Custom Button Functionality](custom_buttons/chapter.md)
   * [Ansible Tower Provider](ansible_tower_provider_update/chapter.md)
