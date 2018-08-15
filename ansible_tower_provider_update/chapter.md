@@ -1,4 +1,4 @@
-# Ansible Tower Provider Updates
+# Ansible Tower Provider Changes
 
 CloudForms 4.1 (ManageIQ *Darga*) introduced the Ansible Tower provider that allows us to run Tower Job Templates on an external Ansible Tower server. The provider was designated as a **Configuration** provider, along with the Foreman and Satellite provider types.
 

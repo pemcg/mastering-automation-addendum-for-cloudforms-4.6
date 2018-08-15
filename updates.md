@@ -6,6 +6,6 @@ The section contains 5 chapters:
 
 * New Service Dialog Editor
 * New Custom Button Functionality
-* Ansible Tower Provider Updates
+* Ansible Tower Provider Changes
 * Notifications
 * Miscellaneous Updates
