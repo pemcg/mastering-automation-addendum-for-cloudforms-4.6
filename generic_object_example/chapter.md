@@ -1,6 +1,8 @@
 # Generic Object Example
 
-In this example we'll use generic objects to represent the components that make up a software-defined networking firewall definition. The firewall software uses the concept of firewall groups to define rules for allowed and denied network connectivity. The firewall groups comprise one or more address groups, network groups and port groups. A typical group definition on the firewall might be as follows:
+In this example we'll use generic objects to represent the components that make up a software-defined networking firewall definition. 
+
+The firewall software uses the concept of firewall groups to define rules for allowed and denied network connectivity. The firewall groups comprise one or more address groups, network groups and port groups. A typical group definition on the firewall might be as follows:
 
 
 ```
@@ -60,7 +62,7 @@ The Network Group generic object class definition is shown in [Network Group Gen
 
 The Port Group generic object class definition is shown in [Port Group Generic Object Definition](#i4)
 
-![Network Group Generic Object Definition](images/screenshot4.png)
+![Port Group Generic Object Definition](images/screenshot4.png)
 
 ## Provisioning the Generic Objects
 
@@ -72,7 +74,7 @@ A Firewall Group generic object is provisioned from a service. The service dialo
 
 ![Service Dialog - Ordering a Firewall Group](images/screenshot6.png)
 
-The Ansible playbook service is provisioned by the following playbook:
+The Ansible playbook service runs the following playbook:
 
 ``` yaml
 ---

@@ -169,7 +169,7 @@ When such an attribute type is used the **Value** field should be an object ID (
 Prior to CloudForms 4.6 (ManageIQ *Gaprindashvili*) all service models were statically defined with a corresponding class definition file in _/var/www/miq/vmdb/lib/miq\_automation\_engine/service\_models_. A new feature with this release has allowed service models to be dynamically defined from the active record class if no service model class definition file exists.
 
 
-## Defining Automate Methods as Classes
+## Defining Automate Methods as Classes {#defining_methods_as_classes}
 
 CloudForms 4.2 (ManageIQ *Euwe*) introduced a new way of writing Ruby Automate methods, as classes within a nested module structure that (approximately) matches the path to the method in the automation datastore. An example of this can be seen with the _/AutomationManagement/AnsibleTower/Operations/StateMachines/Job/wait\_for\_ip_ method, as follows:
 

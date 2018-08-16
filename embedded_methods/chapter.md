@@ -1,6 +1,6 @@
 # Embedded Methods
 
-A useful new feature with CloudForms 4.6 (ManageIQ *Gaprindashvili*) is the ability to be able to create reusable libraries of Ruby automation methods, and include (_embed_) these into other Ruby methods to use. This promotes code re-use, makes methods smaller, avoids code duplication, and simplifies testing.
+A useful new feature with CloudForms 4.6 (ManageIQ *Gaprindashvili*) is the ability to be able to create reusable libraries of Ruby automation methods, and include _(embed)_ these into other Ruby methods to use. This promotes code re-use, makes methods smaller, avoids code duplication, and simplifies testing.
 
 ## Calling an Embedded Method
 
@@ -12,7 +12,7 @@ Once the embedded method has been added, any of its contained methods are availa
 
 ## Writing an Embedded Method
 
-Embedded methods (often called _library_ methods) can be written in several different ways, depending on their intended use. Some use the nested module structure described in [Defining Automate Methods as Classes](../miscellaneous_updates/chapter.md#h1), and as classes containing class methods, although this is not mandatory. Each style of writing has its advantages. The most common styles are as follows.
+Embedded methods (often called _library_ methods) can be written in several different ways, depending on their intended use. Some use the nested module structure described in [Defining Automate Methods as Classes](../miscellaneous_updates/chapter.md#defining_methods_as_classes), and as classes containing class methods, although this is not mandatory. Each style of writing has its advantages. The most common styles are as follows.
 
 ### Class With Initializer
 

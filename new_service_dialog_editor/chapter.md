@@ -74,7 +74,7 @@ When the dialog is run the help text is available from the _i_ icon (see [Displa
 
 ![Displaying Help Text](images/screenshot12.png)
 
-### Fields to Refresh
+### Fields to Refresh {#fields_to_refresh}
 
 Prior to CloudForms 4.6 (ManageIQ *Gaprindashvili*) dynamic service dialog elements could be set to refresh automatically with the **Auto refresh** option. A corresponding option **Auto Refresh other fields when modified** could be defined on other elements that would trigger _all_ **Auto refresh** elements in the dialog to update.
 

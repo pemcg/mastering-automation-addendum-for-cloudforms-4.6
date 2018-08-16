@@ -52,7 +52,9 @@ An input parameter called *arg1* must now be created for the expression method. 
 
 ![Adding the Input Parameter](images/screenshot6.png)
 
-We can edit the service dialog to insert a new drop-down list element with **Label** of _Provider (EMS)_ and a **Name** of _ems_ (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down we can trigger the earlier **VM** element running the _expression\_rhv\_vms_ method to run when a provider is selected. Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
+We can edit the service dialog to insert a new drop-down list element with **Label** of _Provider (EMS)_ and a **Name** of _ems_ (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down (see [Fields to Refresh](../new_service_dialog_editor/chapter.md#fields_to_refresh)) we can trigger the earlier **VM** element running the _expression\_rhv\_vms_ method to run when a provider is selected. 
+
+Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
 
 ![All VMs listed on the Selected Provider](images/screenshot7.png)  
 

@@ -1,6 +1,6 @@
 # Generic Objects
 
-Generic Objects are a very useful new feature of CloudForms 4.6 (ManageIQ *Gaprindashvili*). They allow us to create custom object classes to represent objects that we may work with, but might not necessarily be represented by an out-of-the-box CloudForms / ManageIQ object. An example might be a load balancer, or a firewall group.
+Generic Objects are a very useful new feature of CloudForms 4.6 (ManageIQ *Gaprindashvili*). They allow us to create custom object classes to represent objects that we may work with, but might not necessarily be represented by an out-of-the-box CloudForms / ManageIQ object. An example might be a load balancer, or a software-defined firewall group.
 
 > **Note**
 > 
@@ -292,13 +292,13 @@ The custom button group and button is then visible from the generic object detai
 
 > **Note**
 > 
-> Custom buttons on generic objects are currently only visible when the generic object details are displayed from the **Services** page in the WebUI, and not when viewing the generic object from the **Automation -> Automate -> Generic Objects** menu (see: [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1518187) for further details).
+> At the time of writing custom buttons on generic objects are only visible when the generic object details are displayed from the **Services** page in the WebUI, and not when viewing the generic object from the **Automation -> Automate -> Generic Objects** menu (see [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1518187) for further details).
 > 
-> Custom buttons on generic objects cannot currently display service dialogs when invoked (see [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1595213) for further details).
+> Custom buttons on generic objects cannot display service dialogs when invoked (see [Bugzilla](https://bugzilla.redhat.com/show_bug.cgi?id=1595213) for further details).
 
 ## Deleting Generic Objects
 
-There is currently no way of deleting an instance of a generic object class via the WebUI. This can be done from automate using the `remove_from_vmdb` method on the generic object itself, or from the API by POSTing the following body to the RESTful URI of the generic object:
+There is currently no way of deleting an instance of a generic object via the WebUI. This can however be done from Automate using the `remove_from_vmdb` method on the generic object itself, or from the API by POSTing the following body to the RESTful URI of the generic object:
 
 ``` json
 {
