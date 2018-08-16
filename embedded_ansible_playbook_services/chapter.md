@@ -25,7 +25,7 @@ Once 'Ansible Playbook' is selected, the main service creation dialog is display
 
 ![Service Creation Dialog](images/screenshot2.png)
 
-## Provisioning Tab Options
+## Provisioning Tab Options {#provisioning_tab_options}
 
 The selectable options on the **Provisioning** tab are as follows:
 
