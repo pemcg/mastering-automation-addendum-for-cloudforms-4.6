@@ -129,7 +129,7 @@ $evm.root['service'].options[:dialog] = {"dialog_credential"=>nil, "dialog_hosts
 $evm.root['service'].options[:provision_job_options] = {"hosts"=>"192.168.1.66", "extra_vars"=>{"package"=>"screen"}, "inventory"=>38}   (type: ActiveSupport::HashWithIndifferentAccess)
 ```
 ‍
-It can be seen that _order\_ansible\_playbook_ has used the IP address of the current VM when creating the service template provision request, even though the `$evm.root['dialog_hosts']` value was set to "localhost". The `$evm.root['hosts']` key has taken priority over `$evm.root['dialog_hosts']`.
+It can also be seen that _order\_ansible\_playbook_ has used the IP address of the current VM when creating the service template provision request, even though the `$evm.root['dialog_hosts']` value was set to "localhost". The `$evm.root['hosts']` key has taken priority over `$evm.root['dialog_hosts']`.
 
 The default action is for `$evm.root['hosts']` to take priority if it has been defined as "vmdb_object" (which the **Ansible Playbook** button type sets for us automatically if **Inventory** is set to **Target Machine**).
 
@@ -199,7 +199,7 @@ When the edited dialog is displayed, specify "bind-utils" as the package (see [D
 
 ![Dialog With Options Box Elements Hidden](images/screenshot5.png)
 
-The package installation was successful:
+The playbook runs successfully and the package is installed:
 
 ```
 TASK [Install package] *********************************************************
@@ -211,7 +211,7 @@ PLAY RECAP *********************************************************************
 
 #### Test 4 Investigative Debugging
 
-Examining the _object\_walker_ output shows that the `$evm.root` inputs for _order\_ansible\_playbook_ are just as when the elements were visible. 
+Examining the _object\_walker_ output shows that the `$evm.root` inputs for _order\_ansible\_playbook_ are the same as when the elements were visible. 
 
 The default values are submitted:
 
@@ -267,7 +267,7 @@ $evm.root['service'].options[:provision_job_options] = {"hosts"=>"localhost", "e
 
 This chapter has shown how a custom button can be added to a VM to run an Ansible playbook on that VM. 
 
-Testing various combinations of dialog inputs versus default service and button values can help us gain an understanding of what's happening behind the scenes.
+Testing various combinations of dialog inputs versus default service and button values can help us gain an understanding of what's happening behind the scenes, and which values take priority.
 
 ## Further Reading
 
