@@ -1,12 +1,12 @@
 # Troubleshooting Embedded Ansible
 
-This chapter contains some miscellaneous troubleshooting tips for the embedded Ansible Automation engine, and for the running playbooks themselves.
+This chapter contains some miscellaneous troubleshooting tips for the embedded Ansible automation engine, and for the running playbooks themselves.
 
 ## Troubleshooting the Embedded Ansible Engine (AWX)
 
-When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible Automation engine - which is based on the AWX project - is running correctly. Although the **Embedded Ansible** server role can be started on several appliances in a region, it will only be active on one appliance. 
+When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible automation engine - which is based on the AWX project - is running correctly. Although the **Embedded Ansible** server role can be started on several appliances in a region, it will only be active on one appliance. 
 
-The troubleshooting steps should be carried out on the appliance with the active **Embedded Ansible** role. The server with the currently active role can be determined from the **Configuration ->** (accordion) **Diagnostics ->** (highlight) **Region -> Servers by Roles** tab (see [Servers by Roles in Region](#i1)).
+The troubleshooting steps should be carried out on the appliance with the active **Embedded Ansible** role. The server with the currently active role can be determined from the **Configuration -> Diagnostics** (accordion) **Region -> Servers by Roles** tab (see [Servers by Roles in Region](#i1)).
 
 ![Servers by Roles in Region](images/screenshot3.png)
 
@@ -87,11 +87,11 @@ deactivate
 
 ## Troubleshooting Embedded Ansible Jobs
 
-Each invocation of an embedded Ansible playbook service or method is implemented by the running of an embedded Ansible job.
+Each invocation of an embedded Ansible playbook service or method is implemented by the running of an embedded Ansible (AWX) job.
 
 ### Job Log Files
 
-Each time an embedded Ansible job runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. Depending on the
+Each time an embedded Ansible job runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. 
 
 ```
 ...
@@ -131,11 +131,11 @@ If the **Max TTL (mins)** value for a playbook method is too low the _ManageIQ::
 Automation Error: job timed out after 96.890827024 seconds of inactivity. Inactivity threshold [60 seconds]
 ```
 
-The  **Max TTL (mins)** value should set the maximum expected run-time in the Ansible playbook method definition.
+The  **Max TTL (mins)** value should be set to the maximum expected run-time in the Ansible playbook method definition.
 
 ### Workspace Initialization Errors
 
-The `manageiq-automate` and `manageiq-vmdb` modules can fail to connect (or authenticate) back to a valid API endpoint if the `manageiq.api_url` playbook variable contains the IP address of a different appliance to the one that launched the playbook. An error similar to the following is seen in the playbook output:
+The `manageiq-automate` and `manageiq-vmdb` modules can fail to connect (or authenticate) back to a valid API endpoint if the `manageiq.api_url` playbook variable contains the IP address of a different appliance to the one that launched the playbook. In this situation an error similar to the following is seen in the playbook output:
 
 ```
 TASK [syncrou.manageiq-automate : Initialize the Workspace] ********************

@@ -2,25 +2,25 @@
 
 Given the ability to run embedded Ansible playbooks as methods, it can be useful to include such a playbook into an existing workflow such as the VM Provision state machine.
  
-In this example an Ansible playbook method is used at the AcquireIPAddress state to insert an IP address, netmask and gateway into the VM provisioning workflow. A cloud-init script is then used at first boot to set the values in the new VM using nmcli.
+In this example an Ansible playbook method is used at the **AcquireIPAddress** state to insert an IP address, netmask and gateway into the VM provisioning workflow. A cloud-init script is then used at first boot to set the values in the new VM using `nmcli`.
  
 ## Creating the Instance and Method
  
-A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_
+A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_ (see [acquire\_ip\_address Instance and Method](#i1)).
 
 ![acquire\_ip\_address Instance and Method](images/screenshot1.png)
 
-The input parameters for the playbook method are dynamic. Two parameters `miq_provision_request_id` (the request ID) and `miq_provision_id` (the task ID), are defined as follows:
+The input parameters for the playbook method are dynamic. Two parameters `miq_provision_request_id` (the request ID) and `miq_provision_id` (the task ID), are defined for the method (see [Input Parameters](#i2)).
 
 ![Input Parameters](images/screenshot2.png)
 
-The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine:
+The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine (see [Instance Added to the VM Provision State Machine](#i3)).
 
 ![Instance Added to the VM Provision State Machine](images/screenshot3.png)
 
 ## Inserting the IP Details into the VM Provision Workflow
  
-The playbook can write the acquired IP details back into the provision task's options hash in either of two ways: using the RESTful API, or using an Ansible role.
+The playbook can write the acquired IP details back into the provision task's options hash in either of two ways: using the RESTful API, or using the _manageiq-vmdb_ Ansible role (see [manageiq-vmdb](../embedded_ansible_modules/chapter.md#manageiq_vmdb)).
  
 ### Calling the CloudForms RESTful API
  
@@ -62,7 +62,7 @@ The first example playbook uses the CloudForms RESTful API to write the retrieve
 
 ### Using the _manageiq-vmdb_ Ansible Role
 
-The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncrou/manageiq-vmdb) Ansible role to write the retrieved IP details back into the provision task's options hash. Once again the IP address, netmask and gateway are defined as static vars for simplicity of illustration.
+The second example playbook uses the _manageiq-vmdb_ Ansible role to write the retrieved IP details back into the provision task's options hash. Once again the IP address, netmask and gateway are defined as static vars for simplicity of illustration.
 
 ```yaml
 ---
@@ -95,11 +95,11 @@ The second example playbook uses the [_manageiq-vmdb_](https://github.com/syncro
   
 ```
  
-In these example playbooks the netmask variable is defined in CIDR format rather than as octets, to be compatible with nmcli.
+In these example playbooks the netmask variable is defined in CIDR format rather than as octets, to be compatible with `nmcli`.
  
 ## Configuring the IP Address at First Boot
  
-Configuring a NIC with IP address details is a guest operating system operation, and so must be performed when the VM or instance first boots. For this example a template cloud-init script is defined in **Compute -> Infrastructure -> PXE -> Customization Templates** in the WebUI, as follows:
+Configuring a NIC with IP address details is a guest operating system operation, and so must be performed when the VM or instance first boots. For this example a template cloud-init script is defined in **Compute -> Infrastructure -> PXE -> Customization Templates** in the CloudForms  WebUI, as follows:
 
 ```
 <% 

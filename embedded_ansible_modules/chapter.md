@@ -17,11 +17,11 @@ The [manageiq\_user](http://docs.ansible.com/ansible/latest/modules/manageiq_use
 
 The following Galaxy roles are compatible with Ansible 2.4 and later:
 
-#### manageiq-vmdb
+#### manageiq-vmdb {#manageiq_vmdb}
 
 The [manageiq-vmdb](https://galaxy.ansible.com/syncrou/manageiq-vmdb) role allows for users of CloudForms/ManageIQ to modify and/or change VMDB objects via an Ansible Playbook.
 
-#### manageiq-automate
+#### manageiq-automate {#manageiq_automate}
 
 The [manageiq-automate](https://galaxy.ansible.com/syncrou/manageiq-automate) role allows for users of CloudForms/ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
 

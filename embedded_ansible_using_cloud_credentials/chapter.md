@@ -8,7 +8,7 @@ These credentials can then be associated with an embedded Ansible playbook servi
 
 ![Adding Cloud Type and Cloud Credential to a Method](images/screenshot2.png)
 
-When a cloud credential is associated with a playbook service or method in this way, the cloud credential values are made available to the playbook via an environmental variable called `OS_CLIENT_CONFIG_FILE`, which points to a YAML file written by the embedded Ansible engine. The contents of the yaml file is similar to the following:
+When a cloud credential is associated with a playbook service or method in this way, the cloud credential values are made available to the playbook via an environmental variable called `OS_CLIENT_CONFIG_FILE`, which points to a YAML file written by the embedded Ansible engine. The contents of the yaml file are similar to the following:
 
 
 ``` yaml
@@ -75,7 +75,7 @@ local_action:
 
 ## Summary
 
-This chapter has shown how cloud credentials can be securely stored and retrievd at run-time by an embedded Ansible playbook service or method.
+This chapter has shown how cloud credentials can be securely stored and retrieved at run-time by an embedded Ansible playbook service or method.
 
 ## Further Reading
 

@@ -24,7 +24,7 @@ For playbooks running in a state machine, a retrying state's `ae_retry_interval`
 
 The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created.
 
-Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name, for example `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision.
+Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision.
 
 ![Substitution variable as a host value](images/screenshot2.png)
 
@@ -40,7 +40,7 @@ The **Input Parameters** section of the playbook method creation page allows us 
 
 ## Variables Available to the Ansible Playbook
 
-When an Ansible playbook is run as an automate method, a number of manageiq-specific variables are made available to the playbook to use in addition to the input parameters. These are similar to the variables available to a playbook service, but with the addition of the **automate\_workspace** variable that allows the playbook to interact with the `$evm` workspace managing the automation workflow.
+When an Ansible playbook is run as an Automate method, a number of manageiq-specific variables are made available to the playbook to use in addition to the input parameters. These are similar to the variables available to a playbook service, but with the addition of the **automate\_workspace** variable that allows the playbook to interact with the `$evm` workspace managing the automation workflow.
 
 ``` yaml
 "manageiq": {
@@ -60,11 +60,11 @@ When an Ansible playbook is run as an automate method, a number of manageiq-spec
 
 ## Automate Workspace
 
-The Automate workspace is a memory region containing all objects associated with an automation workflow. In a Ruby-based workflow the workspace is called `$evm`. As the workflow progresses any objects that are created or accessed are loaded into the workspace, and the workspace is destroyed once the workflow is complete. A workspace is private to an individual workflow; concurrent workflows have no access to each other for security reasons.
+The Automate workspace is a memory region containing all objects associated with an automation workflow. In a Ruby-based workflow the workspace is called `$evm`. As the workflow progresses any objects that are created or accessed are loaded into the workspace, and the workspace is destroyed once the workflow is complete. A workspace is private to an individual workflow; concurrent workflows have no access to each other's workspaces for security reasons.
 
 A workspace can be accessed and edited - with suitable credentials - by an Ansible paybook using the RESTful API. The capability to interact with the Automate workspace, much like a Ruby automate method, increases the versatility of Ansible playbook methods and allows Ruby and Ansible methods to be mixed in the same state machines or workflows.
 
-The typical json content of an automate workspace as retrieved by a playbook is as follows:
+A typical json content of an Automate workspace as retrieved by a playbook is as follows:
 
 ``` yaml
 "json": {
@@ -141,7 +141,7 @@ As can be seen, all of the workspace variables that are typically accessed fom a
 
 ### Accessing the Workspace
 
-The `manageiq-automate` role allows an Ansible playbook to interact with the workspace. The role provides the following modules:
+The `manageiq-automate` role (see [manageiq-automate](../embedded_ansible_modules/chapter.md#manageiq_automate)) allows an Ansible playbook to interact with the workspace. The role provides the following modules:
 
 
 *  object\_exists
@@ -166,7 +166,7 @@ The `manageiq-automate` role allows an Ansible playbook to interact with the wor
 
 ### Passing Values via the Workspace
 
-As with 'traditional' Ruby-based automation, values can be saved to and retored from the `$evm` workspace, and used in subsequent stages of a workflow. 
+As with 'traditional' Ruby-based automation, values can be saved to and restored from the `$evm` workspace, and used in subsequent stages of a workflow. 
 
 #### Instance Attributes
 
@@ -280,7 +280,7 @@ A playbook can also trigger its own state retry, as follows:
 
 ## Summary
 
-This chapter has introduced Ansible playbook methods, which are a powerful new feature of CloudForms 4.6 (ManageIQ _Gaprindashvili_). They can be used anywhere that a 'traditional' Ruby automate method can be used, but require no Ruby knowledge to implement.
+This chapter has introduced Ansible playbook methods, which are a powerful new feature of CloudForms 4.6 (ManageIQ _Gaprindashvili_). They can be used anywhere that a 'traditional' Ruby Automate method can be used, but they require no Ruby knowledge to implement.
 
 The next chapter will show how Ansible playbook methods can be used together with Ruby methods in a VM Provisioning state machine. 
 

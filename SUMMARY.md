@@ -17,7 +17,7 @@
   * [Ansible Playbook Methods](embedded_ansible_playbook_methods/chapter.md)
   * [Calling a Playbook Method from the VM Provision State Machine](embedded_ansible_integrating_with_the_vm_provision_state_machine/chapter.md)
   * [Using Cloud Credentials](embedded_ansible_using_cloud_credentials/chapter.md)
-  * [Embedded Ansible Objects](embedded_ansible_objects/chapter.md)
+  * [Embedded Ansible Automation Objects](embedded_ansible_objects/chapter.md)
   * [Troubleshooting](embedded_ansible_troubleshooting/chapter.md)
 * [Generic Objects](generic_objects.md)
   * [Introduction to Generic Objects](generic_objects_introduction/chapter.md)
