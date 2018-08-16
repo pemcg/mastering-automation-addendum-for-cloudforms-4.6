@@ -8,7 +8,7 @@ A playbook method is created in the same way as other automate methods. CloudFor
 
 ![Adding a New Playbook Method](images/screenshot1.png)
 
-Once the method **Type** of **playbook** has been selected the method definition page appears, which contains the same input options as the **Provisioning** tab when creating a playbook service (see [Provisioning Tab Options](provisioning_tab_options)).
+Once the method **Type** of **playbook** has been selected the method definition page appears, which contains the same input options as the **Provisioning** tab when creating a playbook service (see [Provisioning Tab Options](#provisioning_tab_options)).
 
 ### Max TTL (mins)
 
