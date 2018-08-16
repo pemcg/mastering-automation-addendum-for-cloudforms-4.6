@@ -95,10 +95,6 @@ When the dialog is displayed, leave the **Machine Credential** and **Hosts** ele
 
 The playbook runs successfully on the VM displaying the button, in accordance with the button definition's **Inventory** setting of **Target Machine**. The "screen" package is installed.
 
-> **Note**
-> 
-> The value of _localhost_ in the **Hosts** dialog element has been ignored in this case. It is overriden by the button definition's **Inventory** setting of **Target Machine**, which takes priority.
-
 The Ansible playbook output shows that the playbook has been run on 192.168.1.66, which is the IP address of the target VM:
 
 ```
@@ -108,6 +104,10 @@ ok: [192.168.1.66]
 PLAY RECAP *********************************************************************
 192.168.1.66               : ok=6    changed=1    unreachable=0    failed=0‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍
 ```
+
+> **Note**
+> 
+> The value of _localhost_ in the **Hosts** dialog element has been ignored in this case. It is overriden by the button definition's **Inventory** setting of **Target Machine**, which takes priority.
 
 #### Test 1 Investigative Debugging
 
