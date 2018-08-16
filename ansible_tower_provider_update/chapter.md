@@ -55,7 +55,7 @@ INVENTORY_CLASS = 'ManageIQ_Providers_AutomationManager_InventoryRootGroup'.free
 
 ## Ansible Tower Provider Usage Tips
 
-Considerable in-the-field experience has been accumulated in the time since the Ansible Tower provider was written and included in CloudForms 4.2 (ManageIQ _Euwe_). This section describes some of the useful real-world tips and tweaks that have proved useful when deploying Ansible playbooks using the Ansible Tower provider.
+Considerable in-the-field experience has been accumulated in the time since the Ansible Tower provider was written and included in CloudForms 4.2 (ManageIQ _Euwe_). This section describes some of the real-world tips and tweaks that have proved useful when running Ansible Tower jobs from CloudForms.
 
 ### Handling Mixed IPv4 / IPv6 Addresses
 
@@ -116,20 +116,20 @@ Running a Tower job template on a newly provisoned VM involves the correct and c
 
 If for any reason the Tower inventory fails to update, the Tower job will still run to completion with a **Status** of "Successful", but any plays will be skipped with the playbook output message "skipping: no hosts matched". In this situation the CloudForms job object will indicate success, and any subsequent Automate workflow stages will proceed, potentially erroneously.
 
-To mitigate against this risk, any playbook that may be run as part of a post-provision operation can be edited to include the following play as a prefix:
+To mitigate against this risk, any playbooks run as part of a post-provision operation can be edited to run the following play first:
 
 ``` yaml
-- name: “Verify VM is in Inventory”
+- name: "Verify VM is in Inventory"
   hosts: localhost
   gather_facts: false
   tasks:
-  - name: “Fail if VM is not in Inventory”
+  - name: "Fail if VM is not in Inventory"
     fail:
       msg: "{{ vm_target_name }} is not in Ansible Tower's inventory."
     when: "vm_target_name not in groups['all']"
 ```
 
-This play will ensure that the playbook fails with a status that Tower indicates as a job failure, if the target VM is not in a Tower inventory. The failure status will be returned to CloudForms, allowing the workflow state machine to more accurately determine a suitable course of action.
+This play will cause the Tower job to fail if the target VM is not in a Tower inventory. The failure status will be returned to CloudForms, allowing the workflow state machine to more accurately determine a suitable course of action.
 
 ## Summary
 

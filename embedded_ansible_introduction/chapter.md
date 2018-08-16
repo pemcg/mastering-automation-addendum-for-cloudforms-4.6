@@ -43,7 +43,7 @@ Three SCM update options can be selected:
 
 * **Update on Launch** - Perform an update to the local repository prior to running any playbook from this SCM repository. This option delays the running of any playbook by several seconds, but always ensures that the most recently committed playbook is run.
 
-Repositories are synchronised as project folders under the _/var/lib/awx/projects_ directory on the CFME appliance running the active Embedded Ansible server role.
+Repositories are synchronised as project folders under the _/var/lib/awx/projects_ directory on the CFME appliance running the active **Embedded Ansible** server role.
 
 ## Credentials
 
@@ -66,7 +66,7 @@ The following credential types are supported:
 * **VMware** - used to define credentials to connect to VMware vCenter.
 * **Red Hat Virtualization** - used to define credentials to connect to a Red Hat Virtualization Manager (RHV-M)
 
-A credential called **CFME Default Credential** is created automatically when the Embedded Ansible server role is first enabled. This can be used when running playbooks on _localhost_, which is the CFME or ManageIQ appliance running the embedded Ansible automation engine.
+A credential called **CFME Default Credential** is created automatically when the **Embedded Ansible** server role is first enabled. This can be used when running playbooks on _localhost_, which is the CFME or ManageIQ appliance running the embedded Ansible automation engine.
 
 ## Playbook Variables and Facts
 
