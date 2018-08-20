@@ -140,7 +140,9 @@ or
 ```
 ${/#service_template_provision_task.destination.stack_options.fetch(:parameters)
 ```
+### Built-In Exception Handling
 
+In earlier version of CloudForms and ManageIQ it was advantageous to enclose critical sections of user-written Ruby code in `begin` and `rescue` logic, so that exceptions could be handled gracefully. This is no longer needed as the automation engine has built-in Automate method exception handling and correctly handles any errors, calling **on\_error** state machine methods as appropriate.
 
 ## New Class Schema Field Data Types
 
@@ -167,7 +169,6 @@ When such an attribute type is used the **Value** field should be an object ID (
 ## Dynamic Service Models 
 
 Prior to CloudForms 4.6 (ManageIQ *Gaprindashvili*) all service models were statically defined with a corresponding class definition file in _/var/www/miq/vmdb/lib/miq\_automation\_engine/service\_models_. A new feature with this release has allowed service models to be dynamically defined from the active record class if no service model class definition file exists.
-
 
 ## Defining Automate Methods as Classes {#defining_methods_as_classes}
 
