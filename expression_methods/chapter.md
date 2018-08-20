@@ -28,7 +28,17 @@ An expression method is still run from the context of an instance, so as when us
 
 The default runtime action is for an expression method to return a hash called *values* containing {id ⇒ name} hash pairs for the objects found by the search. This is the correct results format for a service dialog dynamic element method that populates a drop-down list.
 
-The method’s output can be examined by running the instance from **Automate → Simulation** (see [Results of the Expression Method In Simulation](#i3)).
+The method’s output can be examined by running the instance from **Automate → Simulation**. As when testing a Ruby method from simulation, the method's instance can be invoked by running **System/Process/Request** with the default message, and a **Request** value of **call\_instance**. Three **Attribute/Value** pairs are required by _call\_instance_:
+
+* **namespace** - the namespace containing the instance to test
+* **class** - the class containing the instance to test
+* **instance** - the instance name to test
+
+(see [Testing the Expression Method In Simulation](#i3)).
+
+![Testing the Expression Method In Simulation](images/screenshot12.png) 
+
+Once the **Submit** button is clicked the instance is invoked and the results can be expanded in the right-hand pane in the **Tree View** tab. The _values_ hash can be seen and each of its key/value pairs can be examined. (see [Results of the Expression Method In Simulation](#i3)).
 
 ![Results of the Expression Method In Simulation](images/screenshot3.png) 
 
