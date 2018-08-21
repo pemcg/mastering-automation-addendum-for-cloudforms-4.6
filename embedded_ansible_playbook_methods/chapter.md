@@ -24,9 +24,9 @@ For playbooks running in a state machine, a retrying state's `ae_retry_interval`
 
 The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created.
 
-Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision (see [Substitution variable as a Host Value](#i2)).
+Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision (see [Substitution Variable as a Host Value](#i2)).
 
-![Substitution variable as a Host Value](images/screenshot2.png)
+![Substitution Variable as a Host Value](images/screenshot2.png)
 
 > **Note**
 > 
