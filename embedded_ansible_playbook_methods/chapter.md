@@ -267,7 +267,7 @@ ok: [localhost] => {
 
 Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is put into an immediate retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
 
-This means that if a simple state machine containing a playbook method is run from **Automation -> Automate -> Simulation**, the state retry must be manually submitted using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i4)).
+One implication of this behaviour is that if a state machine containing a playbook method is run from **Automation -> Automate -> Simulation** in the WebUI, the state retry must be manually committed using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i4)).
 
 ![Simulation Retry Button](images/screenshot6.png)
 
