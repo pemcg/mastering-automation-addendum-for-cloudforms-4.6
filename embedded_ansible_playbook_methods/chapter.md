@@ -24,9 +24,9 @@ For playbooks running in a state machine, a retrying state's `ae_retry_interval`
 
 The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created.
 
-Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision.
+Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision (see [Substitution variable as a Host Value](#i2)).
 
-![Substitution variable as a host value](images/screenshot2.png)
+![Substitution variable as a Host Value](images/screenshot2.png)
 
 > **Note**
 > 
@@ -34,7 +34,7 @@ Fortunately we can use the automation engine's substitution syntax in the **Host
 
 ## Input Parameters
 
-The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings.
+The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings (see [Input Parameters](#i3))
 
 ![Input Parameters](images/screenshot4.png)
 
@@ -263,10 +263,13 @@ ok: [localhost] => {
     }
 }
 ```
-
 ## State Machine Retries
 
-Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is immediately put into a retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
+Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is put into an immediate retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
+
+This means that if a simple state machine containing a playbook method is run from **Automation -> Automate -> Simulation**, the state retry must be manually submitted using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i4)).
+
+![Simulation Retry Button](images/screenshot6.png)
 
 A playbook can also trigger its own state retry, as follows:
 
@@ -277,6 +280,14 @@ A playbook can also trigger its own state retry, as follows:
       set_retry:
         interval: "{{ interval }}"
 ```
+
+## Viewing Playbook Method Job Status
+
+The run status of a playbook method can be checked in the WebUI under **Tasks -> All Tasks** under the user's menu (see [Playbook Task Status](#i5)).
+
+![Playbook Task Status](images/screenshot5b.png)
+
+The playbook's output is not available from this page however; it must be viewed directly from the job's _/var/lib/awx/job\_status/*.out_ log file or from _evm.log_ if **Logging Output** was defined for the method.
 
 ## Summary
 

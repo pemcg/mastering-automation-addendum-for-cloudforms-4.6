@@ -4,7 +4,7 @@ Embedded methods are particularly useful if a set of reusable _library_ methods 
 
 The following is an example of such an embedded method definition. It has only two callable public methods, `vnic_profile` and `vnic_profiles`, however these both use the functionality of the _ovirtsdk4_ gem to communicate with a RHV Manager, and therefore require several private methods to setup the connection and manage the ovirtsdk services.
 
-The embedded class is written with an initializer to allow the caller to pass in the object or ID identifying rhe RHV provider to communicate with (there could be multiple RHV providers in a system).
+The embedded class is written with an initializer to allow the caller to pass in the object or ID identifying the RHV provider with which to communicate (there could be multiple RHV providers in a system).
 
 The embedded method is as follows:
 

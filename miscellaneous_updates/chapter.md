@@ -97,7 +97,7 @@ $evm.root['ae_retry_server_affinity'] = true
 
 The VM naming functionality during provisioning provides the ability to request that a VM name be created with a zero-padded numeric sequence appended, to guarantee VM name uniqueness. For example setting a request options hash key `:vm_name` of "my\_vm\_$n{3}" prior to the naming process will create a VM named **my_vm\_003** if **my_vm\_001** and **my_vm\_002** have already been provisioned. A challenge has been that the VM naming method is run from request context, and so this flexibility for naming has been unavailable for VMs provisioned from services, where all of the Automate state machines run in task context.
 
-A new enhancement in CloudForms 4.6 (ManageIQ *Gaprindashvili*) has provided an `update_vm_name` method that can be called from the `miq_provision` object in task context, for example during the VM Provision state machine as follows:
+A new enhancement in CloudForms 4.6 / ManageIQ *Gaprindashvili* (and CloudForms 4.5 from Errata 3) has provided an `update_vm_name` method that can be called from the `miq_provision` object in task context, for example during the VM Provision state machine as follows:
 
 ``` ruby
 prov = $evm.root['miq_provision']

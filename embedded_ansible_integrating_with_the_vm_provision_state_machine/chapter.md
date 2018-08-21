@@ -24,7 +24,7 @@ The playbook can write the acquired IP details back into the provision task's op
  
 ### Calling the CloudForms RESTful API
  
-The first example playbook uses the CloudForms RESTful API to write the retrieved IP details back in to the provision task's options hash. To simplify the example the IP address, netmask and gateway are defined as static vars; in reality these would be retrieved from a corporate IPAM solution such as Infobox.
+The first example playbook uses the CloudForms RESTful API to write the retrieved IP details back in to the provision task's options hash. To simplify the example the IP address, netmask and gateway are defined as static vars; in reality these would be retrieved from a corporate IPAM solution such as Infoblox.
 
 ```yaml
 ---

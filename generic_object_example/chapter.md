@@ -10,7 +10,7 @@ The firewall software uses the concept of firewall groups to define rules for al
  group {
      address-group servers {
          description "servers to allow"
-         address 192.168.1.1.1-192.168.1.10
+         address 192.168.1.1-192.168.1.10
          address 192.168.1.7
          address 172.16.3.3
      }
@@ -36,7 +36,9 @@ To represent each of these firewall components in the CloudForms VMDB we'll crea
 
 The Firewall Group generic object has associations to one or more of each of the other three generic object types. The Address Group, Network Group and Port Group object types have a single association back to their related Firewall Group.
 
-For simplicity of illustration, the code that connects to the external software defined firewall service to implement the firewall is not shown. 
+> **Note**
+> 
+> For simplicity of illustration, the code that connects to the external software defined firewall service to implement the firewall is not shown. 
 
 The Generic Object class definitions are as follows:
 
