@@ -68,6 +68,8 @@ Now when the modified dialog is run from a button or service, the **Provider (EM
 
 ![All VMs listed on the Selected Provider](images/screenshot7.png)  
 
+### Returning an Alternative Key
+
 Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see [Setting an Alternative Key](#i8) and [Simulation Results From Setting an Alternative Key](#i9)).
 
 ![Setting an Alternative Key](images/screenshot8.png)
@@ -75,6 +77,8 @@ Several other input arguments can be used. For example if {guid ⇒ name} hash p
 When run from **Automate -> Simulation** the `values` hash now has the following keys:
 
 ![Simulation Results From Setting an Alternative Key](images/screenshot9.png)
+
+### Returning an Array Rather than Hash
 
 If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see [Setting an Alternative Result Type](#i10) and [Simulation Results From Setting an Alternative Result Type](#i11)).
 
