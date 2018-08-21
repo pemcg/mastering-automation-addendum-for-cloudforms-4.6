@@ -14,14 +14,13 @@ Before we can use the functionality of embedded Ansible, we must ensure that the
 
 ![Enabling the Embedded Ansible Server Role](images/screenshot1.png)
 
-Although the server role can be set on more than one CFME or ManageIQ appliance, the embedded Ansible engine will only be active on at most one appliance in the region.[^2]
-
-[^2]: The Embedded Ansible server role will fail to start if a CloudForms or ManageIQ deployment has a Highly Available (HA) database, and the standby slave instance has been promoted to primary.
+Although the server role can be set on more than one CFME or ManageIQ appliance, the embedded Ansible engine will only be active on at most one appliance in the region.
 
 > **Note**
 > 
 > The Embedded Ansible server role can take several minutes to activate when it is first enabled. Until it is fully activated, other embedded Ansible-related WebUI menu items - such as adding respositories or credentials - will appear greyed out.
- 
+> 
+> The Embedded Ansible server role should not be enabled if a CloudForms or ManageIQ deployment has a Highly Available (HA) database (the role will fail to start if the standby slave instance has been promoted to primary).
 
 ## Repositories
 
