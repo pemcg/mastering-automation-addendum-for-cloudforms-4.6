@@ -4,9 +4,15 @@ Although the traditional way of ordering a service is interactively via **Servic
     
 ## Playbook Services as Control Actions
 
-An embedded Ansible playbook service can be run as a control action. In this example we'll define a control action that requests a playbook service to remove a web service VM from a load balancer pool. The playbook will run on localhost (the CFME appliance).
+An embedded Ansible playbook service can be run as a control action. 
 
-The action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. A new **Action Type** of **Run Ansible Playbook** is available, which when selected allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list (see [Adding the Control Action](#i1)).
+### Example - Policy to Run a Playbook on VM Shutdown
+
+In this example we'll define a control action that requests a playbook service to remove a web service VM from a load balancer pool. The playbook will run on localhost (the CFME appliance).
+
+The action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. 
+
+A new **Action Type** of **Run Ansible Playbook** is available, which allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list (see [Adding the Control Action](#i1)).
 
 ![Adding the Control Action](images/screenshot1.png)
 
