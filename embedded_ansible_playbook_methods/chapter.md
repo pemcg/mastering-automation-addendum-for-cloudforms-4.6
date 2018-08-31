@@ -34,9 +34,53 @@ Fortunately we can use the automation engine's substitution syntax in the **Host
 
 ## Input Parameters
 
-The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings (see [Input Parameters](#i3))
+The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings (see [Input Parameters](#i3)).
 
 ![Input Parameters](images/screenshot4.png)
+
+### Data Types
+
+Input parameters can be of the same data types permissable for an automation datastore class schema attribute. Some complex data types can be passed, for example the data type of **array** allows for comma-separated lists of values to be supplied, enclosed in brackets. Hashes can be encoded as strings (see [Passing Complex Data Types](#i4)).
+
+![Passing Complex Data Types](images/screenshot7.png)
+
+When these two input parameters are referenced in a playbook, for example:
+
+``` yaml
+  - debug: var=my_array
+  - debug: var=string_hash
+  - debug: msg="The key is {{ item.key }} and the value is {{ item.value }}"
+    with_dict: "{{ string_hash }}"
+```
+
+The following output is printed:
+
+```
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "my_array": [
+        "1",
+        "2",
+        "3"
+    ]
+}
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "string_hash": {
+        "one": 1,
+        "two": 2
+    }
+}
+
+TASK [debug] *******************************************************************
+ok: [localhost] => (item=None) => {
+    "msg": "The key is two and the value is 2"
+}
+ok: [localhost] => (item=None) => {
+    "msg": "The key is one and the value is 1"
+}
+```
 
 ## Variables Available to the Ansible Playbook
 
@@ -267,7 +311,7 @@ ok: [localhost] => {
 
 Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is put into an immediate retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
 
-One implication of this behaviour is that if a state machine containing a playbook method is run from **Automation -> Automate -> Simulation** in the WebUI, the state retry must be manually committed using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i4)).
+One implication of this behaviour is that if a state machine containing a playbook method is run from **Automation -> Automate -> Simulation** in the WebUI, the state retry must be manually committed using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i5)).
 
 ![Simulation Retry Button](images/screenshot6.png)
 
@@ -283,7 +327,7 @@ A playbook can also trigger its own state retry, as follows:
 
 ## Viewing Playbook Method Job Status
 
-The run status of a playbook method can be checked in the WebUI under **Tasks -> All Tasks** under the user's menu (see [Playbook Task Status](#i5)).
+The run status of a playbook method can be checked in the WebUI under **Tasks -> All Tasks** under the user's menu (see [Playbook Task Status](#i6)).
 
 ![Playbook Task Status](images/screenshot5b.png)
 
