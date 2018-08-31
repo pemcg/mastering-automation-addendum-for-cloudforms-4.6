@@ -40,11 +40,11 @@ The **Input Parameters** section of the playbook method creation page allows us 
 
 ### Data Types
 
-Input parameters can be of the same data types permissable for an automation datastore class schema attribute. Some complex data types can be passed, for example the data type of **array** allows for comma-separated lists of values to be supplied, enclosed in brackets. Hashes can be encoded as strings (see [Passing Complex Data Types](#i4)).
+Input parameters can be of the same data types permissable for an automation datastore class schema attribute. Some complex data types can be passed, for example the data type of **array** allows for comma-separated lists of values to be supplied. Hashes can be encoded as strings (see [Passing Complex Data Types](#i4)).
 
 ![Passing Complex Data Types](images/screenshot7.png)
 
-When these two input parameters are referenced in a playbook, for example:
+Input parameters such as these can be examined from the playbook, for example:
 
 ``` yaml
   - debug: var=my_array
@@ -53,7 +53,7 @@ When these two input parameters are referenced in a playbook, for example:
     with_dict: "{{ string_hash }}"
 ```
 
-The following output is printed:
+When used with `debug` in this way the following output is printed:
 
 ```
 TASK [debug] *******************************************************************
