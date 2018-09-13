@@ -115,6 +115,4 @@ This chapter has introduced _expression methods_, which retrieve VMDB values fro
 
 ## Further Reading
 
-[Stackissue Discussion of Expression Methods](http://stackissue.com/ManageIQ/manageiq/wip-automate-expression-methods-6655.html)
-
 [ManageIQ Talk Forum Discussion of Expression Methods](http://talk.manageiq.org/t/automate-expression-methods/3071)

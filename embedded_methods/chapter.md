@@ -56,7 +56,7 @@ logger.dump_root
 
 ### Class Without Initializer
 
-If no unit testing is to be performed on the embedded method then it can be written as a straightforward class method, as follows:
+Alternatively the embedded method can be written as a straightforward class method, as follows:
 
 ``` ruby
 module Bit63
@@ -88,6 +88,12 @@ These embedded methods can be invoked in the following way in a calling method:
 Bit63::Automate::Library::Utils::Logger.log(:info, "Some text")
 Bit63::Automate::Library::Utils::Logger.dump_root
 ```
+
+> **Note**
+> 
+> For unit testing, class methods can also optionally take a handle, for example:
+> 
+> `def self.log_and_exit(msg, exit_code, handle = $evm)`
 
 ### Mixin
 
@@ -153,7 +159,7 @@ More than one embedded method can be added to an Automate method definition, all
 
 > **Note**
 > 
-> Embedded methods cannot themselves use embedded methods as there is no support for nesting.
+> Embedded methods cannot themselves use embedded methods as there is currently no support for nesting (as of CloudForms 4.6.4 and ManageIQ Gaprindashvili-4). This capability will however be added in a future release.
 
 ## Logging
 
@@ -168,6 +174,8 @@ The use of an embedded method can be traced in _automation.log_. Before an Autom
 ...  INFO -- : <AEMethod test> (location: dump_root) Listing $evm.root Attributes - Begin
 ...  INFO -- : <AEMethod test> (location: block in dump_root)    Attribute - ae_provider_category: unknown
 ```
+
+If an embedded method throws an error, the fully qualified method name (Domain/Namespace/Class/Method) and the line number in the method that threw the exception is logged for ease of debugging.
 
 ## Summary
 

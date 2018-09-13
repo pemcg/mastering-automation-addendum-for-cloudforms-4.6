@@ -2,7 +2,7 @@
 
 CloudForms 4.6 (ManageIQ *Gaprindashvili*) has introduced a new drag-and-drop service dialog editor.
 
-The dialog editor is invoked through the **Automation -> Automate -> Cutomization** menu, and from the **Configuration** button (see [Adding a New Dialog](#i1)).
+The dialog editor is invoked through the **Automation -> Automate -> Customization** menu, and from the **Configuration** button (see [Adding a New Dialog](#i1)).
 
 ![Adding a New Dialog](images/screenshot1.png)
 
@@ -78,7 +78,7 @@ When the dialog is run the help text is available from the _i_ icon (see [Displa
 
 Prior to CloudForms 4.6 (ManageIQ *Gaprindashvili*) dynamic service dialog elements could be set to refresh automatically with the **Auto refresh** option. A corresponding option **Auto Refresh other fields when modified** could be defined on other elements that would trigger _all_ **Auto refresh** elements in the dialog to update.
 
-The new service dialog functionality has extended this auto-refresh capability to make it much more granular. The **Options** tab for an element now has a **Fields to Refresh** drop-down that allows selected elements to be refreshed (see [Setting Fields to Refresh](#i13)).
+The new service dialog functionality has extended this auto-refresh capability to make it much more granular. The **Options** tab for an element now has a **Fields to Refresh** drop-down that allows individually selected dynamic elements to be refreshed (see [Setting Fields to Refresh](#i13)).
 
 ![Setting Fields to Refresh](images/screenshot13.png)
 

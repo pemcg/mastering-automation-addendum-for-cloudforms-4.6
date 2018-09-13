@@ -13,20 +13,13 @@ Much of the content for this book has been taken and edited from various sources
 The following typographical conventions are used in this book:
 
   - *Italic*  
-    Indicates new terms, URLs, email addresses, filenames, and file extensions, path and object names within the Automate Datastore, Schema field values
+    Indicates new terms, URLs, email addresses, filenames, and file extensions, path and object names within the Automate Datastore, Schema field values.
 
   - **Bold**  
-    Indicates WebUI components, event names, Schema field names
+    Indicates WebUI components, event names, Schema field names.
 
   - `Constant width`  
-    Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data
-    types, environment variables, statements, and keywords.
-
-  - **`Constant width bold`**  
-    Shows commands or other text that should be typed literally by the user.
-
-  - *Constant width italic*  
-    Shows text that should be replaced with user-supplied values or by values determined by context.
+    Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.
 
 > **Note**
 > 

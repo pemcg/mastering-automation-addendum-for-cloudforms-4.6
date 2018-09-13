@@ -137,7 +137,7 @@ This chapter has discussed some of the changes to the Ansible Tower provider wit
 
 ## Further Reading
 
-[Red Hat CloudForms and Ansible Tower In the real world](https://www.redhat.com/it/blog/red-hat-cloudforms-and-ansible-tower-real-world)
+[Red Hat CloudForms and Ansible Tower In the real world](https://www.redhat.com/en/blog/red-hat-cloudforms-and-ansible-tower-real-world)
 
 [Dynamic Inventories in Ansible](https://www.tigeriq.co/dynamic-inventories-in-ansible/)
 
