@@ -14,7 +14,7 @@ Notification messages can be sent using `$evm.create_notification`, specifying o
 $evm.create_notification(:audience => 'user', :message => "Here is a message")
 ```
 
-This will result in a notification pop-up appearing in the top right-hand corner of the WebUI (see [Pop-Up Notification](#i1)).
+This will result in a notification pop-up appearing in the top right-hand corner of the WebUI (see screenshot [Pop-Up Notification](#i1)).
 
 ![Pop-Up Notification](images/screenshot1.png)
 

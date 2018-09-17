@@ -1,10 +1,10 @@
 # Using Cloud Credentials
 
-Ansible Cloud Credentials can be defined in the **Automation -> Ansible -> Credentials** section of the WebUI (see [Adding an OpenStack Cloud Credential](#i1)).
+Ansible Cloud Credentials can be defined in the **Automation -> Ansible -> Credentials** section of the WebUI (see screenshot [Adding an OpenStack Cloud Credential](#i1)).
 
 ![Adding an OpenStack Cloud Credential](images/screenshot1.png)
 
-These credentials can then be associated with an embedded Ansible playbook service or method in the creation dialog (see [Adding Cloud Type and Cloud Credential to a Method](#i1)).
+These credentials can then be associated with an embedded Ansible playbook service or method in the creation dialog (see screenshot [Adding Cloud Type and Cloud Credential to a Method](#i1)).
 
 ![Adding Cloud Type and Cloud Credential to a Method](images/screenshot2.png)
 

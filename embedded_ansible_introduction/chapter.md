@@ -10,7 +10,7 @@ CloudForms 4.6 (ManageIQ *Gaprindashvili*) has extended the capabilities of embe
 
 ## Enabling the Embedded Ansible Server Role
 
-Before we can use the functionality of embedded Ansible, we must ensure that the server role is enabled on at least one CFME appliance in our region (see [Enabling the Embedded Ansible Server Role](#i1))
+Before we can use the functionality of embedded Ansible, we must ensure that the server role is enabled on at least one CFME appliance in our region (see screenshot [Enabling the Embedded Ansible Server Role](#i1))
 
 ![Enabling the Embedded Ansible Server Role](images/screenshot1.png)
 
@@ -30,7 +30,7 @@ Playbooks can only be imported into embedded Ansible from such an SCM tool. Ther
 
 ### Defining a Repository
 
-A new repository is added from the **Automation -> Ansible -> Repositories -> Configuration** button. The only SCM type currently supported is _GIT_ (see [Adding an Embedded Ansible SCM Repository](#i2)).
+A new repository is added from the **Automation -> Ansible -> Repositories -> Configuration** button. The only SCM type currently supported is _GIT_ (see screenshot [Adding an Embedded Ansible SCM Repository](#i2)).
 
 ![Adding an Embedded Ansible SCM Repository](images/screenshot2.png)
 
@@ -50,7 +50,7 @@ Repositories are synchronised as project folders under the _/var/lib/awx/project
 
 Credentials are used to access managed entities that require authentication, such as nodes, networking devices, or cloud or infrastructure providers.
 
-A new credential is added from the **Automation -> Ansible -> Credentials -> Configuration** button (see [Adding an Embedded Ansible Machine Credential](#i3)).
+A new credential is added from the **Automation -> Ansible -> Credentials -> Configuration** button (see screenshot [Adding an Embedded Ansible Machine Credential](#i3)).
 
 ![Adding an Embedded Ansible Machine Credential](images/screenshot3.png)
 

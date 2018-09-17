@@ -98,7 +98,7 @@ end
 
 ## Invoking the Embedded Methods
 
-The embedded method path is first added to the definition of the Automate method that is to invoke the library methods (see [Embedded Method](#i1)).
+The embedded method path is first added to the definition of the Automate method that is to invoke the library methods (see screenshot [Embedded Method](#i1)).
 
 ![Embedded Method](images/screenshot1.png)
 

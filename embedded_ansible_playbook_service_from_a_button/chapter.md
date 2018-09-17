@@ -32,7 +32,7 @@ To assist in troubleshooting, a call to _object\_walker_ has been made from the 
 
 ## Creating the Service
 
-The Ansible playbook service called **Install a Package** is first created (see [Adding the New Service Catalog Item](#i1)).
+The Ansible playbook service called **Install a Package** is first created (see screenshot [Adding the New Service Catalog Item](#i1)).
 
 ![Adding the New Service Catalog Item](images/screenshot1.png)
 
@@ -54,7 +54,7 @@ Clicking **Save** creates both the new service and service dialog.
 
 ### Editing the Service Dialog
 
-If the newly created service dialog is edited, it can be seen that the package element has been given the correct name "param\_package" (as required by the _order\_ansible\_playbook_ method), and the default value of "from\_service". For this example we'll change the default value for the **Package** dialog element to "from\_dialog" to identify if the dialog's default value was used in operation (see [Editing the Service Dialog](#i2)).
+If the newly created service dialog is edited, it can be seen that the package element has been given the correct name "param\_package" (as required by the _order\_ansible\_playbook_ method), and the default value of "from\_service". For this example we'll change the default value for the **Package** dialog element to "from\_dialog" to identify if the dialog's default value was used in operation (see screenshot [Editing the Service Dialog](#i2)).
 
 ![Editing the Service Dialog](images/screenshot2.png)
 
@@ -62,7 +62,7 @@ Once the dialog has been created, the only use for the package variable and valu
 
 ### Creating the Button
 
-The button called **Install a Package** is created as follows (see [Adding the New Button](#i3)):
+The button called **Install a Package** is created as follows (see screenshot [Adding the New Button](#i3)):
 
 ![Adding the New Button](images/screenshot3.png)
 
@@ -89,7 +89,7 @@ A powered-on VM with the IP address of 192.168.1.66 is identified in the CloudFo
 
 Click the **Install a Package** button from the VM details page. 
 
-When the dialog is displayed, leave the **Machine Credential** and **Hosts** elements at their defaults. Specify "screen" as the package (see [Default Dialog](#i4)).
+When the dialog is displayed, leave the **Machine Credential** and **Hosts** elements at their defaults. Specify "screen" as the package (see screenshot [Default Dialog](#i4)).
 
 ![Default Dialog](images/screenshot4.png)
 
@@ -195,7 +195,7 @@ Edit the dialog to make the **Machine Credential** and **Hosts** elements non-vi
 
 For the same VM, repeat the button click. 
 
-When the edited dialog is displayed, specify "bind-utils" as the package (see [Dialog With Options Box Elements Hidden](#i5)).
+When the edited dialog is displayed, specify "bind-utils" as the package (see screenshot [Dialog With Options Box Elements Hidden](#i5)).
 
 ![Dialog With Options Box Elements Hidden](images/screenshot5.png)
 
@@ -235,7 +235,7 @@ Edit the dialog to delete the **Options** box containing the **Machine Credentia
 
 For the same VM, repeat the button click. 
 
-When the edited dialog is displayed, specify "nfs-utils" as the package (see [Dialog With Options Box Removed](#i6)).
+When the edited dialog is displayed, specify "nfs-utils" as the package (see screenshot [Dialog With Options Box Removed](#i6)).
 
 ![Dialog With Options Box Removed](images/screenshot6.png)
 

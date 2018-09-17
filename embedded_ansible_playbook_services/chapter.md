@@ -17,11 +17,11 @@ We'll create a new playbook service that runs the following simple playbook to l
      - ansible-role-listvars
 ```
 
-A new service catalog item type, **Ansible Playbook** is used to create a playbook service (see [Selecting the Ansible Playbook Catalog Item Type](#i1))
+A new service catalog item type, **Ansible Playbook** is used to create a playbook service (see screenshot [Selecting the Ansible Playbook Catalog Item Type](#i1))
 
 ![Selecting the Ansible Playbook Catalog Item Type](images/screenshot1.png)
 
-Once 'Ansible Playbook' is selected, the main service creation dialog is displayed (see [Service Creation Dialog](#i2))
+Once 'Ansible Playbook' is selected, the main service creation dialog is displayed (see screenshot [Service Creation Dialog](#i2))
 
 ![Service Creation Dialog](images/screenshot2.png)
 
@@ -89,7 +89,7 @@ When we order the service we are presented with the service dialog that was crea
 
 Order the service and leave the service dialog values at their defaults. The playbook will run on _localhost_.
 
-The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run (see [Resulting Service from First Test](#i3))
+The resultant service (in **My Services**) has a **Provisioning** tab that shows the results of the playbook run (see screenshot [Resulting Service from First Test](#i3))
 
 ![Resulting Service from First Test](images/oss5.png)
 
@@ -97,7 +97,7 @@ It can be seen that the service did run on _localhost_.
 
 ### Test 2
 
-We can order the service again, but this time override the service dialog defaults to run the playbook on another host (10.2.3.136), using SSH Key credentials suitable for that host (see [Resulting Service from Second Test](#i3)).
+We can order the service again, but this time override the service dialog defaults to run the playbook on another host (10.2.3.136), using SSH Key credentials suitable for that host (see screenshot [Resulting Service from Second Test](#i3)).
 
 ![Resulting Service from Second Test](images/oss6.png)
 

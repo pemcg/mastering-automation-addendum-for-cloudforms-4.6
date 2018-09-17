@@ -6,21 +6,21 @@ In this example an Ansible playbook method is used at the **AcquireIPAddress** s
  
 ## Creating the Instance and Method
  
-A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_ (see [acquire\_ip\_address Instance and Method](#i1)).
+A new _acquire\_ip\_address_ instance and method are defined in the usual manner. The method is of **Type:** _playbook_ and is defined to run on **Hosts:** _localhost_ (see screenshot [acquire\_ip\_address Instance and Method](#i1)).
 
 ![acquire\_ip\_address Instance and Method](images/screenshot1.png)
 
-The input parameters for the playbook method are dynamic. Two parameters `miq_provision_request_id` (the request ID) and `miq_provision_id` (the task ID), are defined for the method (see [Input Parameters](#i2)).
+The input parameters for the playbook method are dynamic. Two parameters `miq_provision_request_id` (the request ID) and `miq_provision_id` (the task ID), are defined for the method (see screenshot [Input Parameters](#i2)).
 
 ![Input Parameters](images/screenshot2.png)
 
-The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine (see [Instance Added to the VM Provision State Machine](#i3)).
+The new instance is added to the **AcquireIPAddress** state of the VM Provision state machine (see screenshot [Instance Added to the VM Provision State Machine](#i3)).
 
 ![Instance Added to the VM Provision State Machine](images/screenshot3.png)
 
 ## Inserting the IP Details into the VM Provision Workflow
  
-The playbook can write the acquired IP details back into the provision task's options hash in either of two ways: using the RESTful API, or using the _manageiq-vmdb_ Ansible role (see [manageiq-vmdb](../embedded_ansible_modules/chapter.md#manageiq_vmdb)).
+The playbook can write the acquired IP details back into the provision task's options hash in either of two ways: using the RESTful API, or using the _manageiq-vmdb_ Ansible role (see section [manageiq-vmdb](../embedded_ansible_modules/chapter.md#manageiq_vmdb)).
  
 ### Calling the CloudForms RESTful API
  

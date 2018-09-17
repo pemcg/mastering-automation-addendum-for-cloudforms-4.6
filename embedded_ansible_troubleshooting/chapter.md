@@ -6,7 +6,7 @@ This chapter contains some miscellaneous troubleshooting tips for the embedded A
 
 When troubleshooting why playbooks are not running as intended, it can sometimes be useful to confirm that the embedded Ansible automation engine - which is based on the AWX project - is running correctly. Although the **Embedded Ansible** server role can be started on several appliances in a region, it will only be active on one appliance. 
 
-The troubleshooting steps should be carried out on the appliance with the active **Embedded Ansible** role. The server with the currently active role can be determined from the **Configuration -> Diagnostics** (accordion) **Region -> Servers by Roles** tab (see [Servers by Roles in Region](#i1)).
+The troubleshooting steps should be carried out on the appliance with the active **Embedded Ansible** role. The server with the currently active role can be determined from the **Configuration -> Diagnostics** (accordion) **Region -> Servers by Roles** tab (see screenshot [Servers by Roles in Region](#i1)).
 
 ![Servers by Roles in Region](images/screenshot3.png)
 
@@ -111,13 +111,13 @@ The directory can be monitored for new files using the command `watch "ls -lrt |
 
 #### Log Output to _evm.log_
 
-The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see [Setting Logging Output](#i1)).
+The option of whether to log playbook output to _evm.log_ can be made when the playbook service or method is created or edited (see screenshot [Setting Logging Output](#i2)).
 
 ![Setting Logging Output](images/screenshot1.png)
 
 #### Logging Verbosity
 
-The desired log verbosity can be selected when the playbook service or method is created or edited (see [Setting Logging Verbosity](#i1)).
+The desired log verbosity can be selected when the playbook service or method is created or edited (see screenshot [Setting Logging Verbosity](#i3)).
 
 ![Setting Logging Verbosity](images/screenshot2.png)
 

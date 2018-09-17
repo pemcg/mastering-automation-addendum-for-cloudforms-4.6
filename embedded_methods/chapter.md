@@ -4,7 +4,7 @@ A useful new feature with CloudForms 4.6 (ManageIQ *Gaprindashvili*) is the abil
 
 ## Calling an Embedded Method
 
-An embedded method must be added to a calling method's definition in the WebUI before it can be used. In the **Embedded Methods** section of the Automate method editor screen, click the **Add Method** button and browse to the location of the method to embed (see [Adding an Embedded Method](#i1)).
+An embedded method must be added to a calling method's definition in the WebUI before it can be used. In the **Embedded Methods** section of the Automate method editor screen, click the **Add Method** button and browse to the location of the method to embed (see screenshot [Adding an Embedded Method](#i1)).
 
 ![Adding an Embedded Method](images/screenshot1.png)
 
@@ -153,7 +153,7 @@ dump_root
 
 ## Multiple Embedded Methods
 
-More than one embedded method can be added to an Automate method definition, allowing various library methods to be written in separate modules. The Automation Engine combines all of the embedded methods into a single preamble injected into to the Automate method at run-time. Code will execute in the order that it was listed in the embedded methods list (see [Multiple Embedded Methods](#i2)).
+More than one embedded method can be added to an Automate method definition, allowing various library methods to be written in separate modules. The Automation Engine combines all of the embedded methods into a single preamble injected into to the Automate method at run-time. Code will execute in the order that it was listed in the embedded methods list (see screenshot [Multiple Embedded Methods](#i2)).
 
 ![Multiple Embedded Methods](images/screenshot2.png)
 

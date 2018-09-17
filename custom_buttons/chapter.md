@@ -4,13 +4,13 @@ Invoking services and automation workflows from custom buttons has been a very u
 
 ## Support for More Object Types
 
-Custom buttons can now be placed on a wider range of object types in the WebUI (see [Object Types Supported](#i1)).
+Custom buttons can now be placed on a wider range of object types in the WebUI (see screenshot [Object Types Supported](#i1)).
 
 ![Object Types Supported](images/screenshot1.png)
 
 ## New Icons and Colours
 
-Icons for both button groups and buttons can be selected from three different icon sets, and can be given a custom colour (see [Selecting the Icon](#i2) and [Selecting the Icon Colour](#i3)).
+Icons for both button groups and buttons can be selected from three different icon sets, and can be given a custom colour (see screenshots [Selecting the Icon](#i2) and [Selecting the Icon Colour](#i3)).
 
 ![Selecting the Icon](images/screenshot2.png)
 
@@ -20,29 +20,29 @@ Icons for both button groups and buttons can be selected from three different ic
 
 Many services or workflows triggered by custom buttons are only applicable to a certain sub-type of object that the button is displayed on. For example a button that registers a Red Hat Enterprise Linux VM with a Satellite server is not applicable to a VM running Windows, or Ubuntu Linux.
 
-The new button functionality allows for a conditional visibility filter, that only displays the button in the button group if the visibility expression match is successful (see [Setting a Visibility Expression](#i4)).
+The new button functionality allows for a conditional visibility filter, that only displays the button in the button group if the visibility expression match is successful (see screenshot [Setting a Visibility Expression](#i4)).
 
 ![Setting a Visibility Expression](images/screenshot5.png)
 
 ## Conditional Enablement
 
-The workflows or services triggered by some custom buttons often require the object to be in a particular state - for example a VM must be powered on to be able to run an Ansible playbook. Conditional enablement allows an expression to be defined, such that if the expression does not evaluate to _true_ for an object, the button is greyed out (see [Setting a Conditional Enablement Expression](#i4)).
+The workflows or services triggered by some custom buttons often require the object to be in a particular state - for example a VM must be powered on to be able to run an Ansible playbook. Conditional enablement allows an expression to be defined, such that if the expression does not evaluate to _true_ for an object, the button is greyed out (see screenshot [Setting a Conditional Enablement Expression](#i4)).
 
 ![Setting a Conditional Enablement Expression](images/screenshot6.png)
 
 This can be illustrated with a VM that has been evaluated by CloudForms as non-compliant, and requires a package to be installed to restore the compliance status. A button is available on the VM to install a package using an Ansible playbook, but the playbook requires the VM to be on.
 
-If the VM is powered off, the **Install a Package** button is greyed out and cannot be used (see [Button Greyed Out When VM is Off](#i6)).
+If the VM is powered off, the **Install a Package** button is greyed out and cannot be used (see screenshot [Button Greyed Out When VM is Off](#i6)).
 
 ![Button Greyed Out When VM is Off](images/screenshot7b.png)
 
-When the VM is powered on, the **Install a Package** button becomes enabled, and the package can be installed (see [Button Enabled When VM is On](#i7)).
+When the VM is powered on, the **Install a Package** button becomes enabled, and the package can be installed (see screenshot [Button Enabled When VM is On](#i7)).
 
 ![Button Enabled When VM is On](images/screenshot8b.png)
 
 ## Multi-Selection of Objects
 
-The only display option for custom buttons in previous versions of CloudForms and ManageIQ was on the details page of a single instance of the object type. With CloudForms 4.6 (ManageIQ *Gaprindashvili*) custom buttons can now be displayed for multiple instances of an object type (see [Multiple Instances Selected for a Button](#i8)).
+The only display option for custom buttons in previous versions of CloudForms and ManageIQ was on the details page of a single instance of the object type. With CloudForms 4.6 (ManageIQ *Gaprindashvili*) custom buttons can now be displayed for multiple instances of an object type (see screenshot [Multiple Instances Selected for a Button](#i8)).
 
 ![Multiple Instances Selected for a Button](images/screenshot10.png)
 
@@ -61,7 +61,7 @@ The method will not have a `$evm.root['vmdb_object_type']` attribute and will ha
 
 If the button method is run separately for each object selected (**One by one** in the WebUI), each method's invocation _will_ have a `$evm.root['vmdb_object_type']` attribute, and a root object of that type (for example `$evm.root['vm']`).
 
-To define a button's display options the **Display for** and **Submit** drop-downs are used (see ['Display for' and 'Submit' Selections](#i8)).
+To define a button's display options the **Display for** and **Submit** drop-downs are used (see screenshot ['Display for' and 'Submit' Selections](#i8)).
 
 !['Display for' and 'Submit' Selections](images/screenshot9.png)
 

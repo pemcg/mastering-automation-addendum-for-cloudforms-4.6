@@ -44,25 +44,25 @@ The Generic Object class definitions are as follows:
 
 ### Firewall Group
 
-The Firewall Group generic object class definition is shown in [Firewall Group Generic Object Definition](#i1)
+The Firewall Group generic object class definition is shown in screenshot [Firewall Group Generic Object Definition](#i1)
 
 ![Firewall Group Generic Object Definition](images/screenshot1.png)
 
 ### Address Group
 
-The Address Group generic object class definition is shown in [Address Group Generic Object Definition](#i2)
+The Address Group generic object class definition is shown in screenshot [Address Group Generic Object Definition](#i2)
 
 ![Address Group Generic Object Definition](images/screenshot2.png)
 
 ### Network Group
 
-The Network Group generic object class definition is shown in [Network Group Generic Object Definition](#i3)
+The Network Group generic object class definition is shown in screenshot [Network Group Generic Object Definition](#i3)
 
 ![Network Group Generic Object Definition](images/screenshot3.png)
 
 ### Port Group
 
-The Port Group generic object class definition is shown in [Port Group Generic Object Definition](#i4)
+The Port Group generic object class definition is shown in screenshot [Port Group Generic Object Definition](#i4)
 
 ![Port Group Generic Object Definition](images/screenshot4.png)
 
@@ -72,7 +72,7 @@ The generic objects are provisioned individually.
 
 ### Firewall Group
 
-A Firewall Group generic object is provisioned from a service. The service dialog is shown in [Service Dialog - Ordering a Firewall Group](#i5)
+A Firewall Group generic object is provisioned from a service. The service dialog is shown in screenshot [Service Dialog - Ordering a Firewall Group](#i5)
 
 ![Service Dialog - Ordering a Firewall Group](images/screenshot6.png)
 
@@ -194,7 +194,7 @@ unless $evm.root['service'].blank?
 end
 ```
 
-If the Address Group, Network Group and Port Group objects are provisioned from a service, their related Firewall Group should already exist. The Firewall Group with which to associate the new generic object is selected from a dynamic drop-down in the service dialog (see [Service Dialog - Ordering a Network Group](#i6)).
+If the Address Group, Network Group and Port Group objects are provisioned from a service, their related Firewall Group should already exist. The Firewall Group with which to associate the new generic object is selected from a dynamic drop-down in the service dialog (see screenshot [Service Dialog - Ordering a Network Group](#i6)).
 
 ![Service Dialog - Ordering a Network Group](images/screenshot5.png)
 
@@ -234,15 +234,15 @@ Once completed the generic objects provide a graphical represntation of the fire
 
 ![Firewall Groups](images/screenshot7.png)
 
-Clicking on the named link for a firewall group navigates to the details of that firewall group generic object (see [Firewall Group Details](#i8)).
+Clicking on the named link for a firewall group navigates to the details of that firewall group generic object (see screenshot [Firewall Group Details](#i8)).
 
 ![Firewall Group Details](images/screenshot8.png)
 
-Clicking on the **port_groups** association shows the generic objects representing the individual port groups (see [Port Groups](#i9)).
+Clicking on the **port_groups** association shows the generic objects representing the individual port groups (see screenshot [Port Groups](#i9)).
 
 ![Port Groups](images/screenshot9.png)
 
-Clicking on the named link for a port group navigates to the details of the port group. The association back to the firewall group can be seen (and can be clicked to navigate back if required) (see [Port Group Details](#i10)).
+Clicking on the named link for a port group navigates to the details of the port group. The association back to the firewall group can be seen (and can be clicked to navigate back if required) (see screenshot [Port Group Details](#i10)).
 
 ![Port Group Details](images/screenshot10.png)
 

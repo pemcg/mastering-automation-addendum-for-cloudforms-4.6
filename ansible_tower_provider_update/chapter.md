@@ -23,7 +23,7 @@ ANSIBLE_NAMESPACE = 'AutomationManagement/AnsibleTower/Operations'.freeze
 
 Some new instances and methods have been added to the new _AutomationManagement/AnsibleTower_ namespace, and the commonality between the Tower and embedded Ansible providers has enabled some code re-use.
 
-The _Available\_Credentials_ method for example is used by two Tower-specific and two embedded Ansible-specific instances (see [Available Credentials Instances and Method](#i1)).
+The _Available\_Credentials_ method for example is used by two Tower-specific and two embedded Ansible-specific instances (see screenshot [Available Credentials Instances and Method](#i1)).
 
 ![Available Credentials Instances and Method](images/screenshot1.png)
 
@@ -104,7 +104,7 @@ To prevent this from happening, playbooks can be written to use an Ansible varia
         msg: "The Target VM Name is {{ vm_target_name }}"
 ```
 
-The value of `vm_target_name` can be defined as a substitution variable in the job-specific instance of the _JobTemplate_ class (see [vm\_target\_name defined in the JobTemplate Instance](#i2)).
+The value of `vm_target_name` can be defined as a substitution variable in the job-specific instance of the _JobTemplate_ class (see screenshot [vm\_target\_name defined in the JobTemplate Instance](#i2)).
 
 ![vm\_target\_name defined in the JobTemplate Instance](images/screenshot2.png)
 

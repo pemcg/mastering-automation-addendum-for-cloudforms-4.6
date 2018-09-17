@@ -6,7 +6,7 @@ The author welcomes any feedback, suggestions for content, or notifications of e
 
 # Acknowledgements
 
-Much of the content for this book has been taken and edited from various sources both inside and outside of Red Hat. Many people have contributed to the original articles and code samples, and have offered explanations and ideas to this addendum. The author would like to thank Christian Jung, Fabien Dupont, Franck Grosjean, Jeff Warnica, Ian Tewksbury, Brant Evans, Samson Wick, John Hardy, Brad Ascar, Greg McCullough, Madhu Kanoor, Bill Wei, Bill Fitzgerald, Tina Fitzgerald, Jason Ritenour, Kevin Morey, Victor Estival Lopez, Olive Power, Loic Avenel, Luke Couzens, Matthew Parkinson, Cameron Wyatt, Brett Thurber, and many others for their original work and support in the production of this book.
+Much of the content for this book has been taken and edited from various sources both inside and outside of Red Hat. Many people have contributed to the original articles and code samples, and have offered explanations and ideas to this addendum. The author would like to thank Christian Jung, Fabien Dupont, Franck Grosjean, Jeff Warnica, Ian Tewksbury, Brant Evans, Samson Wick, John Hardy, Brad Ascar, Greg McCullough, Madhu Kanoor, Bill Wei, Bill Fitzgerald, Tina Fitzgerald, Drew Uhlmann, Jason Ritenour, Kevin Morey, Victor Estival Lopez, Olive Power, Loic Avenel, Luke Couzens, Matthew Parkinson, Cameron Wyatt, Brett Thurber, and many others for their original work and support in the production of this book.
 
 # Conventions Used in This Addendum
 

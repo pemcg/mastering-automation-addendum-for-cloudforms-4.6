@@ -12,11 +12,11 @@ In this example we'll create a control policy that runs a playbook when a web se
 
 The control action in created in the usual manner from the **Control -> Actions -> All Actions -> Configuration** (button)  **-> Add a new Action** menu option. 
 
-A new **Action Type** of **Run Ansible Playbook** is available, which allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list (see [Adding the Control Action](#i1)).
+A new **Action Type** of **Run Ansible Playbook** is available, which allows a playbook service to be chosen from the **Playbook Catalog Item** drop-down list (see screenshot [Adding the Control Action](#i1)).
 
 ![Adding the Control Action](images/screenshot1.png)
 
-The newly created action can be linked to a control policy, triggered by a **VM Power Off** event, and a condition that the VM is tagged as a Web Service VM (see [Creating the Control Policy](#i2)).
+The newly created action can be linked to a control policy, triggered by a **VM Power Off** event, and a condition that the VM is tagged as a Web Service VM (see screenshot [Creating the Control Policy](#i2)).
 
 ![Creating the Control Policy](images/screenshot2.png)
 
@@ -120,7 +120,7 @@ _order\_ansible\_playbook_ uses `$evm.root` keys to determine the playbook servi
 
 * **dialog\_credential** (optional) - a credential object ID to use when making the connection to the managed node
 
-These `$evm.root` keys can be defined as Attribute/Value pairs when an instance is launched (see [Calling Order\_Ansible\_Playbook](#i3)).
+These `$evm.root` keys can be defined as Attribute/Value pairs when an instance is launched (see screenshot [Calling Order\_Ansible\_Playbook](#i3)).
 
 ![Calling Order\_Ansible\_Playbook](images/screenshot3.png)
 

@@ -4,11 +4,11 @@ CloudForms 4.6 / ManageIQ *Gaprindashvili* has introduced the capability to run 
 
 ## Creating a Playbook Method
 
-A playbook method is created in the same way as other automate methods. CloudForms 4.6 (ManageIQ _Gaprindashvili_) has added two more method types, one of which is _playbook_ (see [Adding a New Playbook Method](#i1))
+A playbook method is created in the same way as other automate methods. CloudForms 4.6 (ManageIQ _Gaprindashvili_) has added two more method types, one of which is _playbook_ (see screenshot [Adding a New Playbook Method](#i1))
 
 ![Adding a New Playbook Method](images/screenshot1.png)
 
-Once the method **Type** of **playbook** has been selected the method definition page appears, which contains the same input options as the **Provisioning** tab when creating a playbook service (see [Provisioning Tab Options](../embedded_ansible_playbook_services/chapter.md#provisioning_tab_options)).
+Once the method **Type** of **playbook** has been selected the method definition page appears, which contains the same input options as the **Provisioning** tab when creating a playbook service (see section [Provisioning Tab Options](../embedded_ansible_playbook_services/chapter.md#provisioning_tab_options)).
 
 ### Max TTL (mins)
 
@@ -24,7 +24,7 @@ For playbooks running in a state machine, a retrying state's `ae_retry_interval`
 
 The **Hosts** input dialog has two options: **Localhost** or **Specify host values**. In many cases we would wish to run the playbook on the CFME or ManageIQ appliance itself, so **Localhost** should be selected. In other cases we might wish to run a playbook on a managed node as part of a workflow - such as a VM provision - in which case the hostname or IP address might not be known at the time that the playbook method is created.
 
-Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision (see [Substitution Variable as a Host Value](#i2)).
+Fortunately we can use the automation engine's substitution syntax in the **Hosts** dialog. This allows us to specify an attribute that at run-time would contain the valid value for a managed node's IPv4 address or fully-qualified domain name. An example might be `${/#miq_provision.destination.ipaddresses.first}` for an infrastructure VM provision, or `${/#miq_provision.destination.floating_ip_addresses.first}` for a cloud instance provision (see screenshot [Substitution Variable as a Host Value](#i2)).
 
 ![Substitution Variable as a Host Value](images/screenshot2.png)
 
@@ -34,13 +34,13 @@ Fortunately we can use the automation engine's substitution syntax in the **Host
 
 ## Input Parameters
 
-The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings (see [Input Parameters](#i3)).
+The **Input Parameters** section of the playbook method creation page allows us to add variables that will be made available to the playbook at run-time. This corresponds to the **Variables & Default Values** section when creating a playbook service, but unlike when creating a playbook service, the **Input Parameters** can take the form of automation engine substitution strings (see screenshot [Input Parameters](#i3)).
 
 ![Input Parameters](images/screenshot4.png)
 
 ### Data Types
 
-Input parameters can be of the same data types permissable for an automation datastore class schema attribute. Some complex data types can be passed, for example the data type of **array** allows for comma-separated lists of values to be supplied. Hashes can be encoded as strings (see [Passing Complex Data Types](#i4)).
+Input parameters can be of the same data types permissable for an automation datastore class schema attribute. Some complex data types can be passed, for example the data type of **array** allows for comma-separated lists of values to be supplied. Hashes can be encoded as strings (see screenshot [Passing Complex Data Types](#i4)).
 
 ![Passing Complex Data Types](images/screenshot7.png)
 
@@ -185,7 +185,7 @@ As can be seen, all of the workspace variables that are typically accessed fom a
 
 ### Accessing the Workspace
 
-The `manageiq-automate` role (see [manageiq-automate](../embedded_ansible_modules/chapter.md#manageiq_automate)) allows an Ansible playbook to interact with the workspace. The role provides the following modules:
+The `manageiq-automate` role (see section [manageiq-automate](../embedded_ansible_modules/chapter.md#manageiq_automate)) allows an Ansible playbook to interact with the workspace. The role provides the following modules:
 
 
 *  object\_exists
@@ -311,7 +311,7 @@ ok: [localhost] => {
 
 Running an Ansible playbook is an asynchronous operation for the automation engine, with an indeterminate run-time. If an Ansible playbook method is used in a state machine, the state running the playbook is put into an immediate retry condition, without the `on_exit` method being run. When the playbook completes the state machine continues.
 
-One implication of this behaviour is that if a state machine containing a playbook method is run from **Automation -> Automate -> Simulation** in the WebUI, the state retry must be manually committed using the **Retry** button for the playbook's state to complete (see [Simulation Retry Button](#i5)).
+One implication of this behaviour is that if a state machine containing a playbook method is run from **Automation -> Automate -> Simulation** in the WebUI, the state retry must be manually committed using the **Retry** button for the playbook's state to complete (see screenshot [Simulation Retry Button](#i5)).
 
 ![Simulation Retry Button](images/screenshot6.png)
 
@@ -327,7 +327,7 @@ A playbook can also trigger its own state retry, as follows:
 
 ## Viewing Playbook Method Job Status
 
-The run status of a playbook method can be checked in the WebUI under **Tasks -> All Tasks** under the user's menu (see [Playbook Task Status](#i6)).
+The run status of a playbook method can be checked in the WebUI under **Tasks -> All Tasks** under the user's menu (see screenshot [Playbook Task Status](#i6)).
 
 ![Playbook Task Status](images/screenshot5b.png)
 

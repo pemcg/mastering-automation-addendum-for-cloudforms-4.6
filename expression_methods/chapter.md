@@ -6,7 +6,7 @@ An example of the use of an expression method might be to populate a dialog drop
 
 ## Create the Method
 
-An expression method is created in the same way as other automate methods. One of the new method types in CloudForms 4.6 (ManageIQ *Gaprindashvili*) is *expression* (see [Method Types](#i1)).
+An expression method is created in the same way as other automate methods. One of the new method types in CloudForms 4.6 (ManageIQ *Gaprindashvili*) is *expression* (see screenshot [Method Types](#i1)).
 
 ![Method Types](images/screenshot1.png)
  
@@ -16,7 +16,7 @@ Selecting *expression* as the method type opens the expression dialog, where the
 * **Field → VM and Instance: Type → =** "ManageIQ::Providers::Redhat::InfraManager::Vm" **AND**
 * **Field → VM and Instance: Power State → =** "on"
 
-(see [Defining The Expression Method](#i2)).
+(see screenshot [Defining The Expression Method](#i2)).
 
 ![Defining The Expression Method](images/screenshot2.png) 
 
@@ -34,17 +34,17 @@ The method’s output can be examined by running the instance from **Automate �
 * **class** - the class containing the instance to test
 * **instance** - the instance name to test
 
-(see [Testing the Expression Method In Simulation](#i3)).
+(see screenshot [Testing the Expression Method In Simulation](#i3)).
 
 ![Testing the Expression Method In Simulation](images/screenshot12.png) 
 
-Once the **Submit** button is clicked the instance is invoked and the results can be expanded in the right-hand pane in the **Tree View** tab. The _values_ hash can be seen and each of its key/value pairs can be examined. (see [Results of the Expression Method In Simulation](#i3)).
+Once the **Submit** button is clicked the instance is invoked and the results can be expanded in the right-hand pane in the **Tree View** tab. The _values_ hash can be seen and each of its key/value pairs can be examined. (see screenshot [Results of the Expression Method In Simulation](#i3)).
 
 ![Results of the Expression Method In Simulation](images/screenshot3.png) 
 
 ## Populating a Dynamic Drop-Down Element
 
-Having tested that the expression method returns some meaningful data, we can add the instance as the entry point of a dynamic method to populate a service dialog drop-down list element. If the dialog is run from a button or service, the dynamic element is populated with the list of powered-on VMs on the RHV provider (see [The Running Service Dialog](#i4)).
+Having tested that the expression method returns some meaningful data, we can add the instance as the entry point of a dynamic method to populate a service dialog drop-down list element. If the dialog is run from a button or service, the dynamic element is populated with the list of powered-on VMs on the RHV provider (see screenshot [The Running Service Dialog](#i4)).
 
 ![The Running Service Dialog](images/screenshot4.png) 
 
@@ -52,25 +52,25 @@ Having tested that the expression method returns some meaningful data, we can ad
 
 Expression methods can take a number of input arguments that can increase their flexibility. Suppose that our CloudForms installation managed two separate infrastructure providers, but we only wanted to list the powered-on VMs in either one or the other provider, but not both.  
 
-Our expression method can be edited to add a further **AND** field of **Field → VM and Instance : Ems → =**, but with the check box **User will input the value** ticked (see [Adding a User Input to the Expression](#i5)).
+Our expression method can be edited to add a further **AND** field of **Field → VM and Instance : Ems → =**, but with the check box **User will input the value** ticked (see screenshot [Adding a User Input to the Expression](#i5)).
 
 ![Adding a User Input Filter to the Expression](images/screenshot5.png)
 
 The `<user input>` will be supplied from the results of a new **Provider (EMS)** element in the service dialog.
 
-An input parameter called *arg1* must now be created for the expression method. This should be of type **String**, and with the value `${/#dialog_ems}`. This is the substitution string that represents the `$evm.root['dialog_ems']` value returned from the **Provider (EMS)** dialog element (see [Adding the Input Parameter](#i6)).
+An input parameter called *arg1* must now be created for the expression method. This should be of type **String**, and with the value `${/#dialog_ems}`. This is the substitution string that represents the `$evm.root['dialog_ems']` value returned from the **Provider (EMS)** dialog element (see screenshot [Adding the Input Parameter](#i6)).
 
 ![Adding the Input Parameter](images/screenshot6.png)
 
-We can edit the service dialog to insert a new drop-down list element with **Label** of _Provider (EMS)_ and a **Name** of _ems_ (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down (see [Fields to Refresh](../new_service_dialog_editor/chapter.md#fields_to_refresh)) we can trigger the earlier **VM** element running the _expression\_rhv\_vms_ method to run when a provider is selected. 
+We can edit the service dialog to insert a new drop-down list element with **Label** of _Provider (EMS)_ and a **Name** of _ems_ (also populated by expression method if required), that lists all of the providers on the system. Using the **Fields to refresh** drop-down (see section [Fields to Refresh](../new_service_dialog_editor/chapter.md#fields_to_refresh)) we can trigger the earlier **VM** element running the _expression\_rhv\_vms_ method to run when a provider is selected. 
 
-Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see [All VMs listed on the Selected Provider](#i7)).
+Now when the modified dialog is run from a button or service, the **Provider (EMS)** element can be selected first, which then triggers the **VM** drop-down to refresh using the `$evm.root['dialog_ems']` (translated as `${/#dialog_ems}`) value as an input parameter (see screenshot [All VMs listed on the Selected Provider](#i7)).
 
 ![All VMs listed on the Selected Provider](images/screenshot7.png)  
 
 ### Returning an Alternative Key
 
-Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see [Setting an Alternative Key](#i8) and [Simulation Results From Setting an Alternative Key](#i9)).
+Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see screenshots [Setting an Alternative Key](#i8) and [Simulation Results From Setting an Alternative Key](#i9)).
 
 ![Setting an Alternative Key](images/screenshot8.png)
 
@@ -80,7 +80,7 @@ When run from **Automate -> Simulation** the `values` hash now has the following
 
 ### Returning an Array Rather than Hash
 
-If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see [Setting an Alternative Result Type](#i10) and [Simulation Results From Setting an Alternative Result Type](#i11)).
+If an array rather than hash should be returned by the expression method, this can also be specified using input parameters (see screenshots [Setting an Alternative Result Type](#i10) and [Simulation Results From Setting an Alternative Result Type](#i11)).
 
 ![Setting an Alternative Result Type](images/screenshot10.png)
 

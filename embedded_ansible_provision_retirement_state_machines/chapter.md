@@ -2,7 +2,7 @@
 
 An Ansible playbook service has a new type of Active Record object (_ServiceAnsiblePlaybook_) and a corresponding auto-generated service model object (_MiqAeServiceServiceAnsiblePlaybook_). A new simplified service lifecycle state machine class had been developed to handle Ansible playbook services using the features and methods of the ServiceAnsiblePlaybook object. 
 
-The new state machine instances still reference many of the original service lifecycle instance and methods under _/Service/Provisioning_ and _/Service/Retirement_ in the automate datastore, but several new methods are included to handle the ServiceAnsiblePlaybook object-specific processing (see [New GenericLifecycle Class](#i1))
+The new state machine instances still reference many of the original service lifecycle instance and methods under _/Service/Provisioning_ and _/Service/Retirement_ in the automate datastore, but several new methods are included to handle the ServiceAnsiblePlaybook object-specific processing (see screenshot [New GenericLifecycle Class](#i1))
 
 ![New GenericLifecycle Class](images/screenshot1.png)
 
@@ -20,7 +20,7 @@ There are several service retirement state machines split into two categories: _
 
 ### Basic Resource
 
-The _basic resource_ retirement state machines are used if the service catalog item definition doesn't specify a retirement playbook to run. The selection of state machine is automatic and depends on the configured value for the **Remove Resources?** dropdown in the **Retirement** tab of the service definition (see [Remove Resources? Dropdown](#i2))
+The _basic resource_ retirement state machines are used if the service catalog item definition doesn't specify a retirement playbook to run. The selection of state machine is automatic and depends on the configured value for the **Remove Resources?** dropdown in the **Retirement** tab of the service definition (see screenshot [Remove Resources? Dropdown](#i2))
 
 ![Remove Resources? Dropdown](images/screenshot2.png)
 
