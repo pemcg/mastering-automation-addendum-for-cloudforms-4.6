@@ -109,7 +109,7 @@ The optional second `:update_request` argument determines whether the VM name is
 
 ### Slugs
 
-In an API context a _slug_ is a shortened resource-specific URL part that can be used to uniqiely identify a resource. As an example if the full URI to an API resource is `https://cloudforms02.mycompany.org/api/vms/1000000000892` then the slug portion would be `vms/1000000000892`.
+In an API context a _slug_ is a shortened resource-specific URL part that can be used to uniquely identify a resource. As an example if the full URI to an API resource is `https://cloudforms02.mycompany.org/api/vms/1000000000892` then the slug portion would be `vms/1000000000892`.
 
 Since CloudForms 4.5 (ManageIQ *Fine*) all objects have had an `href_slug` attribute that can be used to reference the same object via the RESTful API if required, for example:
 
