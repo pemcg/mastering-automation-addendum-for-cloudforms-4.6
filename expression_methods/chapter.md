@@ -112,7 +112,7 @@ $evm.object['linux_templates'] = [["5c427ebd-6bde-4c29-a068-caca7c69519f", "RedH
 
   - **key** - the attribute to use for the key (default: 'id').
 
-  - **result\_obj**  - the object where the result data should be stored (default: '.' (`$evm.object`)).
+  - **result\_obj**  - the object where the result data should be stored (default: '.' (current object (aka `$evm.object`))).
 
   - **result\_attr**  - the name of the attribute which stores the result (default: 'values').
 
