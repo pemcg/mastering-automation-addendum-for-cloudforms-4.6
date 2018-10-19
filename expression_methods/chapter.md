@@ -99,7 +99,7 @@ If several expression methods are to be called from the same instance it can be 
 A subsequent Ruby method run from the same instance would see the results as follows:
 
 ``` ruby
-$evm.object['linux_templates'] = [["5c427ebd-6bde-4c29-a068-caca7c69519f", "RedHat_CFME-5.8.0.17", 1],...]
+$evm.object['linux_templates'] = [["5c427ebd-6bde-...", "RedHat_CFME-5.8.0.17", 1],...]
 ```
 
 ### Summary of Input Parameters
