@@ -88,6 +88,21 @@ When run from **Automate -> Simulation** it can be seen that `values` is now an 
 
 ![Simulation Results From Setting an Alternative Result Type](images/screenshot11.png)
 
+### Using an Alternative Return Attribute Name
+
+The default action of an expression method is to return the results into a hash or array variable called _values_. This is accessible as `$evm.object['values']` from any subsequent Ruby methods run from the same instance.
+
+If several expression methods are to be called from the same instance it can be useful to rename the return attribute from each to keep the result sets unique. This can be done with the _result\_attr_ argument (see screenshot [Using an Alternative Return Attribute Name](#i12))
+
+![Using an Alternative Return Attribute Name](images/screenshot13.png)
+
+A subsequent Ruby method run from the same instance would see the results as follows:
+
+``` ruby
+$evm.object['linux_templates'] = [["5c427ebd-6bde-4c29-a068-caca7c69519f", "RedHat_CFME-5.8.0.17", 1]]
+```
+
+
 ### Summary of arguments
 
   - **arg1**, **arg2**, **argn** - the first, second, n’th arguments in the expression
