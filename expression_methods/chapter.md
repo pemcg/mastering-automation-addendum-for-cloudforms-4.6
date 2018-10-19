@@ -48,9 +48,9 @@ Having tested that the expression method returns some meaningful data, we can ad
 
 ![The Running Service Dialog](images/screenshot4.png) 
 
-## Input Arguments
+## Input Parameters
 
-Expression methods can take a number of input arguments that can increase their flexibility. Suppose that our CloudForms installation managed two separate infrastructure providers, but we only wanted to list the powered-on VMs in either one or the other provider, but not both.  
+Expression methods can take a number of input parameters that can increase their flexibility. Suppose that our CloudForms installation managed two separate infrastructure providers, but we only wanted to list the powered-on VMs in either one or the other provider, but not both.  
 
 Our expression method can be edited to add a further **AND** field of **Field → VM and Instance : Ems → =**, but with the check box **User will input the value** ticked (see screenshot [Adding a User Input to the Expression](#i5)).
 
@@ -70,7 +70,7 @@ Now when the modified dialog is run from a button or service, the **Provider (EM
 
 ### Returning an Alternative Key
 
-Several other input arguments can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see screenshots [Setting an Alternative Key](#i8) and [Simulation Results From Setting an Alternative Key](#i9)).
+Several other input parameters can be used. For example if {guid ⇒ name} hash pairs should be returned rather than {id ⇒ name} pairs, an alternative key field can be specified using the _key_ argument (see screenshots [Setting an Alternative Key](#i8) and [Simulation Results From Setting an Alternative Key](#i9)).
 
 ![Setting an Alternative Key](images/screenshot8.png)
 
@@ -102,7 +102,7 @@ A subsequent Ruby method run from the same instance would see the results as fol
 $evm.object['linux_templates'] = [["5c427ebd-6bde-4c29-a068-caca7c69519f", "RedHat_CFME-5.8.0.17", 1],...]
 ```
 
-### Summary of arguments
+### Summary of Input Parameters
 
   - **arg1**, **arg2**, **argn** - the first, second, n’th arguments in the expression
 
