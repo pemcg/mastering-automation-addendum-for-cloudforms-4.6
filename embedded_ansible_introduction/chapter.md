@@ -151,6 +151,14 @@ changed: [localhost]
 ...
 ```
 
+## Running Multiple Playbooks Concurrently
+
+Embedded Ansible playbooks can be run concurrently against several different inventories, with the following caveats:
+
+* If an SCM repository is set to "update on launch", then its playbooks are not run concurrently. Any additional playbook jobs run from the same repository will be held pending behind the SCM update. The SCM repository will not update until after the currently running job has completed.
+
+* There is a limit of one concurrent job for each inventory. In practice the embedded Ansible engine creates a unique inventory object for each static or dynamic `hosts` list defined for each playbook method or playbook service.
+
 ## Embedded Ansible Configuration
 
 Embedded Ansible has a small customisation section in the **Configuration -> Advanced** settings list, as follows:

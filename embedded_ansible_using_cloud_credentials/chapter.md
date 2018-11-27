@@ -8,7 +8,9 @@ These credentials can then be associated with an embedded Ansible playbook servi
 
 ![Adding Cloud Type and Cloud Credential to a Method](images/screenshot2.png)
 
-When a cloud credential is associated with a playbook service or method in this way, the cloud credential values are made available to the playbook via an environmental variable called `OS_CLIENT_CONFIG_FILE`, which points to a YAML file written by the embedded Ansible engine. The contents of the yaml file are similar to the following:
+When a cloud credential is associated with a playbook service or method in this way, the cloud credential values are made available to the playbook via environmental variables, although the format of these is different for the various types of cloud credential. 
+
+For an OpenStack cloud credential an environment variable called `OS_CLIENT_CONFIG_FILE` is used. This contains the filename of a temporary YAML file such as _/tmp/awx\_977\_foAfn4/tmpu0gAQG_ written by the embedded Ansible engine. The contents of the YAML file are similar to the following:
 
 
 ``` yaml
@@ -62,7 +64,7 @@ ok: [localhost] => {
 
 > **Note**
 > 
-> The cloud is always `devstack` in the yaml imported via the `OS_CLIENT_CONFIG_FILE` variable, regardless of the credential name.
+> The cloud is always `devstack` in the YAML imported via the `OS_CLIENT_CONFIG_FILE` variable, regardless of the credential name.
 
 These variables can then be used as normal in the Ansible playbook, for example:
 
@@ -72,6 +74,27 @@ local_action:
   login_username: "{{ clouds.devstack.auth.username }}"
   login_password: "{{ clouds.devstack.auth.password }}"
 ```
+
+## Accessing Other Cloud Credential Types
+
+Not all cloud credentials are passed via the OS\_CLIENT\_CONFIG\_FILE variable. For example the individual VMware cloud credential fields are passed as separate environment variables, for example:
+
+```
+"ansible_env": {
+...
+    "VMWARE_HOST": "vcenter01",
+    "VMWARE_PASSWORD": "password",
+    "VMWARE_USER": "admininstrator@vsphere.local",
+    "VMWARE_VALIDATE_CERTS": "False",
+```
+
+These can be accessed from the `ansible_env` hash, for example: `{{ ansible_env.VMWARE_HOST }}`
+
+> **Tip**
+> 
+> 
+> 
+The `ansible_env` hash contains all environment variables accessible to the running playbook.
 
 ## Summary
 
