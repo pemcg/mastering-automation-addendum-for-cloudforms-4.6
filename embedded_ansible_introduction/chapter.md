@@ -20,7 +20,7 @@ Although the server role can be set on more than one CFME or ManageIQ appliance,
 > 
 > The Embedded Ansible server role can take several minutes to activate when it is first enabled. Until it is fully activated, other embedded Ansible-related WebUI menu items - such as adding respositories or credentials - will appear greyed out.
 > 
-> The Embedded Ansible server role should not be enabled if a CloudForms or ManageIQ deployment has a Highly Available (HA) database (the role will fail to start if the standby slave instance has been promoted to primary).
+> With CloudForms 4.6 (ManageIQ *Gaprindashvili*) the Embedded Ansible server role should not be enabled if the CloudForms or ManageIQ region has a Highly Available (HA) database (the role will fail to start if the standby slave instance has been promoted to primary). This restriction has been lifted for CloudForms 4.7 (ManageIQ *Hammer*) where an HA database configuration is fully supported with embedded Ansible.
 
 ## Repositories
 
