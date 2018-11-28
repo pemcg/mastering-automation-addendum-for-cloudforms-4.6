@@ -38,6 +38,12 @@ systemctl status nginx
 systemctl status rabbitmq-server
 ```
 
+The status of these three services can be seen using the command:
+
+```
+ansible-tower-service status
+```
+
 ### Rails Console Checks
 
 The health of AWX can be checked from Rails. The `EmbeddedAnsible.new.running?` method checks that the supervisord, nginx and rabbitmq-server services are running correctly.
