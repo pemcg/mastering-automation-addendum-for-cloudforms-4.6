@@ -95,9 +95,9 @@ deactivate
 
 Each invocation of an embedded Ansible playbook service or method is implemented by the running of an embedded Ansible (AWX) job.
 
-### Job Log Files
+### Job Log Files (CloudForms 4.6 / ManageIQ _Gaprindashvili_)
 
-Each time an embedded Ansible job runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. 
+On CloudForms 4.6 / ManageIQ _Gaprindashvili_,  each time an embedded Ansible job runs, up to three _.out_ files are created in _/var/lib/awx/job\_status_ on the CFME or ManageIQ appliance with the active **Embedded Ansible** role. The first two of these files show the results of synchronising the git repository and updating any roles, and the last file contains the output from the automation playbook itself. 
 
 ```
 ...
@@ -114,6 +114,8 @@ Each time an embedded Ansible job runs, up to three _.out_ files are created in 
 ```
 
 The directory can be monitored for new files using the command `watch "ls -lrt | tail -10"`
+
+With CloudForms 4.7 / ManageIQ _Hammer_ the job status is recorded to the database and so is not available for viewing in this way.
 
 #### Log Output to _evm.log_
 
@@ -156,6 +158,12 @@ In a multi-appliance region the value of `manageiq.api_url` could be randomly se
 > The evmserverd service must be restarted after changing the **Configuration -> Advanced** `session_store` setting.
 
 The `manageiq-automate` and `manageiq-vmdb` modules can also fail with the same error if the server at the `manageiq.api_url` is experiencing problems with its `evmserverd` service, or if the server or its service has been stopped less than 10 minutes prior to the connection attempt.
+
+### Jobs Not Running
+
+When the **Embedded Ansible** server role is enabled, the newly created ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider configures itself in the zone that the appliance is a member of. If the appliance is subsequently moved to a different zone, the provider does not automatically move (although a BZ is pending), and so any new jobs will not be processed as their messages will still target the old zone.
+
+If an appliance running the **Embedded Ansible** server role is moved between zones, the server role should be disabled and re-enabled. This will reconfigure the ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider in the correct zone.
 
 ## Summary
 
