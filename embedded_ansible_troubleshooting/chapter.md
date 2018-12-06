@@ -161,9 +161,9 @@ The `manageiq-automate` and `manageiq-vmdb` modules can also fail with the same 
 
 ### Jobs Not Running
 
-When the **Embedded Ansible** server role is enabled, the newly created ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider configures itself in the zone that the appliance is a member of. If the appliance is subsequently moved to a different zone, the provider does not automatically move (although a BZ is pending), and so any new jobs will not be processed as their messages will still target the old zone.
+When the **Embedded Ansible** server role starts, the ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider configures itself in the zone that the appliance is a member of. If the appliance is subsequently moved to a different zone, the provider does not immediately move, and so any new jobs may appear to be stalled as their messages still target the old zone.
 
-If an appliance running the **Embedded Ansible** server role is moved between zones, the server role should be disabled and re-enabled. This will reconfigure the ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider in the correct zone.
+If an appliance running the **Embedded Ansible** server role is moved between zones, the server role should be disabled and re-enabled. This will restart the ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider in the correct zone.
 
 ## Summary
 
