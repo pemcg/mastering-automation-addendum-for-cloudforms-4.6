@@ -184,10 +184,6 @@ Although most settings would not need changing in normal operation, the `job_dat
 > The playbook output for an embedded Ansible service is shown in the service's **Provisioning** or **Retirement** tab in the **Services -> My Services** page in the WebUI. This output is read directly from the corresponding job's _.out_ file, and so once the _*.out_ files are purged, the output is longer visible from the service details in the WebUI.
 > 
 
-## Zone Implications
-
-The ManageIQ::Providers::EmbeddedAnsible::AutomationManager provider attaches itself to the zone that the appliance is in when the **Embedded Ansible** server role is enabled. Subsequently moving the appliance into a different zone does not change the provider's zone, and so the **Embedded Ansible** server role should be disabled and re-enabled to ensure that the provider is re-configured in the new zone correctly.
-
 ## Events
 
 The following events are emitted from the embedded Ansible engine:
