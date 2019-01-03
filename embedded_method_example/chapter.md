@@ -36,7 +36,9 @@ module Automation
 
           def vnic_profiles(dc_name)
             profiles = []
+            dc_networks = networks(dc_name).map {|network| network.id }
             vnic_profiles_service.list.each do |vnic_profile|
+              next unless dc_networks.include?(vnic_profile.network.id)
               network = network_by_id(vnic_profile.network.id, dc_name)
               profiles << {:id => vnic_profile.id, :name => "#{vnic_profile.name} (#{network.name})"}
             end
