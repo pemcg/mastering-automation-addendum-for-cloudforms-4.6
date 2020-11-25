@@ -100,8 +100,8 @@ The VM naming functionality during provisioning provides the ability to request 
 A new enhancement in CloudForms 4.6 / ManageIQ *Gaprindashvili* (and CloudForms 4.5 from Errata 3) has provided an `update_vm_name` method that can be called from the `miq_provision` object in task context, for example during the VM Provision state machine as follows:
 
 ``` ruby
-prov = $evm.root['miq_provision']
-vm_name = $evm.root['dialog_vm_name']
+prov    = $evm.root['miq_provision']
+vm_name = prov.miq_request.get_option(:dialog).fetch(dialog_vm_name)
 prov.update_vm_name("#{vm_name}$n{3}", :update_request => false)
 ```
 
